@@ -54,4 +54,8 @@ describe('User Repository', () => {
     expect(userRepository.users).to.deep.equal([user1, user2]);
     expect(userRepository.users[0]).to.be.an.instanceof(User);
   });
+
+  it('should be able to access user data by user\'s id', () => {
+    expect(userRepository.getUserData(1)).to.deep.equal(user1);
+  });
 });
