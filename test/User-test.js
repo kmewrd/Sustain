@@ -10,7 +10,12 @@ describe('User', () => {
     user = new User(userData);
  })
 
- it('needs to be a function', () => {
+ it('should be a function', () => {
       expect(User).to.be.a('function')
  })
+
+ it('should be an instance of User', () => {
+      expect(user).to.be.an.instanceof(User)
+ })
+
 })
