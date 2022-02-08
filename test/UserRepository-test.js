@@ -58,4 +58,8 @@ describe('User Repository', () => {
   it('should be able to access user data by user\'s id', () => {
     expect(userRepository.getUserData(1)).to.deep.equal(user1);
   });
+
+  it('should calculate average step goal amongst all Users', () => {
+    expect(userRepository.getAverageStepGoal()).to.equal(7500);
+  });
 });
