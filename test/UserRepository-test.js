@@ -47,6 +47,11 @@ describe('User Repository', () => {
   });
 
   it('should be an instance of UserRepository', () => {
-    expect(userRepository).to.be.an.instanceOf(UserRepository);
-  })
+    expect(userRepository).to.be.an.instanceof(UserRepository);
+  });
+
+  it('should hold all User objects', () => {
+    expect(userRepository.users).to.deep.equal([user1, user2]);
+    expect(userRepository.users[0]).to.be.an.instanceof(User);
+  });
 });
