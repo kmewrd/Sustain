@@ -57,3 +57,16 @@ function displayDashboardText(id) {
   });
   dashboardText.innerText = `${user.name}'s Dashboard`;
 };
+
+function displayUserInfo(id) {
+  const user = userRepository.users.find(user => {
+    return user.id === id;
+  });
+  userInfo.innerHTML = `
+    <p>${user.address[0]}</p>
+    <p>${user.address[1]}</p>
+    <p>${user.email}</p>
+    <p>Stride Length: ${user.strideLength}</p>
+    <p>Daily Step Goal: ${user.dailyStepGoal}</p>
+  `;
+};
