@@ -17,8 +17,16 @@ import userData from './data/users';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 
+// variables
 const welcomeMessage = document.querySelector('.js-welcome-message');
 const dashboardText = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
+
+// event listeners
+
+// functions
+function updateDashboard() {
+  // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
+};
