@@ -43,3 +43,5 @@ function displayWelcomeMessage(id) {
   const userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
+
+createUserInstances();
