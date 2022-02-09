@@ -85,4 +85,5 @@ function displayAvgUsersStepGoal() {
 // event listeners
 window.addEventListener('load', function() {
   initializeUserData(userData);
+  updateDashboard(1);
 });
