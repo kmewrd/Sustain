@@ -29,6 +29,9 @@ let userRepository;
 let users;
 
 // event listeners
+window.addEventListener('load', function() {
+  initializeUserData(userData);
+});
 
 // functions
 function updateDashboard() {
