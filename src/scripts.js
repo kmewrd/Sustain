@@ -25,6 +25,10 @@ const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 
 // event listeners
+window.addEventListener('load', function() {
+  const userRepository = new UserRepository(userData);
+  userRepository.createAllUsers();
+});
 
 // functions
 function updateDashboard() {
