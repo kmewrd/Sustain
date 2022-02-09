@@ -17,13 +17,16 @@ import userData from './data/users';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 
-// variables
+// query selectors
 const welcomeMessage = document.querySelector('.js-welcome-message');
 const dashboardText = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
-const userRepository = new UserRepository(userData);
+
+// global variables
+let userRepository;
+let users;
 
 // event listeners
 
@@ -32,8 +35,8 @@ function updateDashboard() {
   // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
 };
 
-function createUserInstances() {
-  userRepository.createAllUsers();
+function initializeUserData() {
+  // needs to instantiate userRepo and users
 };
 
 function displayWelcomeMessage(id) {
@@ -43,5 +46,3 @@ function displayWelcomeMessage(id) {
   const userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
-
-createUserInstances();
