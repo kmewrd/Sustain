@@ -35,8 +35,9 @@ function updateDashboard() {
   // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
 };
 
-function initializeUserData() {
-  // needs to instantiate userRepo and users
+function initializeUserData(userData) {
+  users = userData.map(user => new User(user));
+  userRepository = new UserRepository(users);
 };
 
 function displayWelcomeMessage(id) {
