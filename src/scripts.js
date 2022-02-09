@@ -14,4 +14,11 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 
-import UserRepository from './UserRepository';
+import UserRepository from './classes/UserRepository';
+import User from './classes/User';
+
+const welcomeMessage = document.querySelector('.js-welcome-message');
+const dashboardText = document.querySelector('.js-user-dashboard');
+const userInfo = document.querySelector('.js-user-info');
+const userStepGoal = document.querySelector('.js-user-step-goal');
+const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
