@@ -50,3 +50,10 @@ function displayWelcomeMessage(id) {
   const userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
+
+function displayDashboardText(id) {
+  const user = userRepository.users.find(user => {
+    return user.id === id;
+  });
+  dashboardText.innerText = `${user.name}'s Dashboard`;
+};
