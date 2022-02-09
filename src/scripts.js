@@ -43,24 +43,18 @@ function initializeUserData(userData) {
 };
 
 function displayWelcomeMessage(id) {
-  const user = userRepository.users.find(user => {
-    return user.id === id;
-  });
+  const user = userRepository.getUserById(id);
   const userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
 
 function displayDashboardText(id) {
-  const user = userRepository.users.find(user => {
-    return user.id === id;
-  });
+  const user = userRepository.getUserById(id);
   dashboardText.innerText = `${user.name}'s Dashboard`;
 };
 
 function displayUserInfo(id) {
-  const user = userRepository.users.find(user => {
-    return user.id === id;
-  });
+  const user = userRepository.getUserById(id);
   userInfo.innerHTML = `
     <p>${user.address[0]}</p>
     <p>${user.address[1]}</p>
@@ -71,9 +65,7 @@ function displayUserInfo(id) {
 };
 
 function displayUserStepGoal(id) {
-  const user = userRepository.users.find(user => {
-    return user.id === id;
-  });
+  const user = userRepository.getUserById(id);
   userStepGoal.innerText = `Your Step Goal: ${user.dailyStepGoal}`;
 };
 
