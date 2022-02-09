@@ -77,3 +77,8 @@ function displayUserStepGoal(id) {
   });
   userStepGoal.innerText = `Your Step Goal: ${user.dailyStepGoal}`;
 };
+
+function displayAvgUsersStepGoal() {
+  const avg = userRepository.getAvgUserStepGoal();
+  avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
+};
