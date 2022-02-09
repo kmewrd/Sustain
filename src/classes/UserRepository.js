@@ -1,4 +1,4 @@
-const User = require('./User');
+import User from './User';
 
 class UserRepository {
   constructor(data) {
