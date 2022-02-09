@@ -1,7 +1,7 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-console.log(userData,"<>>>>userData")
+// console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
@@ -23,16 +23,17 @@ const dashboardText = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
+const userRepository = new UserRepository(userData);
 
 // event listeners
-window.addEventListener('load', function() {
-  const userRepository = new UserRepository(userData);
-  userRepository.createAllUsers();
-});
 
 // functions
 function updateDashboard() {
   // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
+};
+
+function createUserInstances() {
+  userRepository.createAllUsers();
 };
 
 function displayWelcomeMessage(id) {
@@ -42,5 +43,3 @@ function displayWelcomeMessage(id) {
   const userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
-
-// displayWelcomeMessage(2);
