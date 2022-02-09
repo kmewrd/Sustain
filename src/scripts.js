@@ -34,3 +34,13 @@ window.addEventListener('load', function() {
 function updateDashboard() {
   // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
 };
+
+function displayWelcomeMessage(id) {
+  const user = userRepository.users.find(user => {
+    return user.id === id;
+  });
+  const userName = user.returnFirstName();
+  welcomeMessage.innerText = `Welcome ${userName}!`;
+};
+
+// displayWelcomeMessage(2);
