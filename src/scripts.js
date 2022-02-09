@@ -70,3 +70,10 @@ function displayUserInfo(id) {
     <p>Daily Step Goal: ${user.dailyStepGoal}</p>
   `;
 };
+
+function displayUserStepGoal(id) {
+  const user = userRepository.users.find(user => {
+    return user.id === id;
+  });
+  userStepGoal.innerText = `Your Step Goal: ${user.dailyStepGoal}`;
+};
