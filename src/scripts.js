@@ -28,14 +28,13 @@ const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 let userRepository;
 let users;
 
-// event listeners
-window.addEventListener('load', function() {
-  initializeUserData(userData);
-});
-
 // functions
-function updateDashboard() {
-  // call functions that update welcomeMessage, dashboardText, userInfo, userStepGoal, and avgUsersStepGoal
+function updateDashboard(id) {
+  displayWelcomeMessage(id);
+  displayDashboardText(id);
+  displayUserInfo(id);
+  displayUserStepGoal(id);
+  displayAvgUsersStepGoal();
 };
 
 function initializeUserData(userData) {
@@ -82,3 +81,8 @@ function displayAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
+
+// event listeners
+window.addEventListener('load', function() {
+  initializeUserData(userData);
+});
