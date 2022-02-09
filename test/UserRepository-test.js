@@ -3,10 +3,11 @@ import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
 
 describe('User Repository', () => {
-
+  let user1;
+  let user2;
   let userData1;
   let userData2;
-  let UserRepository;
+  let userRepository;
 
   beforeEach(() => {
     userData1 = {
@@ -38,7 +39,7 @@ describe('User Repository', () => {
   }
     user1 = new User(userData1);
     user2 = new User(userData2);
-    userRespository = new UserRepository([user1, user2]);
+    userRepository = new UserRepository([user1, user2]);
  })
 
 

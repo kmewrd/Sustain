@@ -3,7 +3,8 @@ import User from '../src/classes/User'
 
 
 describe('User', () => {
-  let user;
+  let user1;
+  let user2;
   let userData1
   let userData2
 
@@ -44,7 +45,7 @@ describe('User', () => {
  })
 
  it('should be an instance of User', () => {
-      expect(user).to.be.an.instanceof(User)
+      expect(user1).to.be.an.instanceof(User)
  })
 
  it('should take in userData', () => {
