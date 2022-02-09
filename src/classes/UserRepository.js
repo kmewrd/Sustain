@@ -1,3 +1,5 @@
+const User = require('./User');
+
 class UserRepository {
   constructor(data) {
     this.users = data;
