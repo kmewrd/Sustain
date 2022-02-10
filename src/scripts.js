@@ -29,12 +29,13 @@ const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 // global variables
 let userRepository;
 let users;
+let hydrationLogs;
 
 // functions
 function fetchData() {
-  Promise.all([fetchUserData()])
+  Promise.all([fetchUserData(), fetchHydrationData()])
     .then(data => {
-      initializeUserData(data[0].userData);
+      initializeUserData(data[0].userData, data[1].hydrationData);
       updateDashboard(1);
   });
 };
@@ -47,9 +48,10 @@ function updateDashboard(id) {
   displayAvgUsersStepGoal();
 };
 
-function initializeUserData(userData) {
+function initializeUserData(userData, hydrationData) {
   users = userData.map(user => new User(user));
   userRepository = new UserRepository(users);
+  hydrationLogs = hydrationData.map(log => new HydrationLog(log))
 }
 
 function displayWelcomeMessage(id) {
