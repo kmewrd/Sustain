@@ -4,6 +4,7 @@ class HydrationLog {
     this.date = data.date;
     this.numOunces = data.numOunces;
   }
+  
 }
 
 export default HydrationLog;
