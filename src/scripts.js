@@ -27,14 +27,15 @@ const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 // global variables
 let userRepository;
 let users;
-// let userData;
+
 // functions
-Promise.all([fetchUserData()])
+function fetchData() {
+  Promise.all([fetchUserData()])
     .then(data => {
-      [fetchUserData] = [data[0]];
-      users = fetchUserData.map(user => new User(user));
-      userRepository = new UserRepository(users);
-    });
+      initializeUserData(data[0].userData);
+      updateDashboard(1);
+  });
+};
 
 function updateDashboard(id) {
   displayWelcomeMessage(id);
@@ -44,14 +45,14 @@ function updateDashboard(id) {
   displayAvgUsersStepGoal();
 };
 
-// function initializeUserData(userData) {
-//   users = userData.map(user => new User(user));
-//   userRepository = new UserRepository(users);
-// };
+function initializeUserData(userData) {
+  users = userData.map(user => new User(user));
+  userRepository = new UserRepository(users);
+}
 
 function displayWelcomeMessage(id) {
-  const user = userRepository.getUserById(id);
-  const userName = user.returnFirstName();
+  let user = userRepository.getUserById(id);
+  let userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
 
@@ -87,7 +88,5 @@ function displayAvgUsersStepGoal() {
 
 // event listeners
 window.addEventListener('load', function() {
-  // getAllFetchCalls();
-  // initializeUserData(userData);
-  updateDashboard(1);
+  fetchData();
 });
