@@ -12,10 +12,12 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import {fetchUserData} from './apiCalls';
+import {fetchUserData, fetchHydrationData} from './apiCalls';
 
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
+import HydrationLog from './classes/HydrationLog';
+
 
 // query selectors
 const welcomeMessage = document.querySelector('.js-welcome-message');
