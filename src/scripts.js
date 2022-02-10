@@ -12,7 +12,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
+import {fetchUserData} from './apiCalls';
 
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
@@ -29,6 +29,14 @@ let userRepository;
 let users;
 
 // functions
+function fetchData() {
+  Promise.all([fetchUserData()])
+    .then(data => {
+      initializeUserData(data[0].userData);
+      updateDashboard(1);
+  });
+};
+
 function updateDashboard(id) {
   displayWelcomeMessage(id);
   displayDashboardText(id);
@@ -40,11 +48,11 @@ function updateDashboard(id) {
 function initializeUserData(userData) {
   users = userData.map(user => new User(user));
   userRepository = new UserRepository(users);
-};
+}
 
 function displayWelcomeMessage(id) {
-  const user = userRepository.getUserById(id);
-  const userName = user.returnFirstName();
+  let user = userRepository.getUserById(id);
+  let userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
 
@@ -74,8 +82,11 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
+// function getAllFetchCalls() {
+//   userData = fetchUserData()
+// }
+
 // event listeners
 window.addEventListener('load', function() {
-  initializeUserData(userData);
-  updateDashboard(1);
+  fetchData();
 });
