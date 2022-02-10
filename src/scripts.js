@@ -29,7 +29,7 @@ let userRepository;
 let users;
 // let userData;
 // functions
-Promise.all([fetchUserData])
+Promise.all([fetchUserData()])
     .then(data => {
       [fetchUserData] = [data[0]];
       users = fetchUserData.map(user => new User(user));
