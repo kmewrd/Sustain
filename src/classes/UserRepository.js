@@ -1,8 +1,9 @@
 import User from './User';
 
 class UserRepository {
-  constructor(data) {
-    this.users = data;
+  constructor(userData, hydrationData) {
+    this.users = userData;
+    this.hydrationLogs = hydrationData;
   }
   getUserById(id) {
     const user = this.users.find(person => {

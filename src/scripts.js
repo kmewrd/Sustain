@@ -50,8 +50,8 @@ function updateDashboard(id) {
 
 function initializeUserData(userData, hydrationData) {
   users = userData.map(user => new User(user));
-  userRepository = new UserRepository(users);
-  hydrationLogs = hydrationData.map(log => new HydrationLog(log))
+  hydrationLogs = hydrationData.map(log => new HydrationLog(log));
+  userRepository = new UserRepository(users, hydrationLogs);
 }
 
 function displayWelcomeMessage(id) {
