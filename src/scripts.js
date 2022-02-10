@@ -12,7 +12,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
+import {fetchUserData} from './apiCalls';
 
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
@@ -27,8 +27,15 @@ const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 // global variables
 let userRepository;
 let users;
-
+// let userData;
 // functions
+Promise.all([fetchUserData])
+    .then(data => {
+      [fetchUserData] = [data[0]];
+      users = fetchUserData.map(user => new User(user));
+      userRepository = new UserRepository(users);
+    });
+
 function updateDashboard(id) {
   displayWelcomeMessage(id);
   displayDashboardText(id);
@@ -37,10 +44,10 @@ function updateDashboard(id) {
   displayAvgUsersStepGoal();
 };
 
-function initializeUserData(userData) {
-  users = userData.map(user => new User(user));
-  userRepository = new UserRepository(users);
-};
+// function initializeUserData(userData) {
+//   users = userData.map(user => new User(user));
+//   userRepository = new UserRepository(users);
+// };
 
 function displayWelcomeMessage(id) {
   const user = userRepository.getUserById(id);
@@ -74,8 +81,13 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
+// function getAllFetchCalls() {
+//   userData = fetchUserData()
+// }
+
 // event listeners
 window.addEventListener('load', function() {
-  initializeUserData(userData);
+  // getAllFetchCalls();
+  // initializeUserData(userData);
   updateDashboard(1);
 });
