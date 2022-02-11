@@ -50,6 +50,13 @@ class User {
     const avg = total / this.sleepLogs.length;
     return avg;
   };
+  getSleepHoursByDay(date) {
+    const sleepLog = this.sleepLogs.find(log => {
+      return log.date === date;
+    });
+    const hours = sleepLog.hoursSlept;
+    return hours;
+  };
 }
 //
 export default User;
