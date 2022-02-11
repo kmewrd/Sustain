@@ -74,6 +74,16 @@ class User {
     })
     return weekHours;
   }
+  getSleepQualityByWeek(endDate) {
+    const dateIndex = this.sleepLogs.findIndex(log => {
+      return log.date === endDate;
+    });
+    const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
+    const weekQuality = weekLogs.map(log => {
+      return log.sleepQuality;
+    })
+    return weekQuality;
+  }
 }
 //
 export default User;
