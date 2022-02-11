@@ -1,5 +1,3 @@
-import User from './User';
-
 class UserRepository {
   constructor(userData, hydrationData) {
     this.users = userData;
@@ -24,6 +22,13 @@ class UserRepository {
       return log.userID === id;
     });
     return userLogs;
+  }
+  getAvgUserSleepQuality() {
+    const total = this.sleepLogs.reduce((acc, log) => {
+      return acc += log.sleepQuality;
+    }, 0);
+    const avg = total / this.users.length;
+    return avg;
   }
 }
 
