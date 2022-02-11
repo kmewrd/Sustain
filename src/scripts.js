@@ -56,6 +56,8 @@ function initializeUserData(userData, hydrationData) {
 
 function displayWelcomeMessage(id) {
   let user = userRepository.getUserById(id);
+  console.log(user);
+  
   let userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
