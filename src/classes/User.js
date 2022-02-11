@@ -12,6 +12,13 @@ class User {
 		const fullName = this.name.split(" ");
     return fullName[0];
 	}
+  getAvgOuncesPerDay() {
+    const total = this.hydrationLogs.reduce((acc, log) => {
+      return acc += log.numOunces;
+    }, 0);
+    const avg = total / this.hydrationLogs.length;
+    return avg;
+  }
 }
 
 export default User;
