@@ -73,6 +73,7 @@ function updateDashboard() {
   displayCurrentWaterIntake();
   displayWeeklyWaterIntake();
   displayRecentHoursSlept();
+  displayRecentSleepQuality();
 };
 
 function initializeUserData(userData, hydrationData, sleepData) {
@@ -136,10 +137,15 @@ function displayWeeklyWaterIntake() {
 };
 
 function displayRecentHoursSlept() {
-  console.log(currentUser)
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
-  const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate); 
+  const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate);
   recentHoursSlept.innerText = `Hours Slept Last Night: ${lastNightHoursSlept}`;
+};
+
+function displayRecentSleepQuality() {
+  const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
+  const lastNightSleepQuality = currentUser.getSleepQualityByDay(currentDate);
+  recentSleepQuality.innerText = `Sleep Quality Last Night: ${lastNightSleepQuality}`;
 };
 
 
