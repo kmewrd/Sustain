@@ -1,17 +1,17 @@
 class User {
   constructor(userData) {
     this.id = userData.id;
-		this.name = userData.name;
-		this.address = userData.address.split(", ");
-		this.email = userData.email;
-		this.strideLength = userData.strideLength;
-		this.dailyStepGoal = userData.dailyStepGoal;
-		this.friends = userData.friends;
+    this.name = userData.name;
+    this.address = userData.address.split(", ");
+    this.email = userData.email;
+    this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
+    this.friends = userData.friends;
   }
   returnFirstName() {
-		const fullName = this.name.split(" ");
+    const fullName = this.name.split(" ");
     return fullName[0];
-	}
+  }
   getAvgOuncesPerDay() {
     const total = this.hydrationLogs.reduce((acc, log) => {
       return acc += log.numOunces;
@@ -49,14 +49,21 @@ class User {
     }, 0);
     const avg = total / this.sleepLogs.length;
     return avg;
-  };
+  }
   getSleepHoursByDay(date) {
     const sleepLog = this.sleepLogs.find(log => {
       return log.date === date;
     });
     const hours = sleepLog.hoursSlept;
     return hours;
-  };
+  }
+  getSleepQualityByDay(date) {
+    const sleepLog = this.sleepLogs.find(log => {
+      return log.date === date;
+    });
+    const sleepQuality = sleepLog.sleepQuality;
+    return sleepQuality;
+  }
 }
 //
 export default User;
