@@ -74,6 +74,7 @@ function updateDashboard() {
   displayWeeklyWaterIntake();
   displayRecentHoursSlept();
   displayRecentSleepQuality();
+  displayAvgHoursSleepPerDay();
 };
 
 function initializeUserData(userData, hydrationData, sleepData) {
@@ -139,14 +140,19 @@ function displayWeeklyWaterIntake() {
 function displayRecentHoursSlept() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate);
-  recentHoursSlept.innerText = `Hours Slept Last Night: ${lastNightHoursSlept}`;
+  recentHoursSlept.innerText = `Hours Slept Last Night: ${lastNightHoursSlept} hours`;
 };
 
 function displayRecentSleepQuality() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightSleepQuality = currentUser.getSleepQualityByDay(currentDate);
-  recentSleepQuality.innerText = `Sleep Quality Last Night: ${lastNightSleepQuality}`;
+  recentSleepQuality.innerText = `Sleep Quality Last Night: ${lastNightSleepQuality} hours`;
 };
+
+function displayAvgHoursSleepPerDay() {
+  const avgSleepHours = currentUser.getAvgHoursSleepPerDay();
+  avgHoursSlept.innerText = `Your Average Hours of Sleep: ${avgSleepHours} hours`;
+}
 
 
 // event listeners
