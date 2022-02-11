@@ -25,6 +25,8 @@ const dashboardText = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
+const todayWaterIntake = document.querySelector('.js-today-water-intake');
+const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 
 // global variables
 let userRepository;
@@ -88,7 +90,7 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
-// function 
+// function
 
 // function getAllFetchCalls() {
 //   userData = fetchUserData()
