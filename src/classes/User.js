@@ -36,6 +36,20 @@ class User {
     });
     return weekOunces;
   }
+  getAvgHoursSleepPerDay() {
+    const total = this.sleepLogs.reduce((acc, log) => {
+      return acc += log.hoursSlept;
+    }, 0);
+    const avg = total / this.sleepLogs.length;
+    return avg;
+  }
+  getAvgSleepQualityPerDay() {
+    const total = this.sleepLogs.reduce((acc, log) => {
+      return acc += log.sleepQuality;
+    }, 0);
+    const avg = total / this.sleepLogs.length;
+    return avg;
+  };
 }
 //
 export default User;
