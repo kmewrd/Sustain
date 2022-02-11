@@ -12,7 +12,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import {fetchUserData, fetchHydrationData} from './apiCalls';
+import {fetchUserData, fetchHydrationData, fetchSleepData} from './apiCalls';
 
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
@@ -36,9 +36,9 @@ let currentUser;
 
 // functions
 function fetchData() {
-  Promise.all([fetchUserData(), fetchHydrationData()])
+  Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData()])
     .then(data => {
-      initializeUserData(data[0].userData, data[1].hydrationData);
+      initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomIndex(userRepository.users);
       getCurrentUser(randomUser);
       updateDashboard();
