@@ -33,8 +33,7 @@ class User {
     const weekLogs = this.hydrationLogs.slice(dateIndex - 7, dateIndex)
     const weekOunces = weekLogs.map(log => {
       return log.numOunces;
-    })
-    console.log(dateIndex)
+    });
     return weekOunces;
   }
 }

@@ -32,24 +32,26 @@ const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 let userRepository;
 let users;
 let hydrationLogs;
+let currentUser;
 
 // functions
 function fetchData() {
   Promise.all([fetchUserData(), fetchHydrationData()])
     .then(data => {
       initializeUserData(data[0].userData, data[1].hydrationData);
-      updateDashboard(1);
+      getCurrentUser(1);
+      updateDashboard();
   });
 };
 
-function updateDashboard(id) {
-  displayWelcomeMessage(id);
-  displayDashboardText(id);
-  displayUserInfo(id);
-  displayUserStepGoal(id);
+function updateDashboard() {
+  displayWelcomeMessage();
+  displayDashboardText();
+  displayUserInfo();
+  displayUserStepGoal();
   displayAvgUsersStepGoal();
-  displayCurrentWaterIntake(id);
-  displayWeeklyWaterIntake(id);
+  displayCurrentWaterIntake();
+  displayWeeklyWaterIntake();
 };
 
 function initializeUserData(userData, hydrationData) {
@@ -58,33 +60,31 @@ function initializeUserData(userData, hydrationData) {
   userRepository = new UserRepository(users, hydrationLogs);
 }
 
-function displayWelcomeMessage(id) {
-  let user = userRepository.getUserById(id);
-  console.log(user);
-  console.log(user.getOuncesByWeek("2019/06/17"))
-  let userName = user.returnFirstName();
+function getCurrentUser(id) {
+  currentUser = userRepository.getUserById(id);
+};
+
+function displayWelcomeMessage() {
+  let userName = currentUser.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
 
-function displayDashboardText(id) {
-  const user = userRepository.getUserById(id);
-  dashboardText.innerText = `${user.name}'s Dashboard`;
+function displayDashboardText() {
+  dashboardText.innerText = `${currentUser.name}'s Dashboard`;
 };
 
-function displayUserInfo(id) {
-  const user = userRepository.getUserById(id);
+function displayUserInfo() {
   userInfo.innerHTML = `
-    <p>${user.address[0]}</p>
-    <p>${user.address[1]}</p>
-    <p>${user.email}</p>
-    <p>Stride Length: ${user.strideLength}</p>
-    <p>Daily Step Goal: ${user.dailyStepGoal}</p>
+    <p>${currentUser.address[0]}</p>
+    <p>${currentUser.address[1]}</p>
+    <p>${currentUser.email}</p>
+    <p>Stride Length: ${currentUser.strideLength}</p>
+    <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
   `;
 };
 
-function displayUserStepGoal(id) {
-  const user = userRepository.getUserById(id);
-  userStepGoal.innerText = `Your Step Goal: ${user.dailyStepGoal}`;
+function displayUserStepGoal() {
+  userStepGoal.innerText = `Your Step Goal: ${currentUser.dailyStepGoal}`;
 };
 
 function displayAvgUsersStepGoal() {
@@ -92,17 +92,15 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
-function displayCurrentWaterIntake(id) {
-  const user = userRepository.getUserById(id);
-  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
-  const currentWaterIntake = user.getOuncesByDay(currentDate);
+function displayCurrentWaterIntake() {
+  const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
+  const currentWaterIntake = currentUser.getOuncesByDay(currentDate);
   todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake} ounces`
 };
 
-function displayWeeklyWaterIntake(id) {
-  const user = userRepository.getUserById(id);
-  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
-  const weeklyWater = user.getOuncesByWeek(currentDate);
+function displayWeeklyWaterIntake() {
+  const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
+  const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
   <h3>Your Past Week</h3>
   <p>Day 1: ${weeklyWater[0]} ounces</p>
