@@ -76,6 +76,7 @@ function updateDashboard() {
   displayRecentSleepQuality();
   displayAvgHoursSleepPerDay();
   displayAvgSleepQualityPerDay();
+  displayWeeklySleepData();
 };
 
 function initializeUserData(userData, hydrationData, sleepData) {
@@ -127,7 +128,7 @@ function displayWeeklyWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
-  <h3>Your Past Week</h3>
+  <h3>Your Past Week of Hydration</h3>
   <p>Day 1: ${weeklyWater[0]} ounces</p>
   <p>Day 2: ${weeklyWater[1]} ounces</p>
   <p>Day 3: ${weeklyWater[2]} ounces</p>
@@ -160,6 +161,56 @@ function displayAvgSleepQualityPerDay() {
   avgSleepQuality.innerText = `Your Average Sleep Quality: ${avgQuality}`;
 };
 
+function displayWeeklySleepData() {
+  const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
+  const weeklyHours = currentUser.getHoursSleptByWeek(currentDate);
+  const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
+  weeklyHoursSlept.innerHTML = `
+  <h3>Your Past Week of Sleep</h3>
+  <table>
+    <tr>
+      <th></th>
+      <th>Hours of Sleep</th>
+      <th>Sleep Quality</th>
+    </tr>
+    <tr>
+      <td>Day 1</td>
+      <td>${weeklyHours[0]}</td>
+      <td>${weeklyQuality[0]}</td>
+    </tr>
+    <tr>
+      <td>Day 2</td>
+      <td>${weeklyHours[1]}</td>
+      <td>${weeklyQuality[1]}</td>
+    </tr>
+    <tr>
+      <td>Day 3</td>
+      <td>${weeklyHours[2]}</td>
+      <td>${weeklyQuality[2]}</td>
+    </tr>
+    <tr>
+      <td>Day 4</td>
+      <td>${weeklyHours[3]}</td>
+      <td>${weeklyQuality[3]}</td>
+    </tr>
+    <tr>
+      <td>Day 5</td>
+      <td>${weeklyHours[4]}</td>
+      <td>${weeklyQuality[4]}</td>
+    </tr>
+    <tr>
+      <td>Day 6</td>
+      <td>${weeklyHours[5]}</td>
+      <td>${weeklyQuality[5]}</td>
+    </tr>
+    <tr>
+      <td>Day 7</td>
+      <td>${weeklyHours[6]}</td>
+      <td>${weeklyQuality[6]}</td>
+    </tr>
+  </table>
+  `
+};
 
 // event listeners
 window.addEventListener('load', function() {
