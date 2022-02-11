@@ -48,6 +48,7 @@ function updateDashboard(id) {
   displayUserInfo(id);
   displayUserStepGoal(id);
   displayAvgUsersStepGoal();
+  displayCurrentWaterIntake(id);
 };
 
 function initializeUserData(userData, hydrationData) {
@@ -90,7 +91,12 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
-// function
+function displayCurrentWaterIntake(id) {
+  const user = userRepository.getUserById(id);
+  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
+  const currentWaterIntake = user.getOuncesByDay(currentDate);
+  todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake}`
+};
 
 // function getAllFetchCalls() {
 //   userData = fetchUserData()
