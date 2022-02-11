@@ -28,6 +28,12 @@ const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 const todayWaterIntake = document.querySelector('.js-today-water-intake');
 const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
+const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
+const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
+const weeklyHoursSlept = document.querySelector('.js-weekly-hours-slept');
+const weeklySleepQuality = document.querySelector('.js-weekly-sleep-quality');
+const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
+const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
 
 // global variables
 let userRepository;
