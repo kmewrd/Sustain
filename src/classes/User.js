@@ -64,6 +64,16 @@ class User {
     const sleepQuality = sleepLog.sleepQuality;
     return sleepQuality;
   }
+  getHoursSleptByWeek(endDate) {
+    const dateIndex = this.sleepLogs.findIndex(log => {
+      return log.date === endDate;
+    });
+    const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
+    const weekHours = weekLogs.map(log => {
+      return log.hoursSlept;
+    })
+    return weekHours;
+  }
 }
 //
 export default User;
