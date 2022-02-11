@@ -19,6 +19,19 @@ class User {
     const avg = total / this.hydrationLogs.length;
     return avg;
   }
+  getOuncesByDay(date) {
+    const ounces = this.hydrationLogs.find(log => {
+      return log.date === date;
+    });
+    return ounces;
+  }
+  getOuncesByWeek(startDate) {
+    const dateIndex = this.hydrationLogs.findIndex(log => {
+      return log.date === startDate
+    });
+    const week = this.hydrationLogs.slice(dateIndex, dateIndex + 7)
+    return week;
+  }
 }
-
+//
 export default User;

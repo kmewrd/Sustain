@@ -57,7 +57,7 @@ function initializeUserData(userData, hydrationData) {
 function displayWelcomeMessage(id) {
   let user = userRepository.getUserById(id);
   console.log(user);
-  
+  console.log(user.getOuncesByWeek("2019/06/17"))
   let userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
