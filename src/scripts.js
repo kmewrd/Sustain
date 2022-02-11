@@ -39,9 +39,20 @@ function fetchData() {
   Promise.all([fetchUserData(), fetchHydrationData()])
     .then(data => {
       initializeUserData(data[0].userData, data[1].hydrationData);
-      getCurrentUser(1);
+      let randomUser = getRandomIndex(userRepository.users);
+      getCurrentUser(randomUser);
       updateDashboard();
   });
+};
+
+function getRandomIndex(array) {
+  let userIndex = Math.floor(Math.random() * array.length);
+  if (userIndex) {
+    return userIndex;
+  } else {
+    userIndex ++;
+    return userIndex;
+  }
 };
 
 function updateDashboard() {
@@ -58,7 +69,7 @@ function initializeUserData(userData, hydrationData) {
   users = userData.map(user => new User(user));
   hydrationLogs = hydrationData.map(log => new HydrationLog(log));
   userRepository = new UserRepository(users, hydrationLogs);
-}
+};
 
 function getCurrentUser(id) {
   currentUser = userRepository.getUserById(id);
