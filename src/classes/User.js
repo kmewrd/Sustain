@@ -41,14 +41,14 @@ class User {
       return acc += log.hoursSlept;
     }, 0);
     const avg = total / this.sleepLogs.length;
-    return avg.toFixed(2);
+    return avg.toFixed(1);
   }
   getAvgSleepQualityPerDay() {
     const total = this.sleepLogs.reduce((acc, log) => {
       return acc += log.sleepQuality;
     }, 0);
     const avg = total / this.sleepLogs.length;
-    return avg;
+    return avg.toFixed(1);
   }
   getSleepHoursByDay(date) {
     const sleepLog = this.sleepLogs.find(log => {
