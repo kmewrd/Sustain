@@ -26,14 +26,15 @@ class User {
     const ounces = hydrationLog.numOunces;
     return ounces;
   }
-  getOuncesByWeek(startDate) {
+  getOuncesByWeek(endDate) {
     const dateIndex = this.hydrationLogs.findIndex(log => {
-      return log.date === startDate;
+      return log.date === endDate;
     });
-    const weekLogs = this.hydrationLogs.slice(dateIndex, dateIndex + 7)
+    const weekLogs = this.hydrationLogs.slice(dateIndex - 7, dateIndex)
     const weekOunces = weekLogs.map(log => {
       return log.numOunces;
     })
+    console.log(dateIndex)
     return weekOunces;
   }
 }

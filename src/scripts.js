@@ -49,6 +49,7 @@ function updateDashboard(id) {
   displayUserStepGoal(id);
   displayAvgUsersStepGoal();
   displayCurrentWaterIntake(id);
+  displayWeeklyWaterIntake(id);
 };
 
 function initializeUserData(userData, hydrationData) {
@@ -98,6 +99,21 @@ function displayCurrentWaterIntake(id) {
   todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake} ounces`
 };
 
+function displayWeeklyWaterIntake(id) {
+  const user = userRepository.getUserById(id);
+  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
+  const weeklyWater = user.getOuncesByWeek(currentDate);
+  weeklyWaterIntake.innerHTML = `
+  <h3>Your Past Week</h3>
+  <p>Day 1: ${weeklyWater[0]} ounces</p>
+  <p>Day 2: ${weeklyWater[1]} ounces</p>
+  <p>Day 3: ${weeklyWater[2]} ounces</p>
+  <p>Day 4: ${weeklyWater[3]} ounces</p>
+  <p>Day 5: ${weeklyWater[4]} ounces</p>
+  <p>Day 6: ${weeklyWater[5]} ounces</p>
+  <p>Day 7: ${weeklyWater[6]} ounces</p>
+  `
+};
 // function getAllFetchCalls() {
 //   userData = fetchUserData()
 // }
