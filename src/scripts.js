@@ -88,6 +88,8 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
+// function 
+
 // function getAllFetchCalls() {
 //   userData = fetchUserData()
 // }
