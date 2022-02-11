@@ -46,6 +46,7 @@ let currentUser;
 function fetchData() {
   Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData()])
     .then(data => {
+      console.log(data[2]);
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomIndex(userRepository.users);
       getCurrentUser(randomUser);
@@ -71,6 +72,7 @@ function updateDashboard() {
   displayAvgUsersStepGoal();
   displayCurrentWaterIntake();
   displayWeeklyWaterIntake();
+  displayRecentHoursSlept();
 };
 
 function initializeUserData(userData, hydrationData, sleepData) {
@@ -132,9 +134,14 @@ function displayWeeklyWaterIntake() {
   <p>Day 7: ${weeklyWater[6]} ounces</p>
   `
 };
-// function getAllFetchCalls() {
-//   userData = fetchUserData()
-// }
+
+function displayRecentHoursSlept() {
+  console.log(currentUser)
+  const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
+  const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate); 
+  recentHoursSlept.innerText = `Hours Slept Last Night: ${lastNightHoursSlept}`;
+};
+
 
 // event listeners
 window.addEventListener('load', function() {
