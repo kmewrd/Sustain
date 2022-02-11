@@ -12,10 +12,12 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import {fetchUserData} from './apiCalls';
+import {fetchUserData, fetchHydrationData} from './apiCalls';
 
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
+import HydrationLog from './classes/HydrationLog';
+
 
 // query selectors
 const welcomeMessage = document.querySelector('.js-welcome-message');
@@ -23,16 +25,19 @@ const dashboardText = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
+const todayWaterIntake = document.querySelector('.js-today-water-intake');
+const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 
 // global variables
 let userRepository;
 let users;
+let hydrationLogs;
 
 // functions
 function fetchData() {
-  Promise.all([fetchUserData()])
+  Promise.all([fetchUserData(), fetchHydrationData()])
     .then(data => {
-      initializeUserData(data[0].userData);
+      initializeUserData(data[0].userData, data[1].hydrationData);
       updateDashboard(1);
   });
 };
@@ -43,15 +48,20 @@ function updateDashboard(id) {
   displayUserInfo(id);
   displayUserStepGoal(id);
   displayAvgUsersStepGoal();
+  displayCurrentWaterIntake(id);
+  displayWeeklyWaterIntake(id);
 };
 
-function initializeUserData(userData) {
+function initializeUserData(userData, hydrationData) {
   users = userData.map(user => new User(user));
-  userRepository = new UserRepository(users);
+  hydrationLogs = hydrationData.map(log => new HydrationLog(log));
+  userRepository = new UserRepository(users, hydrationLogs);
 }
 
 function displayWelcomeMessage(id) {
   let user = userRepository.getUserById(id);
+  console.log(user);
+  console.log(user.getOuncesByWeek("2019/06/17"))
   let userName = user.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
 };
@@ -82,6 +92,28 @@ function displayAvgUsersStepGoal() {
   avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
 };
 
+function displayCurrentWaterIntake(id) {
+  const user = userRepository.getUserById(id);
+  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
+  const currentWaterIntake = user.getOuncesByDay(currentDate);
+  todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake} ounces`
+};
+
+function displayWeeklyWaterIntake(id) {
+  const user = userRepository.getUserById(id);
+  const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
+  const weeklyWater = user.getOuncesByWeek(currentDate);
+  weeklyWaterIntake.innerHTML = `
+  <h3>Your Past Week</h3>
+  <p>Day 1: ${weeklyWater[0]} ounces</p>
+  <p>Day 2: ${weeklyWater[1]} ounces</p>
+  <p>Day 3: ${weeklyWater[2]} ounces</p>
+  <p>Day 4: ${weeklyWater[3]} ounces</p>
+  <p>Day 5: ${weeklyWater[4]} ounces</p>
+  <p>Day 6: ${weeklyWater[5]} ounces</p>
+  <p>Day 7: ${weeklyWater[6]} ounces</p>
+  `
+};
 // function getAllFetchCalls() {
 //   userData = fetchUserData()
 // }
