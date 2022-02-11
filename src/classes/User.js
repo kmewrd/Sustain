@@ -20,9 +20,10 @@ class User {
     return avg;
   }
   getOuncesByDay(date) {
-    const ounces = this.hydrationLogs.find(log => {
+    const hydrationLog = this.hydrationLogs.find(log => {
       return log.date === date;
     });
+    const ounces = hydrationLog.numOunces;
     return ounces;
   }
   getOuncesByWeek(startDate) {

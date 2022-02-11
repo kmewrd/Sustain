@@ -95,7 +95,7 @@ function displayCurrentWaterIntake(id) {
   const user = userRepository.getUserById(id);
   const currentDate = user.hydrationLogs[(user.hydrationLogs.length -1)].date;
   const currentWaterIntake = user.getOuncesByDay(currentDate);
-  todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake}`
+  todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake} ounces`
 };
 
 // function getAllFetchCalls() {
