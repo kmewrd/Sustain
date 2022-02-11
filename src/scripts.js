@@ -17,6 +17,7 @@ import {fetchUserData, fetchHydrationData, fetchSleepData} from './apiCalls';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
+import SleepLog from './classes/SleepLog';
 
 
 // query selectors
@@ -32,6 +33,7 @@ const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 let userRepository;
 let users;
 let hydrationLogs;
+let sleepLogs;
 let currentUser;
 
 // functions
@@ -65,10 +67,11 @@ function updateDashboard() {
   displayWeeklyWaterIntake();
 };
 
-function initializeUserData(userData, hydrationData) {
+function initializeUserData(userData, hydrationData, sleepData) {
   users = userData.map(user => new User(user));
   hydrationLogs = hydrationData.map(log => new HydrationLog(log));
-  userRepository = new UserRepository(users, hydrationLogs);
+  sleepLogs = sleepData.map(log => new SleepLog(log));
+  userRepository = new UserRepository(users, hydrationLogs, sleepLogs);
 };
 
 function getCurrentUser(id) {
