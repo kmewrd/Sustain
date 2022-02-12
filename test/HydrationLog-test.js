@@ -29,10 +29,9 @@ it('should have a property of userID', () => {
 
 it('should have a property of date', () => {
      expect(hydrationLog.date).to.equal("2019/06/15")
-})
+});
 
-
-
-
-//  should have a property of numOunces
+it('should have a property of numOunces', () => {
+  expect(hydrationLog.numOunces).to.equal(37)
+});
 })
