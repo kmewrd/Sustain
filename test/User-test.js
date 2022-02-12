@@ -53,6 +53,7 @@ describe('User', () => {
     user1 = new User(testAPIData[0]);
     testUserData = [user1];
     userRepository = new UserRepository(testUserData, testHydrationData, testSleepData)
+    userRepository.getUserById(1);
   })
 
  it('should be a function', () => {
@@ -78,18 +79,25 @@ describe('User', () => {
  });
 
  it('should have a method that returns avg ounces per day', () => {
-   userRepository.getUserById(1)
    expect(user1.getAvgOuncesPerDay()).to.equal(22)
  });
 
  it('should get ounces by week', () => {
-   userRepository.getUserById(1)
    expect(user1.getOuncesByWeek("2021/05/14")).to.deep.equal([32])
  });
 
  it('should get avg hours slept per day', () => {
-   userRepository.getUserById(1);
    expect(user1.getAvgHoursSleepPerDay()).to.equal('7.0')
- })
+ });
+
+ it('should get avg sleep quality per day', () => {
+   expect(user1.getAvgSleepQualityPerDay()).to.equal('4.0')
+ });
+
+ it('should get sleep hours by a specific date', () => {
+   expect(user1.getSleepHoursByDay("2020/05/14")).to.equal(8)
+ });
+
+ 
 
 })
