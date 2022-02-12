@@ -49,10 +49,14 @@ main {
 
 .weekly-water {
   color: #096d5c;
+  width: 300px;
+  height: 300px;
 }
 
 .weekly-sleep {
   color: #3c096c;
+  width: 450px;
+  height: 300px;
 }
 
 .sleep-table-heading {
