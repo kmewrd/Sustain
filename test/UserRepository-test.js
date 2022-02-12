@@ -77,11 +77,13 @@ describe('User Repository', () => {
   })
 
   it('should have a sleepLogs property', () => {
-    expect(userRepository.sleepLogs[0]).to.equal(sleepUser1)
+    expect(userRepository.sleepLogs).to.deep.equal(testSleepLog)
   })
   it('should be able to access user data by user\'s id', () => {
     userRepository.getUserById(1);
-    expect(userRepository.hydrationLogs[0]).to.deep.equal(hydrationUser1)
+    expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
+    expect(userRepository.sleepLogs).to.deep.equal(testSleepLog)
+    expect(userRepository.users).to.deep.equal(testUsers)
   });
 
   it('should calculate average step goal amongst all Users', () => {
