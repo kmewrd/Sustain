@@ -39,6 +39,7 @@ table {
   background-color: #ebf2f2;
   border-spacing: 0;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 td {
