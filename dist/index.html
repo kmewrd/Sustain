@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sustain Wellness App</title>
-  </head>
-  <body>
-    <main>
-      <div>
-        <section class="user-card">
-          <h1 class="js-welcome-message"></h1>
-          <h2 class="js-user-dashboard"></h2>
-          <div class="js-user-info">
-          </div>
-        </section>
-        <section>
-          <h2>Your Steps</h2>
-          <p class="js-user-step-goal"></p>
-          <p class="js-avg-users-step-goal"></p>
-        </section>
-      </div>
-      <section class="button-container">
+<head>
+  <meta charset="UTF-8">
+  <title>Sustain Wellness App</title>
+</head>
+<body>
+  <main>
+    <div>
+      <section class="user-card">
+        <h1 class="js-welcome-message"></h1>
+        <h2 class="js-user-dashboard"></h2>
+        <div class="js-user-info">
+        </div>
       </section>
-      <section class="stats-container">
+      <section>
+        <h2>Your Steps</h2>
+        <p class="js-user-step-goal"></p>
+        <p class="js-avg-users-step-goal"></p>
       </section>
-    </main>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+    </div>
+    <section class="button-container">
+    </section>
+    <section class="stats-container">
+      <h2>Your Stats</h2>
+      <h3>Hydration</h3>
+      <p class="js-today-water-intake"></p>
+      <p class="js-weekly-water-intake"></p>
+      <h3>Sleep</h3>
+      <p class="js-recent-hours-slept"></p>
+      <p class="js-recent-sleep-quality"></p>
+      <p class="js-avg-hours-slept"></p>
+      <p class="js-avg-sleep-quality"></p>
+      <p class="js-weekly-hours-slept"></p>
+      <p class="js-weekly-sleep-quality"></p>
+    </section>
+  </main>
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
 </html>
