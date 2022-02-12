@@ -128,7 +128,7 @@ function displayWeeklyWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
-  <table>
+  <table class="weekly-water">
     <tr>
       <th></th>
       <th>Number of ounces</th>
@@ -193,7 +193,7 @@ function displayWeeklySleepData() {
   const weeklyHours = currentUser.getHoursSleptByWeek(currentDate);
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
   weeklyHoursSlept.innerHTML = `
-  <table>
+  <table class="weekly-sleep">
     <tr>
       <th></th>
       <th>Hours of Sleep</th>
