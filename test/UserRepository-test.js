@@ -5,12 +5,13 @@ import UserRepository from '../src/classes/UserRepository';
 describe('User Repository', () => {
   let user1;
   let user2;
-  let userData1;
-  let userData2;
+  let testUsers;
   let userRepository;
+  let testHydrationLog;
+  let testSleepLog;
 
   beforeEach(() => {
-    userData1 = {
+   testUsers = [{
     "id": 1,
     "name": "Luisa Hane",
     "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -22,8 +23,8 @@ describe('User Repository', () => {
       4,
       8
     ]
-  }
-  userData2 = {
+  },
+  {
     "id": 2,
     "name": "Jarvis Considine",
     "address": "30086 Kathryn Port, Ciceroland NE 07273",
@@ -36,10 +37,29 @@ describe('User Repository', () => {
       24,
       19
     ]
-  }
-    user1 = new User(userData1);
-    user2 = new User(userData2);
-    userRepository = new UserRepository([user1, user2]);
+  }]
+    testHydrationLog = [{
+      "userID": 1,
+      "date": "2019/06/15",
+      "numOunces": 32
+    }]
+
+    testSleepLog = [{
+      "userID": 1,
+      "date": "2021/05/14",
+      "hoursSlept": 6.1,
+      "sleepQuality": 2
+    },
+    {
+      "userID": 2,
+      "date": "2020/05/14",
+      "hoursSlept": 8,
+      "sleepQuality": 6
+    }]
+
+    user1 = new User(testUsers[0]);
+    user2 = new User(testUsers[1]);
+    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog);
  })
 
 
@@ -51,16 +71,35 @@ describe('User Repository', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
 
-  it('should hold all User objects', () => {
-    expect(userRepository.users).to.deep.equal([user1, user2]);
-    expect(userRepository.users[0]).to.be.an.instanceof(User);
+  it('should have a users property', () => {
+    expect(userRepository.users).to.deep.equal(testUsers);
+  });
+
+  it('should have a hydrationLogs property', () => {
+    expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
+  });
+
+  it('should have a sleepLogs property', () => {
+    expect(userRepository.sleepLogs).to.deep.equal(testSleepLog)
   });
 
   it('should be able to access user data by user\'s id', () => {
-    expect(userRepository.getUserData(1)).to.deep.equal(user1);
+    userRepository.getUserById(1);
+    expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
+    expect(userRepository.sleepLogs).to.deep.equal(testSleepLog)
+    expect(userRepository.users).to.deep.equal(testUsers)
   });
 
   it('should calculate average step goal amongst all Users', () => {
-    expect(userRepository.getAverageStepGoal()).to.equal(7500);
+    expect(userRepository.getAvgUserStepGoal()).to.equal(7500);
+  });
+
+  it('should have a method that returns any type of log for a user id', ()=> {
+    userRepository.getUserLogs(testHydrationLog, 1)
+    expect(userRepository.hydrationLogs).to.equal(testHydrationLog)
+  });
+
+  it('should have a method to get avg users sleep quality', () => {
+    expect(userRepository.getAvgUserSleepQuality()).to.equal(4)
   });
 });
