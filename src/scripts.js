@@ -47,7 +47,6 @@ let currentUser;
 function fetchData() {
   Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData()])
     .then(data => {
-      console.log(data[2]);
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
