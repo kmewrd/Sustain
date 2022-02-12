@@ -32,8 +32,7 @@ const todayWaterIntake = document.querySelector('.js-today-water-intake');
 const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
 const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
-const weeklyHoursSlept = document.querySelector('.js-weekly-hours-slept');
-const weeklySleepQuality = document.querySelector('.js-weekly-sleep-quality');
+const weeklySleepTables = document.querySelector('.js-weekly-sleep-tables');
 const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
 const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
 
@@ -194,7 +193,7 @@ function displayWeeklySleepData() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const weeklyHours = currentUser.getHoursSleptByWeek(currentDate);
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
-  weeklyHoursSlept.innerHTML = `
+  weeklySleepTables.innerHTML = `
   <table class="weekly-sleep">
     <tr class="sleep-table-heading">
       <th></th>
