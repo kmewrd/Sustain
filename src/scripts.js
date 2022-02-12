@@ -48,19 +48,19 @@ function fetchData() {
     .then(data => {
       console.log(data[2]);
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
-      let randomUser = getRandomIndex(userRepository.users);
+      let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
       updateDashboard();
   });
 };
 
-function getRandomIndex(array) {
-  let userIndex = Math.floor(Math.random() * array.length);
-  if (userIndex) {
-    return userIndex;
+function getRandomID(array) {
+  let randomUserID = Math.floor(Math.random() * array.length);
+  if (randomUserID) {
+    return randomUserID;
   } else {
-    userIndex ++;
-    return userIndex;
+    randomUserID ++;
+    return randomUserID;
   }
 };
 
