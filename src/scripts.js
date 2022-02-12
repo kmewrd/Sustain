@@ -121,7 +121,7 @@ function displayAvgUsersStepGoal() {
 function displayCurrentWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const currentWaterIntake = currentUser.getOuncesByDay(currentDate);
-  todayWaterIntake.innerText = `Today's water intake: ${currentWaterIntake} ounces`
+  todayWaterIntake.innerText = `${currentWaterIntake}`
 };
 
 function displayWeeklyWaterIntake() {
@@ -169,23 +169,23 @@ function displayWeeklyWaterIntake() {
 function displayRecentHoursSlept() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate);
-  recentHoursSlept.innerText = `Hours Slept Last Night: ${lastNightHoursSlept} hours`;
+  recentHoursSlept.innerText = `${lastNightHoursSlept}`;
 };
 
 function displayRecentSleepQuality() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightSleepQuality = currentUser.getSleepQualityByDay(currentDate);
-  recentSleepQuality.innerText = `Sleep Quality Last Night: ${lastNightSleepQuality}`;
+  recentSleepQuality.innerText = `${lastNightSleepQuality}`;
 };
 
 function displayAvgHoursSleepPerDay() {
   const avgSleepHours = currentUser.getAvgHoursSleepPerDay();
-  avgHoursSlept.innerText = `Your Average Hours of Sleep: ${avgSleepHours} hours`;
+  avgHoursSlept.innerText = `${avgSleepHours} average`;
 };
 
 function displayAvgSleepQualityPerDay() {
   const avgQuality = currentUser.getAvgSleepQualityPerDay();
-  avgSleepQuality.innerText = `Your Average Sleep Quality: ${avgQuality}`;
+  avgSleepQuality.innerText = `${avgQuality} average`;
 };
 
 function displayWeeklySleepData() {
