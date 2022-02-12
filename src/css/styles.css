@@ -76,3 +76,7 @@ main {
 .daily-stats {
   display: flex;
 }
+
+.weekly-stats {
+  display: flex;
+}
