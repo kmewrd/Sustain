@@ -51,10 +51,10 @@ describe('User', () => {
  it('should take in userData', () => {
       expect(user1.id).to.equal(1);
       expect(user1.name).to.equal("Luisa Hane");
-      expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+      expect(user1.address.length).to.equal(2);
       expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
-      expect(user1.strideLength).to.equal(4.5);
-      expect(user1.dailySepGoal).to.equal(10000);
+      expect(user1.strideLength).to.equal(4.3);
+      expect(user1.dailyStepGoal).to.equal(10000);
       expect(user1.friends.length).to.equal(3); 
  })
 

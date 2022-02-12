@@ -11,6 +11,7 @@ class UserRepository {
     user.hydrationLogs = this.getUserLogs(this.hydrationLogs, id);
     user.sleepLogs = this.getUserLogs(this.sleepLogs, id);
     
+    
     return user;
   }
   getAvgUserStepGoal() {

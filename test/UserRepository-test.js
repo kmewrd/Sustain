@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
-import HydrationLog from '../src/classes/HydrationLog';
-import SleepLog from '../src/classes/SleepLog';
+// import HydrationLog from '../src/classes/HydrationLog';
+// import SleepLog from '../src/classes/SleepLog';
 
 describe('User Repository', () => {
   let user1;
@@ -12,6 +12,7 @@ describe('User Repository', () => {
   let userRepository;
   let hydrationUser1;
   let sleepUser1;
+  
 
   beforeEach(() => {
     userData1 = {
@@ -56,7 +57,7 @@ describe('User Repository', () => {
 
     user1 = new User(userData1);
     user2 = new User(userData2);
-    userRepository = new UserRepository([user1, user2]);
+    userRepository = new UserRepository([user1, user2], [hydrationUser1], [sleepUser1]);
  })
 
 
@@ -73,11 +74,16 @@ describe('User Repository', () => {
     expect(userRepository.users[0]).to.be.an.instanceof(User);
   });
 
+  it('should have a hydrationLogs property', () => {
+    expect(userRepository.hydrationLogs[0]).to.equal(hydrationUser1)
+  })
+
   it('should be able to access user data by user\'s id', () => {
-    expect(userRepository.getUserById(1)).to.deep.equal(user1)
+    userRepository.getUserById(1);
+    expect(userRepository.hydrationLogs[0]).to.deep.equal(hydrationUser1)
   });
 
   it('should calculate average step goal amongst all Users', () => {
-    expect(userRepository.getAverageStepGoal()).to.equal(7500);
+    expect(userRepository.getAvgUserStepGoal()).to.equal(7500);
   });
 });
