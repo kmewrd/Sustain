@@ -129,7 +129,7 @@ function displayWeeklyWaterIntake() {
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
   <table class="weekly-water">
-    <tr>
+    <tr class="water-table-heading">
       <th></th>
       <th>Number of ounces</th>
     </tr>
@@ -194,10 +194,10 @@ function displayWeeklySleepData() {
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
   weeklyHoursSlept.innerHTML = `
   <table class="weekly-sleep">
-    <tr>
+    <tr class="sleep-table-heading">
       <th></th>
       <th>Hours of Sleep</th>
-      <th>Sleep Quality</th>
+      <th class="sleep-table-heading">Sleep Quality</th>
     </tr>
     <tr>
       <td>Day 1</td>

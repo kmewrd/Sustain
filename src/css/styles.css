@@ -13,6 +13,12 @@ h1 {
   font-size: 38px;
 };
 
+table {
+  background-color: #ebf2f2;
+  border-spacing: 0;
+  border-radius: 15px;
+}
+
 .activity-box {
   background-color: #ff9f1c;
   color: #6d3c0b;
@@ -36,4 +42,11 @@ h1 {
 
 .weekly-sleep {
   color: #3c096c;
+}
+
+.sleep-table-heading {
+  background-color: #9f5edd;
+}
+.water-table-heading {
+  background-color: #0fd3b2;
 }
