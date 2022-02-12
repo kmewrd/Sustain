@@ -98,6 +98,14 @@ describe('User', () => {
    expect(user1.getSleepHoursByDay("2020/05/14")).to.equal(8)
  });
 
- 
+ it('should get sleep quality by a specific date', () => {
+   expect(user1.getSleepQualityByDay("2020/05/14")).to.equal(6)
+ });
+
+ it('should get hours slept by week', () => {
+   expect(user1.getHoursSleptByWeek("2020/05/14")).to.deep.equal([6])
+ });
+
+ it('should get sleep quality by week', )
 
 })
