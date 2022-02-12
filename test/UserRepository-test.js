@@ -7,15 +7,14 @@ import UserRepository from '../src/classes/UserRepository';
 describe('User Repository', () => {
   let user1;
   let user2;
-  let userData1;
-  let userData2;
+  let testUsers;
   let userRepository;
-  let hydrationUser1;
-  let sleepUser1;
+  let testHydrationLog;
+  let testSleepLog;
   
 
   beforeEach(() => {
-    userData1 = {
+   testUsers = [{
     "id": 1,
     "name": "Luisa Hane",
     "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -27,8 +26,8 @@ describe('User Repository', () => {
       4,
       8
     ]
-  }
-  userData2 = {
+  },
+  {
     "id": 2,
     "name": "Jarvis Considine",
     "address": "30086 Kathryn Port, Ciceroland NE 07273",
@@ -41,23 +40,23 @@ describe('User Repository', () => {
       24,
       19
     ]
-  }
-    hydrationUser1 = {
+  }]
+    testHydrationLog = [{
       "userID": 1,
       "date": "2019/06/15",
       "numOunces": 32
-    }
+    }]
 
-    sleepUser1 = {
+    testSleepLog = [{
       "userID": 1,
       "date": "2021/05/14",
       "hoursSlept": 6.1,
       "sleepQuality": 2
-    }
+    }]
 
-    user1 = new User(userData1);
-    user2 = new User(userData2);
-    userRepository = new UserRepository([user1, user2], [hydrationUser1], [sleepUser1]);
+    user1 = new User(testUsers[0]);
+    user2 = new User(testUsers[1]);
+    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog);
  })
 
 
@@ -70,12 +69,11 @@ describe('User Repository', () => {
   });
 
   it('should have a users property', () => {
-    expect(userRepository.users).to.deep.equal([user1, user2]);
-    expect(userRepository.users[0]).to.be.an.instanceof(User);
+    expect(userRepository.users).to.deep.equal(testUsers);
   });
 
   it('should have a hydrationLogs property', () => {
-    expect(userRepository.hydrationLogs[0]).to.equal(hydrationUser1)
+    expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
   })
 
   it('should have a sleepLogs property', () => {
@@ -89,4 +87,9 @@ describe('User Repository', () => {
   it('should calculate average step goal amongst all Users', () => {
     expect(userRepository.getAvgUserStepGoal()).to.equal(7500);
   });
+
+  it('should have a method that returns any type of log for a user id', ()=> {
+    userRepository.getUserLogs(testHydrationLog, 1)
+    expect(userRepository.hydrationLogs).to.equal(testHydrationLog)
+  })
 });
