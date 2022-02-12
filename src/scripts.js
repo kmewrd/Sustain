@@ -101,8 +101,8 @@ function displayDashboardText() {
 
 function displayUserInfo() {
   userInfo.innerHTML = `
-    <p>${currentUser.address[0]}</p>
-    <p>${currentUser.address[1]}</p>
+    <p class="address-line1">${currentUser.address[0]}</p>
+    <p class="address-line2">${currentUser.address[1]}</p>
     <p>${currentUser.email}</p>
     <p>Stride Length: ${currentUser.strideLength}</p>
     <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
@@ -162,7 +162,7 @@ function displayWeeklyWaterIntake() {
       <td>${weeklyWater[6]} oz</td>
     </tr>
   </table>
-  <h3>Water consumed this week</h3>
+  <h4>Water consumed this week</h4>
   `
 };
 
@@ -235,7 +235,7 @@ function displayWeeklySleepData() {
       <td>${weeklyQuality[6]}</td>
     </tr>
   </table>
-  <h3>Your sleep this week</h3>
+  <h4>Your sleep this week</h4>
   `
 };
 
