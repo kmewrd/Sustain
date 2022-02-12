@@ -40,7 +40,7 @@ describe('User', () => {
     testSleepData = [{
       "userID": 1,
       "date": "2021/05/14",
-      "hoursSlept": 6.1,
+      "hoursSlept": 6,
       "sleepQuality": 2
     },
     {
@@ -86,5 +86,10 @@ describe('User', () => {
    userRepository.getUserById(1)
    expect(user1.getOuncesByWeek("2021/05/14")).to.deep.equal([32])
  });
+
+ it('should get avg hours slept per day', () => {
+   userRepository.getUserById(1);
+   expect(user1.getAvgHoursSleepPerDay()).to.equal('7.0')
+ })
 
 })
