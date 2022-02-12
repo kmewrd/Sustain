@@ -1,15 +1,18 @@
  import { expect } from 'chai';
-import User from '../src/classes/User'
+import User from '../src/classes/User';
+import UserRepository from '../src/classes/UserRepository';
 
 
 describe('User', () => {
   let user1;
-  let user2;
-  let userData1
-  let userData2
+  let testAPIData;
+  let userRepository;
+  let testSleepData;
+  let testHydrationData;
+  let testUserData;
 
   beforeEach(() => {
-    userData1 = {
+    testAPIData = [{
     "id": 1,
     "name": "Luisa Hane",
     "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -21,24 +24,36 @@ describe('User', () => {
       4,
       8
     ]
-  }
-  userData2 = {
-    "id": 2,
-    "name": "Jarvis Considine",
-    "address": "30086 Kathryn Port, Ciceroland NE 07273",
-    "email": "Dimitri.Bechtelar11@gmail.com",
-    "strideLength": 4.5,
-    "dailyStepGoal": 5000,
-    "friends": [
-      9,
-      18,
-      24,
-      19
-    ]
-  }
-    user1 = new User(userData1);
-    user2 = new User(userData2)
- })
+    }];
+
+    testHydrationData = [{
+      "userID": 1,
+      "date": "2019/06/15",
+      "numOunces": 32
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/15",
+      "numOunces": 12
+    }];
+
+    testSleepData = [{
+      "userID": 1,
+      "date": "2021/05/14",
+      "hoursSlept": 6.1,
+      "sleepQuality": 2
+    },
+    {
+      "userID": 1,
+      "date": "2020/05/14",
+      "hoursSlept": 8,
+      "sleepQuality": 6
+    }];
+
+    user1 = new User(testAPIData[0]);
+    testUserData = [user1];
+    userRepository = new UserRepository(testUserData, testHydrationData, testSleepData)
+  })
 
  it('should be a function', () => {
       expect(User).to.be.a('function')
@@ -59,7 +74,13 @@ describe('User', () => {
  })
 
  it('should return first name', () => {
-      expect(user2.returnFirstName()).to.equal("Jarvis");
+      expect(user1.returnFirstName()).to.equal("Luisa");
+ });
+
+ it('should have a method that returns avg ounces per day', () => {
+   userRepository.getUserById(1)
+   user1.getAvgOuncesPerDay()
+   expect(user1.getAvgOuncesPerDay()).to.equal(22)
  })
 
 })

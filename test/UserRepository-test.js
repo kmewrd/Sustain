@@ -1,8 +1,6 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
-// import HydrationLog from '../src/classes/HydrationLog';
-// import SleepLog from '../src/classes/SleepLog';
 
 describe('User Repository', () => {
   let user1;
@@ -11,7 +9,6 @@ describe('User Repository', () => {
   let userRepository;
   let testHydrationLog;
   let testSleepLog;
-  
 
   beforeEach(() => {
    testUsers = [{
@@ -52,6 +49,12 @@ describe('User Repository', () => {
       "date": "2021/05/14",
       "hoursSlept": 6.1,
       "sleepQuality": 2
+    },
+    {
+      "userID": 2,
+      "date": "2020/05/14",
+      "hoursSlept": 8,
+      "sleepQuality": 6
     }]
 
     user1 = new User(testUsers[0]);
@@ -74,11 +77,12 @@ describe('User Repository', () => {
 
   it('should have a hydrationLogs property', () => {
     expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
-  })
+  });
 
   it('should have a sleepLogs property', () => {
     expect(userRepository.sleepLogs).to.deep.equal(testSleepLog)
-  })
+  });
+
   it('should be able to access user data by user\'s id', () => {
     userRepository.getUserById(1);
     expect(userRepository.hydrationLogs).to.deep.equal(testHydrationLog)
@@ -93,5 +97,9 @@ describe('User Repository', () => {
   it('should have a method that returns any type of log for a user id', ()=> {
     userRepository.getUserLogs(testHydrationLog, 1)
     expect(userRepository.hydrationLogs).to.equal(testHydrationLog)
-  })
+  });
+
+  it('should have a method to get avg users sleep quality', () => {
+    expect(userRepository.getAvgUserSleepQuality()).to.equal(4)
+  });
 });
