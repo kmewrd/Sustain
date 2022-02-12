@@ -36,6 +36,10 @@ table {
   border-radius: 15px;
 }
 
+td {
+  text-align: center;
+}
+
 main {
   display: flex;
 }
@@ -115,6 +119,5 @@ main {
 }
 
 .daily-sleep-stats {
-  display: flex; 
-
+  display: flex;
 }
