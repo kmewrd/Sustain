@@ -33,7 +33,7 @@ describe('User', () => {
     },
     {
       "userID": 1,
-      "date": "2019/06/15",
+      "date": "2019/06/14",
       "numOunces": 12
     }];
 
@@ -71,7 +71,7 @@ describe('User', () => {
       expect(user1.strideLength).to.equal(4.3);
       expect(user1.dailyStepGoal).to.equal(10000);
       expect(user1.friends.length).to.equal(3); 
- })
+ });
 
  it('should return first name', () => {
       expect(user1.returnFirstName()).to.equal("Luisa");
@@ -79,8 +79,12 @@ describe('User', () => {
 
  it('should have a method that returns avg ounces per day', () => {
    userRepository.getUserById(1)
-   user1.getAvgOuncesPerDay()
    expect(user1.getAvgOuncesPerDay()).to.equal(22)
- })
+ });
+
+ it('should get ounces by week', () => {
+   userRepository.getUserById(1)
+   expect(user1.getOuncesByWeek("2021/05/14")).to.deep.equal([32])
+ });
 
 })
