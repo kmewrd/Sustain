@@ -6,7 +6,9 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/activity-icon.png';
+import './images/hydration-icon.png';
+import './images/sleep-icon.png';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -30,8 +32,7 @@ const todayWaterIntake = document.querySelector('.js-today-water-intake');
 const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
 const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
-const weeklyHoursSlept = document.querySelector('.js-weekly-hours-slept');
-const weeklySleepQuality = document.querySelector('.js-weekly-sleep-quality');
+const weeklySleepTables = document.querySelector('.js-weekly-sleep-tables');
 const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
 const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
 
@@ -46,7 +47,6 @@ let currentUser;
 function fetchData() {
   Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData()])
     .then(data => {
-      console.log(data[2]);
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
@@ -101,8 +101,8 @@ function displayDashboardText() {
 
 function displayUserInfo() {
   userInfo.innerHTML = `
-    <p>${currentUser.address[0]}</p>
-    <p>${currentUser.address[1]}</p>
+    <p class="address-line1">${currentUser.address[0]}</p>
+    <p class="address-line2">${currentUser.address[1]}</p>
     <p>${currentUser.email}</p>
     <p>Stride Length: ${currentUser.strideLength}</p>
     <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
@@ -128,8 +128,8 @@ function displayWeeklyWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
-  <table>
-    <tr>
+  <table class="weekly-water">
+    <tr class="water-table-heading">
       <th></th>
       <th>Number of ounces</th>
     </tr>
@@ -162,7 +162,7 @@ function displayWeeklyWaterIntake() {
       <td>${weeklyWater[6]} oz</td>
     </tr>
   </table>
-  <h3>Water consumed this week</h3>
+  <h4>Water consumed this week</h4>
   `
 };
 
@@ -192,50 +192,50 @@ function displayWeeklySleepData() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const weeklyHours = currentUser.getHoursSleptByWeek(currentDate);
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
-  weeklyHoursSlept.innerHTML = `
-  <table>
-    <tr>
+  weeklySleepTables.innerHTML = `
+  <table class="weekly-sleep">
+    <tr class="sleep-table-heading">
       <th></th>
       <th>Hours of Sleep</th>
-      <th>Sleep Quality</th>
+      <th class="sleep-table-heading">Sleep Quality</th>
     </tr>
     <tr>
       <td>Day 1</td>
       <td>${weeklyHours[0]} hrs</td>
-      <td>${weeklyQuality[0]} hrs</td>
+      <td>${weeklyQuality[0]}</td>
     </tr>
     <tr>
       <td>Day 2</td>
       <td>${weeklyHours[1]} hrs</td>
-      <td>${weeklyQuality[1]} hrs</td>
+      <td>${weeklyQuality[1]}</td>
     </tr>
     <tr>
       <td>Day 3</td>
       <td>${weeklyHours[2]} hrs</td>
-      <td>${weeklyQuality[2]} hrs</td>
+      <td>${weeklyQuality[2]}</td>
     </tr>
     <tr>
       <td>Day 4</td>
       <td>${weeklyHours[3]} hrs</td>
-      <td>${weeklyQuality[3]} hrs</td>
+      <td>${weeklyQuality[3]}</td>
     </tr>
     <tr>
       <td>Day 5</td>
       <td>${weeklyHours[4]} hrs</td>
-      <td>${weeklyQuality[4]} hrs</td>
+      <td>${weeklyQuality[4]}</td>
     </tr>
     <tr>
       <td>Day 6</td>
       <td>${weeklyHours[5]} hrs</td>
-      <td>${weeklyQuality[5]} hrs</td>
+      <td>${weeklyQuality[5]}</td>
     </tr>
     <tr>
       <td>Day 7</td>
       <td>${weeklyHours[6]} hrs</td>
-      <td>${weeklyQuality[6]} hrs</td>
+      <td>${weeklyQuality[6]}</td>
     </tr>
   </table>
-  <h3>Your sleep this week</h3>
+  <h4>Your sleep this week</h4>
   `
 };
 

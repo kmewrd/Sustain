@@ -1,5 +1,202 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+  background-color: #d7e0e0;
   height: 100%;
+  font-family: sans-serif;
+  overflow: hidden;
+};
+
+section {
+  background-color: #FFF;
+  border-radius: 15px;
+};
+
+h1 {
+  font-size: 34px;
+  margin: 0;
+  margin-bottom: 15px;
+};
+
+h2 {
+  font-size: 30px;
+  margin: 0px;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 5px;
+}
+
+h4 {
+  font-size: 20px;
+  margin: 5px;
+}
+
+p {
+  font-size: 18px;
+}
+
+table {
+  background-color: #ebf2f2;
+  border-spacing: 0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+td {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  padding: 20px;
+  max-height: 100%;
+  justify-content: space-evenly;
+}
+
+.activity-box {
+  background-color: #ff9f1c;
+  color: #6d3c0b;
+  height: 350px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.daily-water {
+  background-color: #0fd3b2;
+  color: #096d5c;
+  border-radius: 15px;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.daily-sleep {
+  background-color: #9f5edd;
+  color: #3c096c;
+  border-radius: 15px;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.weekly-water {
+  color: #096d5c;
+  width: 300px;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.weekly-sleep {
+  color: #3c096c;
+  width: 600px;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.sleep-table-heading {
+  background-color: #9f5edd;
+}
+
+.water-table-heading {
+  background-color: #0fd3b2;
+}
+
+.stats-container {
+  width: 1000px;
+  height: 700px;
+  padding: 20px;
+}
+
+.user-info-left {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card {
+  width: 360px;
+  height: 315px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.daily-stats {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.weekly-stats {
+  display: flex;
+}
+
+.address-line1 {
+  margin-bottom: 0;
+}
+
+.address-line2 {
+  margin-top: 0;
+}
+
+.stats-number-lg {
+  font-size: 90px;
+  margin: 5px;
+}
+
+.daily-sleep-stats {
+  display: flex;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.dashboard-subhead {
+  font-size: 18px;
+}
+
+.daily-sleep-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+}
+
+.text-under-number {
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.weekly-table-container {
+  margin: 10px;
+}
+
+.daily-heading,
+.weekly-heading {
+  margin-bottom: 10px;
+}
+
+.steps-today {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-txt {
+  font-size: 16px;
 }

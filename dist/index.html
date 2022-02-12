@@ -6,43 +6,50 @@
 </head>
 <body>
   <main>
-    <div>
+    <div class="user-info-left">
       <section class="user-card">
         <h1 class="js-welcome-message"></h1>
-        <h2 class="js-user-dashboard"></h2>
+        <h2 class="js-user-dashboard dashboard-subhead"></h2>
         <div class="js-user-info">
         </div>
       </section>
-      <section>
-        <h2>Step Goal</h2>
-        <p class="js-user-step-goal"></p>
-        <p>Steps</p>
+      <section class="activity-box">
+        <h2><img src="./images/activity-icon.png" alt="heartbeat icon" class="icon">Step Goal</h2>
+        <div class="steps-today">
+          <p class="js-user-step-goal stats-number-lg"></p>
+          <p class="text-under-number">steps</p>
+        </div>
         <p class="js-avg-users-step-goal"></p>
       </section>
-   </div>
+    </div>
     <section class="stats-container">
+      <h2 class="daily-heading">Daily Stats</h2>
       <div class="daily-stats">
-        <h2>Daily Stats</h2>
         <div class="daily-water">
-          <h3>Water Intake</h3>
-          <p class="js-today-water-intake"></p>
-          <p>ounces today</p>
+          <h3><img src="./images/hydration-icon.png" alt="water glass icon" class="icon">Water Intake</h3>
+          <p class="js-today-water-intake stats-number-lg"></p>
+          <p class="text-under-number">ounces today</p>
         </div>
         <div class="daily-sleep">
-          <h3>Daily Sleep</h3>
-          <p class="js-recent-hours-slept"></p>
-          <p>hours slept</p>
-          <p class="js-avg-hours-slept"></p>
-          <p class="js-recent-sleep-quality"></p>
-          <p>sleep quality</p>
-          <p class="js-avg-sleep-quality"></p>
+          <h3><img src="./images/sleep-icon.png" alt="moon and star icon" class="icon">Daily Sleep</h3>
+          <div class="daily-sleep-stats">
+            <div class="daily-sleep-column">
+              <p class="js-recent-hours-slept stats-number-lg"></p>
+              <p class="text-under-number">hours slept</p>
+              <p class="js-avg-hours-slept text-under-number small-txt"></p>
+            </div>
+            <div class="daily-sleep-column">
+              <p class="js-recent-sleep-quality stats-number-lg"></p>
+              <p class="text-under-number">sleep quality</p>
+              <p class="js-avg-sleep-quality text-under-number small-txt"></p>
+            </div>
+          </div>
         </div>
       </div>
+      <h2 class="weekly-heading">Weekly Stats</h2>
       <div class="weekly-stats">
-        <h2>Weekly Stats</h2>
-        <p class="js-weekly-water-intake"></p>
-        <p class="js-weekly-hours-slept"></p>
-        <p class="js-weekly-sleep-quality"></p>
+        <div class="js-weekly-water-intake weekly-table-container"></div>
+        <div class="js-weekly-sleep-tables weekly-table-container"></div>
       </div>
     </section>
   </main>
