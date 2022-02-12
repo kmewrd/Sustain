@@ -21,6 +21,7 @@ h2 {
 
 h3 {
   font-size: 24px;
+  margin: 5px;
 }
 
 h4 {
@@ -101,7 +102,8 @@ main {
 
 .stats-container {
   width: 1200px;
-  height: 780px;
+  height: 740px;
+  padding-left: 40px;
 }
 
 .user-info-left {
@@ -114,7 +116,7 @@ main {
 
 .user-card {
   width: 380px;
-  height: 400px;
+  height: 380px;
 }
 
 .daily-stats {
@@ -135,7 +137,7 @@ main {
 
 .stats-number-lg {
   font-size: 90px;
-  margin: 10px;
+  margin: 5px;
 }
 
 .daily-sleep-stats {
@@ -149,4 +151,14 @@ main {
 
 .dashboard-subhead {
   font-size: 20px;
+}
+
+.daily-sleep-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-under-number {
+  margin: 0;
 }
