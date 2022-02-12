@@ -2,9 +2,18 @@ body, html {
   background-color: #d7e0e0;
   height: 100%;
   font-family: sans-serif;
-}
+};
 
 section {
   background-color: #FFF;
   border-radius: 15px;
+};
+
+h1 {
+  font-size: 38px;
+};
+
+.activity-box {
+  background-color: #ff9f1c;
+  color: #6d3c0b;
 }
