@@ -69,7 +69,7 @@ describe('User Repository', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
 
-  it('should hold all User objects', () => {
+  it('should have a users property', () => {
     expect(userRepository.users).to.deep.equal([user1, user2]);
     expect(userRepository.users[0]).to.be.an.instanceof(User);
   });
@@ -78,6 +78,9 @@ describe('User Repository', () => {
     expect(userRepository.hydrationLogs[0]).to.equal(hydrationUser1)
   })
 
+  it('should have a sleepLogs property', () => {
+    expect(userRepository.sleepLogs[0]).to.equal(sleepUser1)
+  })
   it('should be able to access user data by user\'s id', () => {
     userRepository.getUserById(1);
     expect(userRepository.hydrationLogs[0]).to.deep.equal(hydrationUser1)
