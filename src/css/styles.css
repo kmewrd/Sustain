@@ -10,7 +10,7 @@ section {
 };
 
 h1 {
-  font-size: 38px;
+  font-size: 36px;
   margin: 0;
   padding-top: 20px;
 };
@@ -20,7 +20,7 @@ h2 {
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 h4 {
@@ -60,8 +60,8 @@ main {
   background-color: #0fd3b2;
   color: #096d5c;
   border-radius: 15px;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -72,8 +72,8 @@ main {
   background-color: #9f5edd;
   color: #3c096c;
   border-radius: 15px;
-  width: 450px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -145,4 +145,8 @@ main {
 .icon {
   width: 40px;
   height: 40px;
+}
+
+.dashboard-subhead {
+  font-size: 20px;
 }
