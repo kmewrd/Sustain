@@ -17,3 +17,15 @@ h1 {
   background-color: #ff9f1c;
   color: #6d3c0b;
 }
+
+.daily-water {
+  background-color: #0fd3b2;
+  color: #096d5c;
+  border-radius: 15px;
+}
+
+.daily-sleep {
+  background-color: #9f5edd;
+  color: #3c096c;
+  border-radius: 15px;
+}
