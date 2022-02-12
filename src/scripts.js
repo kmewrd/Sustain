@@ -110,12 +110,12 @@ function displayUserInfo() {
 };
 
 function displayUserStepGoal() {
-  userStepGoal.innerText = `Your Step Goal: ${currentUser.dailyStepGoal}`;
+  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
 };
 
 function displayAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
-  avgUsersStepGoal.innerText = `Community Avg Step Goal: ${avg}`;
+  avgUsersStepGoal.innerText = `Community Avg Goal: ${avg} steps`;
 };
 
 function displayCurrentWaterIntake() {
@@ -128,14 +128,41 @@ function displayWeeklyWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
   weeklyWaterIntake.innerHTML = `
-  <h3>Your Past Week of Hydration</h3>
-  <p>Day 1: ${weeklyWater[0]} ounces</p>
-  <p>Day 2: ${weeklyWater[1]} ounces</p>
-  <p>Day 3: ${weeklyWater[2]} ounces</p>
-  <p>Day 4: ${weeklyWater[3]} ounces</p>
-  <p>Day 5: ${weeklyWater[4]} ounces</p>
-  <p>Day 6: ${weeklyWater[5]} ounces</p>
-  <p>Day 7: ${weeklyWater[6]} ounces</p>
+  <table>
+    <tr>
+      <th></th>
+      <th>Number of ounces</th>
+    </tr>
+    <tr>
+      <td>Day 1</td>
+      <td>${weeklyWater[0]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 2</td>
+      <td>${weeklyWater[1]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 3</td>
+      <td>${weeklyWater[2]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 4</td>
+      <td>${weeklyWater[3]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 5</td>
+      <td>${weeklyWater[4]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 6</td>
+      <td>${weeklyWater[5]} oz</td>
+    </tr>
+    <tr>
+      <td>Day 7</td>
+      <td>${weeklyWater[6]} oz</td>
+    </tr>
+  </table>
+  <h3>Water consumed this week</h3>
   `
 };
 
@@ -166,7 +193,6 @@ function displayWeeklySleepData() {
   const weeklyHours = currentUser.getHoursSleptByWeek(currentDate);
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
   weeklyHoursSlept.innerHTML = `
-  <h3>Your Past Week of Sleep</h3>
   <table>
     <tr>
       <th></th>
@@ -175,40 +201,41 @@ function displayWeeklySleepData() {
     </tr>
     <tr>
       <td>Day 1</td>
-      <td>${weeklyHours[0]}</td>
-      <td>${weeklyQuality[0]}</td>
+      <td>${weeklyHours[0]} hrs</td>
+      <td>${weeklyQuality[0]} hrs</td>
     </tr>
     <tr>
       <td>Day 2</td>
-      <td>${weeklyHours[1]}</td>
-      <td>${weeklyQuality[1]}</td>
+      <td>${weeklyHours[1]} hrs</td>
+      <td>${weeklyQuality[1]} hrs</td>
     </tr>
     <tr>
       <td>Day 3</td>
-      <td>${weeklyHours[2]}</td>
-      <td>${weeklyQuality[2]}</td>
+      <td>${weeklyHours[2]} hrs</td>
+      <td>${weeklyQuality[2]} hrs</td>
     </tr>
     <tr>
       <td>Day 4</td>
-      <td>${weeklyHours[3]}</td>
-      <td>${weeklyQuality[3]}</td>
+      <td>${weeklyHours[3]} hrs</td>
+      <td>${weeklyQuality[3]} hrs</td>
     </tr>
     <tr>
       <td>Day 5</td>
-      <td>${weeklyHours[4]}</td>
-      <td>${weeklyQuality[4]}</td>
+      <td>${weeklyHours[4]} hrs</td>
+      <td>${weeklyQuality[4]} hrs</td>
     </tr>
     <tr>
       <td>Day 6</td>
-      <td>${weeklyHours[5]}</td>
-      <td>${weeklyQuality[5]}</td>
+      <td>${weeklyHours[5]} hrs</td>
+      <td>${weeklyQuality[5]} hrs</td>
     </tr>
     <tr>
       <td>Day 7</td>
-      <td>${weeklyHours[6]}</td>
-      <td>${weeklyQuality[6]}</td>
+      <td>${weeklyHours[6]} hrs</td>
+      <td>${weeklyQuality[6]} hrs</td>
     </tr>
   </table>
+  <h3>Your sleep this week</h3>
   `
 };
 
