@@ -11,6 +11,7 @@ section {
 
 h1 {
   font-size: 38px;
+  margin: 0;
 };
 
 table {
@@ -19,9 +20,15 @@ table {
   border-radius: 15px;
 }
 
+main {
+  display: flex;
+}
+
 .activity-box {
   background-color: #ff9f1c;
   color: #6d3c0b;
+  height: 450px;
+  width: 450px;
 }
 
 .daily-water {
@@ -49,4 +56,15 @@ table {
 }
 .water-table-heading {
   background-color: #0fd3b2;
+}
+
+.stats-container {
+  width: 1500px;
+}
+
+.user-info-left {
+  width: 450px;
+}
+.user-card {
+  height: 500px;
 }
