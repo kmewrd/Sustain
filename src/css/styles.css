@@ -121,3 +121,8 @@ main {
 .daily-sleep-stats {
   display: flex;
 }
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
