@@ -37,12 +37,12 @@ describe('User Repository', () => {
       24,
       19
     ]
-  }]
+  }];
     testHydrationLog = [{
       "userID": 1,
       "date": "2019/06/15",
       "numOunces": 32
-    }]
+    }];
 
     testSleepLog = [{
       "userID": 1,
@@ -55,13 +55,12 @@ describe('User Repository', () => {
       "date": "2020/05/14",
       "hoursSlept": 8,
       "sleepQuality": 6
-    }]
+    }];
 
     user1 = new User(testUsers[0]);
     user2 = new User(testUsers[1]);
     userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog);
  })
-
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
@@ -90,16 +89,16 @@ describe('User Repository', () => {
     expect(userRepository.users).to.deep.equal(testUsers)
   });
 
-  it('should calculate average step goal amongst all Users', () => {
+  it('should calculate average step goal amongst all users', () => {
     expect(userRepository.getAvgUserStepGoal()).to.equal(7500);
   });
 
-  it('should have a method that returns any type of log for a user id', ()=> {
+  it('should be able to return any type of log for a user id', () => {
     userRepository.getUserLogs(testHydrationLog, 1)
     expect(userRepository.hydrationLogs).to.equal(testHydrationLog)
   });
 
-  it('should have a method to get avg users sleep quality', () => {
+  it('should be able to get avg user sleep quality', () => {
     expect(userRepository.getAvgUserSleepQuality()).to.equal(4)
   });
 });
