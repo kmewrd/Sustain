@@ -47,21 +47,28 @@ function getRandomID(array) {
   } else {
     randomUserID ++;
     return randomUserID;
-  }
+  };
 };
 
 function updateDashboard() {
   displayWelcomeMessage();
-  displayUserDashboardHeader();
   displayUserInfo();
   displayUserStepGoal();
   displayAvgUsersStepGoal();
+  displayDailyStats();
+  displayWeeklyStats();
+};
+
+function displayDailyStats() {
   displayCurrentWaterIntake();
-  displayWeeklyWaterIntake();
-  displayRecentHoursSlept();
-  displayRecentSleepQuality();
-  displayAvgHoursSleepPerDay();
   displayAvgSleepQualityPerDay();
+  displayAvgHoursSleepPerDay();
+  displayRecentSleepQuality();
+  displayRecentHoursSlept();
+};
+
+function displayWeeklyStats() {
+  displayWeeklyWaterIntake();
   displayWeeklySleepData();
 };
 
@@ -79,9 +86,6 @@ function getCurrentUser(id) {
 function displayWelcomeMessage() {
   let userName = currentUser.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
-};
-
-function displayUserDashboardHeader() {
   userDashboardHeader.innerText = `${currentUser.name}'s Dashboard`;
 };
 
@@ -107,7 +111,7 @@ function displayAvgUsersStepGoal() {
 function displayCurrentWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const currentWaterIntake = currentUser.getOuncesByDay(currentDate);
-  todayWaterIntake.innerText = `${currentWaterIntake}`
+  todayWaterIntake.innerText = `${currentWaterIntake}`;
 };
 
 function displayWeeklyWaterIntake() {
@@ -149,7 +153,7 @@ function displayWeeklyWaterIntake() {
     </tr>
   </table>
   <h4>Water consumed this week</h4>
-  `
+  `;
 };
 
 function displayRecentHoursSlept() {
@@ -222,7 +226,7 @@ function displayWeeklySleepData() {
     </tr>
   </table>
   <h4>Your sleep this week</h4>
-  `
+  `;
 };
 
 // event listeners
