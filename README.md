@@ -1,77 +1,23 @@
-# FitLit Starter Kit
+# Sustain Wellness App
+A useful dashboard for a user to view and see their latest activity data, goals, and milestones.
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+<img width="1440" alt="Sustain Wellness App, dashboard view" src="https://user-images.githubusercontent.com/79027364/153941650-3e2b716a-13a2-4d5e-bb68-7415f43d87b6.png">
 
-## Setup
+## How to Run
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+1. Fork the repository
+2. Clone down your new, forked repo
+3. `cd` into the repository
+4. Run `npm install` in the CLI
+5. Run `npm start` in the CLI
+6. Open the site by copying and pasting the server location in your URL bar
+    -   The server location should look something like this -> http://localhost:8080/
 
-## Testing
+## About
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
-
-
-## Data Model
-
-**Users**
-
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+### Tech
+- JavaScript
+- CSS
+- HTML
+- Mocha & Chai
+- VS Code & Atom
