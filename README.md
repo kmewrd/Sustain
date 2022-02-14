@@ -40,4 +40,8 @@ For this project we sourced design inspiration from Dribble creators:
 - [Hasnur Alam Ujjol](https://dribbble.com/shots/16491774-Fitness-Workout-App-UI-Design): Light and dark theme; everything is modular and self-contained; not too much white space and not too much extraneous info on the page
 
 #### Contributors
-This application was built by [Kim Ward](https://github.com/kmewrd), [Casey Halstead](https://github.com/chalstead16), [Katie Ammon](https://github.com/kammon10), and [Kevin King](https://github.com/King13k) as a Mod 2 group project at Turing School of Software & Design.
+This application was built by:
+- [Kim Ward](https://github.com/kmewrd)
+- [Casey Halstead](https://github.com/chalstead16)
+- [Katie Ammon](https://github.com/kammon10)
+- [Kevin King](https://github.com/King13k)
