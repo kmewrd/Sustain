@@ -56,8 +56,8 @@ main {
 .activity-box {
   background-color: #ff9f1c;
   color: #6d3c0b;
-  height: 350px;
-  width: 400px;
+  height: 50%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -112,7 +112,7 @@ main {
 }
 
 .stats-container {
-  width: 1000px;
+  width: 70%;
   height: 700px;
   padding: 20px;
 }
@@ -126,8 +126,8 @@ main {
 }
 
 .user-card {
-  width: 360px;
-  height: 315px;
+  width: 80%;
+  height: 40%;
   padding: 20px;
   display: flex;
   flex-direction: column;
