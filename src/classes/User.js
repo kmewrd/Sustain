@@ -13,59 +13,67 @@ class User {
   returnFirstName() {
     const fullName = this.name.split(" ");
     return fullName[0];
-  }
+  };
+
   getAvgOuncesPerDay() {
     const total = this.hydrationLogs.reduce((acc, log) => {
       return acc += log.numOunces;
     }, 0);
     const avg = total / this.hydrationLogs.length;
     return avg;
-  }
+  };
+
   getOuncesByDay(date) {
     const hydrationLog = this.hydrationLogs.find(log => {
       return log.date === date;
     });
     const ounces = hydrationLog.numOunces;
     return ounces;
-  }
+  };
+
   getOuncesByWeek(endDate) {
     const dateIndex = this.hydrationLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.hydrationLogs.slice(dateIndex - 7, dateIndex)
+    const weekLogs = this.hydrationLogs.slice(dateIndex - 7, dateIndex);
     const weekOunces = weekLogs.map(log => {
       return log.numOunces;
     });
     return weekOunces;
-  }
+  };
+
   getAvgHoursSleepPerDay() {
     const total = this.sleepLogs.reduce((acc, log) => {
       return acc += log.hoursSlept;
     }, 0);
     const avg = total / this.sleepLogs.length;
     return avg.toFixed(1);
-  }
+  };
+
   getAvgSleepQualityPerDay() {
     const total = this.sleepLogs.reduce((acc, log) => {
       return acc += log.sleepQuality;
     }, 0);
     const avg = total / this.sleepLogs.length;
     return avg.toFixed(1);
-  }
+  };
+
   getSleepHoursByDay(date) {
     const sleepLog = this.sleepLogs.find(log => {
       return log.date === date;
     });
     const hours = sleepLog.hoursSlept;
     return hours;
-  }
+  };
+
   getSleepQualityByDay(date) {
     const sleepLog = this.sleepLogs.find(log => {
       return log.date === date;
     });
     const sleepQuality = sleepLog.sleepQuality;
     return sleepQuality;
-  }
+  };
+
   getHoursSleptByWeek(endDate) {
     const dateIndex = this.sleepLogs.findIndex(log => {
       return log.date === endDate;
@@ -73,9 +81,10 @@ class User {
     const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
     const weekHours = weekLogs.map(log => {
       return log.hoursSlept;
-    })
+    });
     return weekHours;
-  }
+  };
+
   getSleepQualityByWeek(endDate) {
     const dateIndex = this.sleepLogs.findIndex(log => {
       return log.date === endDate;
@@ -83,9 +92,9 @@ class User {
     const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
     const weekQuality = weekLogs.map(log => {
       return log.sleepQuality;
-    })
+    });
     return weekQuality;
-  }
-}
-//
+  };
+};
+
 export default User;
