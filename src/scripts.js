@@ -1,30 +1,16 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/activity-icon.png';
 import './images/hydration-icon.png';
 import './images/sleep-icon.png';
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
 import {fetchUserData, fetchHydrationData, fetchSleepData} from './apiCalls';
-
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
 
-
 // query selectors
 const welcomeMessage = document.querySelector('.js-welcome-message');
-const dashboardText = document.querySelector('.js-user-dashboard');
+const userDashboardHeader = document.querySelector('.js-user-dashboard');
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
@@ -61,21 +47,28 @@ function getRandomID(array) {
   } else {
     randomUserID ++;
     return randomUserID;
-  }
+  };
 };
 
 function updateDashboard() {
   displayWelcomeMessage();
-  displayDashboardText();
   displayUserInfo();
   displayUserStepGoal();
   displayAvgUsersStepGoal();
+  displayDailyStats();
+  displayWeeklyStats();
+};
+
+function displayDailyStats() {
   displayCurrentWaterIntake();
-  displayWeeklyWaterIntake();
-  displayRecentHoursSlept();
-  displayRecentSleepQuality();
-  displayAvgHoursSleepPerDay();
   displayAvgSleepQualityPerDay();
+  displayAvgHoursSleepPerDay();
+  displayRecentSleepQuality();
+  displayRecentHoursSlept();
+};
+
+function displayWeeklyStats() {
+  displayWeeklyWaterIntake();
   displayWeeklySleepData();
 };
 
@@ -93,10 +86,7 @@ function getCurrentUser(id) {
 function displayWelcomeMessage() {
   let userName = currentUser.returnFirstName();
   welcomeMessage.innerText = `Welcome ${userName}!`;
-};
-
-function displayDashboardText() {
-  dashboardText.innerText = `${currentUser.name}'s Dashboard`;
+  userDashboardHeader.innerText = `${currentUser.name}'s Dashboard`;
 };
 
 function displayUserInfo() {
@@ -121,7 +111,7 @@ function displayAvgUsersStepGoal() {
 function displayCurrentWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const currentWaterIntake = currentUser.getOuncesByDay(currentDate);
-  todayWaterIntake.innerText = `${currentWaterIntake}`
+  todayWaterIntake.innerText = `${currentWaterIntake}`;
 };
 
 function displayWeeklyWaterIntake() {
@@ -163,7 +153,7 @@ function displayWeeklyWaterIntake() {
     </tr>
   </table>
   <h4>Water consumed this week</h4>
-  `
+  `;
 };
 
 function displayRecentHoursSlept() {
@@ -236,7 +226,7 @@ function displayWeeklySleepData() {
     </tr>
   </table>
   <h4>Your sleep this week</h4>
-  `
+  `;
 };
 
 // event listeners
