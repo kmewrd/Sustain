@@ -37,5 +37,5 @@ describe('SleepLog', () => {
 
   it('should have a property of sleepQuality', () => {
     expect(sleepLog.sleepQuality).to.equal(2.2);
-    });
+  });
 });
