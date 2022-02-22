@@ -90,6 +90,7 @@ function displayWelcomeMessage() {
 };
 
 function displayUserInfo() {
+  currentUser.splitAddress();
   userInfo.innerHTML = `
     <p class="address-line1">${currentUser.address[0]}</p>
     <p class="address-line2">${currentUser.address[1]}</p>
