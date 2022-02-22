@@ -2,7 +2,7 @@ import './css/styles.css';
 import './images/activity-icon.png';
 import './images/hydration-icon.png';
 import './images/sleep-icon.png';
-import {fetchUserData, fetchHydrationData, fetchSleepData} from './apiCalls';
+import {fetchData} from './apiCalls';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
@@ -30,8 +30,8 @@ let sleepLogs;
 let currentUser;
 
 // functions
-function fetchData() {
-  Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData()])
+function fetchAllData() {
+  Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep')])
     .then(data => {
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomID(userRepository.users);
@@ -90,6 +90,7 @@ function displayWelcomeMessage() {
 };
 
 function displayUserInfo() {
+  currentUser.splitAddress();
   userInfo.innerHTML = `
     <p class="address-line1">${currentUser.address[0]}</p>
     <p class="address-line2">${currentUser.address[1]}</p>
@@ -231,5 +232,5 @@ function displayWeeklySleepData() {
 
 // event listeners
 window.addEventListener('load', function() {
-  fetchData();
+  fetchAllData();
 });
