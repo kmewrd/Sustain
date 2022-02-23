@@ -5,10 +5,10 @@ const fetchData = (extension) => {
     .catch(err => console.log(err));
 };
 
-const postSleep = (sleep) => {
-  return fetch('http://localhost:3001/api/v1/sleep', {
+const postData = (data, url) => {
+  return fetch(`http://localhost:3001/api/v1/${url}`, {
     method: 'POST',
-    body: json.stringify(sleep),
+    body: json.stringify(data),
     headers: {
       'Content-Type': 'application/json'
     } 
@@ -17,4 +17,4 @@ const postSleep = (sleep) => {
   .catch(err => console.log(err));
 };
 
-export {fetchData, postSleep};
+export {fetchData, postData};
