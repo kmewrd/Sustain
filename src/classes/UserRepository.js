@@ -47,7 +47,19 @@ class UserRepository {
       return acc;
     }, 0);
     const avg = total / allLogsByDate.length;
-    return avg;
+    return avg.toFixed(1);
+  };
+
+  getAvgUserNumSteps(date) {
+    const allLogsByDate = this.activityLogs.filter(log => {
+      return log.date === date;
+    });
+    const total = allLogsByDate.reduce((acc, log) => {
+      acc += log.numSteps;
+      return acc;
+    }, 0);
+    const avg = total / allLogsByDate.length;
+    return avg.toFixed(1);
   };
 };
 
