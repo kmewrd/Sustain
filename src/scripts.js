@@ -11,7 +11,7 @@ import domUpdates from './domUpdates.js';
 
 // query selectors
 
-const userInfo = document.querySelector('.js-user-info');
+
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
 const todayWaterIntake = document.querySelector('.js-today-water-intake');
@@ -50,9 +50,9 @@ function getRandomID(array) {
   };
 };
 
-function updateDashboard(user) {
-  welcomeUser(user);
-  displayUserInfo();
+function updateDashboard(currentUser) {
+  welcomeUser(currentUser);
+  updateUserInfo(currentUser);
   displayUserStepGoal();
   displayAvgUsersStepGoal();
   displayDailyStats();
@@ -88,15 +88,9 @@ function welcomeUser() {
   domUpdates.displayWelcomeMessage(userName, currentUser);
 };
 
-function displayUserInfo() {
+function updateUserInfo(currentUser) {
   currentUser.splitAddress();
-  userInfo.innerHTML = `
-    <p class="address-line1">${currentUser.address[0]}</p>
-    <p class="address-line2">${currentUser.address[1]}</p>
-    <p>${currentUser.email}</p>
-    <p>Stride Length: ${currentUser.strideLength}</p>
-    <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
-  `;
+  domUpdates.displayUserInfo(currentUser);
 };
 
 function displayUserStepGoal() {
