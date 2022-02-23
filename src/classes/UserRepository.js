@@ -1,8 +1,9 @@
 class UserRepository {
-  constructor(userData, hydrationData, sleepData) {
+  constructor(userData, hydrationData, sleepData, activityData) {
     this.users = userData;
     this.hydrationLogs = hydrationData;
     this.sleepLogs = sleepData;
+    this.activityLogs = activityData;
   };
 
   getUserById(id) {
@@ -34,6 +35,18 @@ class UserRepository {
       return acc += log.sleepQuality;
     }, 0);
     const avg = total / this.users.length;
+    return avg;
+  };
+
+  getAvgUserFlightsClimbed(date) {
+    const allLogsByDate = this.activityLogs.filter(log => {
+      return log.date === date;
+    });
+    const total = allLogsByDate.reduce((acc, log) => {
+      acc += log.flightsOfStairs;
+      return acc;
+    }, 0);
+    const avg = total / allLogsByDate.length;
     return avg;
   };
 };
