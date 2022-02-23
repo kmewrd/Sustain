@@ -12,8 +12,8 @@ import domUpdates from './domUpdates.js';
 // query selectors
 
 
-const userStepGoal = document.querySelector('.js-user-step-goal');
-const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
+
+
 const todayWaterIntake = document.querySelector('.js-today-water-intake');
 const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
@@ -53,8 +53,8 @@ function getRandomID(array) {
 function updateDashboard(currentUser) {
   welcomeUser(currentUser);
   updateUserInfo(currentUser);
-  displayUserStepGoal();
-  displayAvgUsersStepGoal();
+  domUpdates.displayUserStepGoal(currentUser);
+  domUpdates.displayAvgUsersStepGoal();
   displayDailyStats();
   displayWeeklyStats();
 };
@@ -93,13 +93,11 @@ function updateUserInfo(currentUser) {
   domUpdates.displayUserInfo(currentUser);
 };
 
-function displayUserStepGoal() {
-  userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-};
 
-function displayAvgUsersStepGoal() {
+function updateAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
-  avgUsersStepGoal.innerText = `Community Avg Goal: ${avg} steps`;
+  displayAvgUsersStepGoal(avg);
+
 };
 
 function displayCurrentWaterIntake() {
