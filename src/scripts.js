@@ -7,10 +7,10 @@ import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
+import domUpdates from './domUpdates.js';
 
 // query selectors
-const welcomeMessage = document.querySelector('.js-welcome-message');
-const userDashboardHeader = document.querySelector('.js-user-dashboard');
+
 const userInfo = document.querySelector('.js-user-info');
 const userStepGoal = document.querySelector('.js-user-step-goal');
 const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
@@ -36,7 +36,7 @@ function fetchAllData() {
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
-      updateDashboard();
+      updateDashboard(currentUser);
   });
 };
 
@@ -50,8 +50,8 @@ function getRandomID(array) {
   };
 };
 
-function updateDashboard() {
-  displayWelcomeMessage();
+function updateDashboard(user) {
+  welcomeUser(user);
   displayUserInfo();
   displayUserStepGoal();
   displayAvgUsersStepGoal();
@@ -83,10 +83,9 @@ function getCurrentUser(id) {
   currentUser = userRepository.getUserById(id);
 };
 
-function displayWelcomeMessage() {
+function welcomeUser() {
   let userName = currentUser.returnFirstName();
-  welcomeMessage.innerText = `Welcome ${userName}!`;
-  userDashboardHeader.innerText = `${currentUser.name}'s Dashboard`;
+  domUpdates.displayWelcomeMessage(userName, currentUser);
 };
 
 function displayUserInfo() {
