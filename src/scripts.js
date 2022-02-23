@@ -79,7 +79,7 @@ function initializeUserData(userData, hydrationData, sleepData, activityData) {
   hydrationLogs = hydrationData.map(log => new HydrationLog(log));
   sleepLogs = sleepData.map(log => new SleepLog(log));
   activityLogs = activityData.map(log => new ActivityLog(log));
-  userRepository = new UserRepository(users, hydrationLogs, sleepLogs);
+  userRepository = new UserRepository(users, hydrationLogs, sleepLogs, activityLogs);
 };
 
 function getCurrentUser(id) {
