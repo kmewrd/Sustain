@@ -61,6 +61,18 @@ class UserRepository {
     const avg = total / allLogsByDate.length;
     return avg.toFixed(1);
   };
+
+  getAvgUserMinutesActive(date) {
+    const allLogsByDate = this.activityLogs.filter(log => {
+      return log.date === date;
+    });
+    const total = allLogsByDate.reduce((acc, log) => {
+      acc += log.minutesActive;
+      return acc;
+    }, 0);
+    const avg = total / allLogsByDate.length;
+    return avg.toFixed(1);
+  };
 };
 
 export default UserRepository;
