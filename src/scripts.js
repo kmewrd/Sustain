@@ -15,9 +15,8 @@ import domUpdates from './domUpdates.js';
 
 
 
-const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
-const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
-const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
+
+
 const weeklySleepTables = document.querySelector('.js-weekly-sleep-tables');
 const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
 const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
@@ -63,12 +62,12 @@ function displayDailyStats() {
   updateCurrentWaterIntake(currentUser);
   displayAvgSleepQualityPerDay();
   displayAvgHoursSleepPerDay();
-  displayRecentSleepQuality();
-  displayRecentHoursSlept();
+  updateRecentSleepQuality();
+  updateRecentHoursSlept();
 };
 
 function displayWeeklyStats() {
-  displayWeeklyWaterIntake();
+  updateWeeklyWaterIntake();
   displayWeeklySleepData();
 };
 
@@ -93,7 +92,6 @@ function updateUserInfo(currentUser) {
   domUpdates.displayUserInfo(currentUser);
 };
 
-
 function updateAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
   displayAvgUsersStepGoal(avg);
@@ -106,58 +104,22 @@ function updateCurrentWaterIntake(currentUser) {
   domUpdates.displayCurrentWaterIntake(currentUser, currentWaterIntake);
 };
 
-function displayWeeklyWaterIntake() {
+function updateWeeklyWaterIntake() {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const weeklyWater = currentUser.getOuncesByWeek(currentDate);
-  weeklyWaterIntake.innerHTML = `
-  <table class="weekly-water">
-    <tr class="water-table-heading">
-      <th></th>
-      <th>Number of ounces</th>
-    </tr>
-    <tr>
-      <td>Day 1</td>
-      <td>${weeklyWater[0]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 2</td>
-      <td>${weeklyWater[1]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 3</td>
-      <td>${weeklyWater[2]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 4</td>
-      <td>${weeklyWater[3]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 5</td>
-      <td>${weeklyWater[4]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 6</td>
-      <td>${weeklyWater[5]} oz</td>
-    </tr>
-    <tr>
-      <td>Day 7</td>
-      <td>${weeklyWater[6]} oz</td>
-    </tr>
-  </table>
-  <h4>Water consumed this week</h4>
-  `;
+  domUpdates.displayWeeklyWaterIntake(weeklyWater);
 };
 
-function displayRecentHoursSlept() {
+function updateRecentHoursSlept() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightHoursSlept = currentUser.getSleepHoursByDay(currentDate);
-  recentHoursSlept.innerText = `${lastNightHoursSlept}`;
+  domUpdates.displayRecentHoursSlept(lastNightHoursSlept);
 };
 
-function displayRecentSleepQuality() {
+function updateRecentSleepQuality() {
   const currentDate = currentUser.sleepLogs[(currentUser.sleepLogs.length -1)].date;
   const lastNightSleepQuality = currentUser.getSleepQualityByDay(currentDate);
-  recentSleepQuality.innerText = `${lastNightSleepQuality}`;
+ domUpdates.displayRecentSleepQuality(lastNightSleepQuality);
 };
 
 function displayAvgHoursSleepPerDay() {

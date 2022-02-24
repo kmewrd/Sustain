@@ -26,7 +26,55 @@ let domUpdates = {
   displayCurrentWaterIntake(currentUser, currentWaterIntake) {
     const todayWaterIntake = document.querySelector('.js-today-water-intake');
     todayWaterIntake.innerText = `${currentWaterIntake}`;
-  }
+  },
+  displayWeeklyWaterIntake(weeklyWater) {
+    const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
+    weeklyWaterIntake.innerHTML = `
+    <table class="weekly-water">
+      <tr class="water-table-heading">
+        <th></th>
+        <th>Number of ounces</th>
+      </tr>
+      <tr>
+        <td>Day 1</td>
+        <td>${weeklyWater[0]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 2</td>
+        <td>${weeklyWater[1]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 3</td>
+        <td>${weeklyWater[2]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 4</td>
+        <td>${weeklyWater[3]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 5</td>
+        <td>${weeklyWater[4]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 6</td>
+        <td>${weeklyWater[5]} oz</td>
+      </tr>
+      <tr>
+        <td>Day 7</td>
+        <td>${weeklyWater[6]} oz</td>
+      </tr>
+    </table>
+    <h4>Water consumed this week</h4>
+    `;
+  },
+  displayRecentHoursSlept(lastNightHoursSlept) {
+    const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
+    recentHoursSlept.innerText = `${lastNightHoursSlept}`;
+  },
+  displayRecentSleepQuality(lastNightSleepQuality) {
+    const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
+    recentSleepQuality.innerText = `${lastNightSleepQuality}`;
+  },
 }
 
 export default domUpdates;
