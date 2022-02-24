@@ -22,6 +22,10 @@ let domUpdates = {
   displayAvgUsersStepGoal(avg) {
     const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
     avgUsersStepGoal.innerText = `Community Avg Goal: ${avg} steps`;
+  },
+  displayCurrentWaterIntake(currentUser, currentWaterIntake) {
+    const todayWaterIntake = document.querySelector('.js-today-water-intake');
+    todayWaterIntake.innerText = `${currentWaterIntake}`;
   }
 }
 

@@ -14,7 +14,7 @@ import domUpdates from './domUpdates.js';
 
 
 
-const todayWaterIntake = document.querySelector('.js-today-water-intake');
+
 const weeklyWaterIntake = document.querySelector('.js-weekly-water-intake');
 const recentHoursSlept = document.querySelector('.js-recent-hours-slept');
 const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
@@ -36,7 +36,7 @@ function fetchAllData() {
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
       let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
-      updateDashboard(currentUser);
+      updateDashboard();
   });
 };
 
@@ -50,7 +50,7 @@ function getRandomID(array) {
   };
 };
 
-function updateDashboard(currentUser) {
+function updateDashboard() {
   welcomeUser(currentUser);
   updateUserInfo(currentUser);
   domUpdates.displayUserStepGoal(currentUser);
@@ -60,7 +60,7 @@ function updateDashboard(currentUser) {
 };
 
 function displayDailyStats() {
-  displayCurrentWaterIntake();
+  updateCurrentWaterIntake(currentUser);
   displayAvgSleepQualityPerDay();
   displayAvgHoursSleepPerDay();
   displayRecentSleepQuality();
@@ -100,10 +100,10 @@ function updateAvgUsersStepGoal() {
 
 };
 
-function displayCurrentWaterIntake() {
+function updateCurrentWaterIntake(currentUser) {
   const currentDate = currentUser.hydrationLogs[(currentUser.hydrationLogs.length -1)].date;
   const currentWaterIntake = currentUser.getOuncesByDay(currentDate);
-  todayWaterIntake.innerText = `${currentWaterIntake}`;
+  domUpdates.displayCurrentWaterIntake(currentUser, currentWaterIntake);
 };
 
 function displayWeeklyWaterIntake() {
