@@ -114,7 +114,20 @@ class User {
       return log.date === date;
     });
     return activityLog.minutesActive;
-  }
+  };
+
+  getAvgMinutesActiveByWeek(endDate) {
+    const dateIndex = this.activityLogs.findIndex(log => {
+      return log.date === endDate;
+    });
+    const weekLogs = this.activityLogs.slice(dateIndex - 7, dateIndex);
+    const weekMinutes = weekLogs.reduce((acc, log) => {
+      acc += log.minutesActive;
+      return acc;
+    }, 0);
+    const avg = weekMinutes / weekLogs.length;
+    return avg;
+  };
 };
 
 export default User;
