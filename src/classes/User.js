@@ -128,6 +128,13 @@ class User {
     const avg = weekMinutes / weekLogs.length;
     return avg;
   };
+
+  getStepGoalAchievement(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    return activityLog.numSteps >= this.dailyStepGoal;
+  };
 };
 
 export default User;
