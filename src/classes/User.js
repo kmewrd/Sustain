@@ -107,6 +107,13 @@ class User {
     });
     const miles = ((this.strideLength * activityLog.numSteps) / 5280).toFixed(1);
     return miles;
+  };
+
+  getMinutesActiveByDay(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    return activityLog.minutesActive;
   }
 };
 
