@@ -82,6 +82,54 @@ let domUpdates = {
   displayAvgSleepQualityPerDay(avgQuality) {
     const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
     avgSleepQuality.innerText = `${avgQuality} average`;
+  },
+  displayWeeklySleepData(weeklyHours, weeklyQuality) {
+    const weeklySleepTables = document.querySelector('.js-weekly-sleep-tables');
+    weeklySleepTables.innerHTML = `
+    <table class="weekly-sleep">
+      <tr class="sleep-table-heading">
+        <th></th>
+        <th>Hours of Sleep</th>
+        <th class="sleep-table-heading">Sleep Quality</th>
+      </tr>
+      <tr>
+        <td>Day 1</td>
+        <td>${weeklyHours[0]} hrs</td>
+        <td>${weeklyQuality[0]}</td>
+      </tr>
+      <tr>
+        <td>Day 2</td>
+        <td>${weeklyHours[1]} hrs</td>
+        <td>${weeklyQuality[1]}</td>
+      </tr>
+      <tr>
+        <td>Day 3</td>
+        <td>${weeklyHours[2]} hrs</td>
+        <td>${weeklyQuality[2]}</td>
+      </tr>
+      <tr>
+        <td>Day 4</td>
+        <td>${weeklyHours[3]} hrs</td>
+        <td>${weeklyQuality[3]}</td>
+      </tr>
+      <tr>
+        <td>Day 5</td>
+        <td>${weeklyHours[4]} hrs</td>
+        <td>${weeklyQuality[4]}</td>
+      </tr>
+      <tr>
+        <td>Day 6</td>
+        <td>${weeklyHours[5]} hrs</td>
+        <td>${weeklyQuality[5]}</td>
+      </tr>
+      <tr>
+        <td>Day 7</td>
+        <td>${weeklyHours[6]} hrs</td>
+        <td>${weeklyQuality[6]}</td>
+      </tr>
+    </table>
+    <h4>Your sleep this week</h4>
+    `;
   }
 }
 
