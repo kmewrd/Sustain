@@ -229,7 +229,21 @@ function updateAllUsersTodaySteps(date) {
     return acc += log.numSteps;
   }, 0);
 
-  const avg = totalSteps/ allUserLogsToday.length;
+  const avg = totalSteps / allUserLogsToday.length;
+
+  return avg;
+};
+
+function updateAllUsersMinutesActive(date) {
+  const allUserLogsToday = userRepository.activityLogs.filter(log => {
+    return log.date === date;
+  });
+
+  const totalMinutes = allUserLogsToday.reduce((acc, log) => {
+    return acc += log.minutesActive;
+  }, 0);
+
+  const avg = totalMinutes / allUserLogsToday.length;
 
   return avg;
 };
