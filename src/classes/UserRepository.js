@@ -12,6 +12,7 @@ class UserRepository {
     });
     user.hydrationLogs = this.getUserLogs(this.hydrationLogs, id);
     user.sleepLogs = this.getUserLogs(this.sleepLogs, id);
+    user.activityLogs = this.getUserLogs(this.activityLogs, id);
     return user;
   };
 

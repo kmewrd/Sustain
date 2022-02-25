@@ -9,6 +9,7 @@ class User {
     this.friends = userData.friends;
     this.hydrationLogs;
     this.sleepLogs;
+    this.activityLogs;
   }
   returnFirstName() {
     const fullName = this.name.split(" ");
@@ -99,6 +100,14 @@ class User {
     });
     return weekQuality;
   };
+
+  getMilesByDay(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    const miles = ((this.strideLength * activityLog.numSteps) / 5280).toFixed(1);
+    return miles;
+  }
 };
 
 export default User;
