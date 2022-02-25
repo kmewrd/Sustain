@@ -9,6 +9,7 @@ class User {
     this.friends = userData.friends;
     this.hydrationLogs;
     this.sleepLogs;
+    this.activityLogs;
   }
   returnFirstName() {
     const fullName = this.name.split(" ");
@@ -99,6 +100,52 @@ class User {
     });
     return weekQuality;
   };
+
+  getMilesByDay(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    const miles = ((this.strideLength * activityLog.numSteps) / 5280).toFixed(1);
+    return miles;
+  };
+
+  getMinutesActiveByDay(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    return activityLog.minutesActive;
+  };
+
+  getAvgMinutesActiveByWeek(endDate) {
+    const dateIndex = this.activityLogs.findIndex(log => {
+      return log.date === endDate;
+    });
+    const weekLogs = this.activityLogs.slice(dateIndex - 7, dateIndex);
+    const weekMinutes = weekLogs.reduce((acc, log) => {
+      acc += log.minutesActive;
+      return acc;
+    }, 0);
+    const avg = weekMinutes / weekLogs.length;
+    return avg;
+  };
+
+  getStepGoalAchievement(date) {
+    const activityLog = this.activityLogs.find(log => {
+      return log.date === date;
+    });
+    return activityLog.numSteps >= this.dailyStepGoal;
+  };
+
+  getDaysWhereStepGoalMet() {
+    const activityLogs = this.activityLogs.filter(log => log.numSteps > this.dailyStepGoal);
+    const daysExceeded = activityLogs.map(log => log.date);
+    return daysExceeded;
+  };
+
+  getAllTimeStairRecord() {
+    const activityLogs = this.activityLogs.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
+    return activityLogs[0].flightsOfStairs;
+  }
 };
 
 export default User;

@@ -7,6 +7,7 @@ import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
+import ActivityLog from './classes/ActivityLog';
 import domUpdates from './domUpdates.js';
 
 // global variables
@@ -14,13 +15,14 @@ let userRepository;
 let users;
 let hydrationLogs;
 let sleepLogs;
+let activityLogs;
 let currentUser;
 
 // functions
 function fetchAllData() {
-  Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep')])
+  Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep'), fetchData('activity')])
     .then(data => {
-      initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData);
+      initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData, data[3].activityData);
       let randomUser = getRandomID(userRepository.users);
       getCurrentUser(randomUser);
       updateDashboard();
@@ -59,11 +61,12 @@ function updateWeeklyStats() {
   updateWeeklySleepData();
 };
 
-function initializeUserData(userData, hydrationData, sleepData) {
+function initializeUserData(userData, hydrationData, sleepData, activityData) {
   users = userData.map(user => new User(user));
   hydrationLogs = hydrationData.map(log => new HydrationLog(log));
   sleepLogs = sleepData.map(log => new SleepLog(log));
-  userRepository = new UserRepository(users, hydrationLogs, sleepLogs);
+  activityLogs = activityData.map(log => new ActivityLog(log));
+  userRepository = new UserRepository(users, hydrationLogs, sleepLogs, activityLogs);
 };
 
 function getCurrentUser(id) {
