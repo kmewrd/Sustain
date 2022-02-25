@@ -42,11 +42,11 @@ function updateDashboard() {
   updateUserInfo(currentUser);
   domUpdates.displayUserStepGoal(currentUser);
   domUpdates.displayAvgUsersStepGoal();
-  displayDailyStats();
-  displayWeeklyStats();
+  updateDailyStats();
+  updateWeeklyStats();
 };
 
-function displayDailyStats() {
+function updateDailyStats() {
   updateCurrentWaterIntake(currentUser);
   updateAvgSleepQualityPerDay();
   updateAvgHoursSleepPerDay();
@@ -54,7 +54,7 @@ function displayDailyStats() {
   updateRecentHoursSlept();
 };
 
-function displayWeeklyStats() {
+function updateWeeklyStats() {
   updateWeeklyWaterIntake();
   updateWeeklySleepData();
 };
