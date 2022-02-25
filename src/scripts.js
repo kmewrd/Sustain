@@ -130,6 +130,35 @@ function updateWeeklySleepData() {
   domUpdates.displayWeeklySleepData(weeklyHours, weeklyQuality);
 };
 
+function updateTodaySteps() {
+  const sortByDate = this.activityLogs.sort((a, b) => {
+    let aa = a.date.split('/').reverse().join();
+    let bb = b.date.split('/').reverse().join();
+
+    if (bb < aa) {
+      return -1
+    } else if (aa > bb) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  const sortByYear = sortByDate.sort((a, b) => {
+    let aa = a.date;
+    let bb = b.date;
+
+    if (bb < aa) {
+      return -1
+    } else if (aa > bb) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  return sortByDate[0].numSteps;
+};
+
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();
