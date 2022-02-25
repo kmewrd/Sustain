@@ -141,6 +141,11 @@ class User {
     const daysExceeded = activityLogs.map(log => log.date);
     return daysExceeded;
   };
+
+  getAllTimeStairRecord() {
+    const activityLogs = this.activityLogs.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
+    return activityLogs[0].flightsOfStairs;
+  }
 };
 
 export default User;
