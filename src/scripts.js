@@ -220,7 +220,19 @@ function updateTodayMilesWalked() {
   return miles;
 };
 
+function updateAllUsersTodaySteps(date) {
+  const allUserLogsToday = userRepository.activityLogs.filter(log => {
+    return log.date === date;
+  });
 
+  const totalSteps = allUserLogsToday.reduce((acc, log) => {
+    return acc += log.numSteps;
+  }, 0);
+
+  const avg = totalSteps/ allUserLogsToday.length;
+
+  return avg;
+};
 
 // event listeners
 window.addEventListener('load', function() {
