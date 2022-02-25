@@ -135,6 +135,12 @@ class User {
     });
     return activityLog.numSteps >= this.dailyStepGoal;
   };
+
+  getDaysWhereStepGoalMet() {
+    const activityLogs = this.activityLogs.filter(log => log.numSteps > this.dailyStepGoal);
+    const daysExceeded = activityLogs.map(log => log.date);
+    return daysExceeded;
+  };
 };
 
 export default User;
