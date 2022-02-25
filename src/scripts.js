@@ -18,8 +18,8 @@ import domUpdates from './domUpdates.js';
 
 
 const weeklySleepTables = document.querySelector('.js-weekly-sleep-tables');
-const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
-const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
+
+
 
 // global variables
 let userRepository;
@@ -60,8 +60,8 @@ function updateDashboard() {
 
 function displayDailyStats() {
   updateCurrentWaterIntake(currentUser);
-  displayAvgSleepQualityPerDay();
-  displayAvgHoursSleepPerDay();
+  updateAvgSleepQualityPerDay();
+  updateAvgHoursSleepPerDay();
   updateRecentSleepQuality();
   updateRecentHoursSlept();
 };
@@ -122,14 +122,14 @@ function updateRecentSleepQuality() {
  domUpdates.displayRecentSleepQuality(lastNightSleepQuality);
 };
 
-function displayAvgHoursSleepPerDay() {
+function updateAvgHoursSleepPerDay() {
   const avgSleepHours = currentUser.getAvgHoursSleepPerDay();
-  avgHoursSlept.innerText = `${avgSleepHours} average`;
+  domUpdates.displayAvgHoursSleepPerDay(avgSleepHours);
 };
 
-function displayAvgSleepQualityPerDay() {
+function updateAvgSleepQualityPerDay() {
   const avgQuality = currentUser.getAvgSleepQualityPerDay();
-  avgSleepQuality.innerText = `${avgQuality} average`;
+  domUpdates.displayAvgSleepQualityPerDay(avgQuality)
 };
 
 function displayWeeklySleepData() {

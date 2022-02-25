@@ -75,6 +75,14 @@ let domUpdates = {
     const recentSleepQuality = document.querySelector('.js-recent-sleep-quality');
     recentSleepQuality.innerText = `${lastNightSleepQuality}`;
   },
+  displayAvgHoursSleepPerDay(avgSleepHours) {
+    const avgHoursSlept = document.querySelector('.js-avg-hours-slept');
+    avgHoursSlept.innerText = `${avgSleepHours} average`;
+  },
+  displayAvgSleepQualityPerDay(avgQuality) {
+    const avgSleepQuality = document.querySelector('.js-avg-sleep-quality');
+    avgSleepQuality.innerText = `${avgQuality} average`;
+  }
 }
 
 export default domUpdates;
