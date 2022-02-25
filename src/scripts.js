@@ -248,6 +248,10 @@ function updateAllUsersMinutesActive(date) {
   return avg;
 };
 
+function updateAllUsersFlightsClimbed(date) {
+  const avgFlightsClimbed = userRepository.getAvgUserFlightsClimbed(date);
+};
+
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();
