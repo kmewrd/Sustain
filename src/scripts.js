@@ -235,17 +235,7 @@ function updateAllUsersTodaySteps(date) {
 };
 
 function updateAllUsersMinutesActive(date) {
-  const allUserLogsToday = userRepository.activityLogs.filter(log => {
-    return log.date === date;
-  });
-
-  const totalMinutes = allUserLogsToday.reduce((acc, log) => {
-    return acc += log.minutesActive;
-  }, 0);
-
-  const avg = totalMinutes / allUserLogsToday.length;
-
-  return avg;
+  const avgMinutesActive = userRepository.getAvgUserMinutesActive(date);
 };
 
 function updateAllUsersFlightsClimbed(date) {
