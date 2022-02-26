@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
+// import testData from './test-data'
 
 
 describe('User', () => {
@@ -66,12 +67,12 @@ describe('User', () => {
 
   it('should take in userData', () => {
     expect(user1.id).to.equal(1);
-    expect(user1.name).to.equal("Luisa Hane");  
+    expect(user1.name).to.equal("Luisa Hane");
     expect(user1.address.length).to.equal(2);
     expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
     expect(user1.strideLength).to.equal(4.3);
     expect(user1.dailyStepGoal).to.equal(10000);
-    expect(user1.friends.length).to.equal(3); 
+    expect(user1.friends.length).to.equal(3);
   });
 
   it('should return first name', () => {

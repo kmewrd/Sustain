@@ -9,6 +9,7 @@ describe('User Repository', () => {
   let userRepository;
   let testHydrationLog;
   let testSleepLog;
+  let testActivityLogs;
 
   beforeEach(() => {
    testUsers = [{
@@ -57,9 +58,24 @@ describe('User Repository', () => {
       "sleepQuality": 6
     }];
 
+    testActivityLogs = [{
+      "userID": 1,
+      "date": "2019/06/15",
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    },
+    {
+      "userID": 2,
+      "date":"2019/06/15",
+      "numSteps": 4294,
+      "minutesActive": 138,
+      "flightsOfStairs": 10
+    }];
+
     user1 = new User(testUsers[0]);
     user2 = new User(testUsers[1]);
-    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog);
+    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog, testActivityLogs);
  })
 
   it('should be a function', function () {
