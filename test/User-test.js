@@ -11,6 +11,7 @@ describe('User', () => {
   let testSleepData;
   let testHydrationData;
   let testUserData;
+  let testActivityData;
 
   beforeEach(() => {
     testAPIData = [{
@@ -51,9 +52,24 @@ describe('User', () => {
       "sleepQuality": 6
     }];
 
+    testActivityData = [{
+      "userID": 1,
+      "date": "2019/06/15",
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    },
+    {
+      "userID": 2,
+      "date":"2019/06/15",
+      "numSteps": 4294,
+      "minutesActive": 138,
+      "flightsOfStairs": 10
+    }];
+
     user1 = new User(testAPIData[0]);
     testUserData = [user1];
-    userRepository = new UserRepository(testUserData, testHydrationData, testSleepData);
+    userRepository = new UserRepository(testUserData, testHydrationData, testSleepData, testActivityData);
     userRepository.getUserById(1);
   });
 
@@ -68,7 +84,7 @@ describe('User', () => {
   it('should take in userData', () => {
     expect(user1.id).to.equal(1);
     expect(user1.name).to.equal("Luisa Hane");
-    expect(user1.address.length).to.equal(2);
+    expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
     expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
     expect(user1.strideLength).to.equal(4.3);
     expect(user1.dailyStepGoal).to.equal(10000);
