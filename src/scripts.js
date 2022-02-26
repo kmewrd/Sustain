@@ -19,13 +19,15 @@ let activityLogs;
 let currentUser;
 
 //query selectors
-const form = document.querySelector('.form');
+const select = document.querySelector('.js-tracker-options');
+const inputFields = document.querySelector('.js-input-fields');
 const newSteps = document.querySelector('.js-new-steps');
 const newMinutesActive = document.querySelector('.js-new-minutes-active');
 const newFlightsClimbed = document.querySelector('.js-new-flights');
 const newOuncesDrank = document.querySelector('.js-new-hyrdation');
 const newHoursSlept = document.querySelector('.js-new-hours-slept');
 const newSleepQuality = document.querySelector('.js-new-sleep-quality');
+const submitButton = document.querySelector('.js-submit');
 
 // functions
 function fetchAllData() {
@@ -230,14 +232,25 @@ function updateWeeklyActivity() {
 }
 
 function show(inputs) {
-  inputs.forEach(element => input.classList.remove('hidden'))
+  inputs.forEach(input => input.classList.remove('hidden'))
 };
 
 function hide(inputs) {
-  inputs.forEach(element => input.classList.add('hidden'))
-}
+  inputs.forEach(input => input.classList.add('hidden'))
+};
+
+function selectForm(event) {
+  if(event.target.value === 'Activity') {
+    show([inputFields, newSteps, newMinutesActive, newFlightsClimbed, submitButton]);
+  }
+};
 
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();
+});
+
+select.addEventListener('change', function(event) {
+  console.log(event.target.value);
+  selectForm(event)
 });
