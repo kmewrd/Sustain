@@ -85,15 +85,23 @@ describe('User', () => {
     expect(user1.getMinutesActiveByDay('2019/06/16')).to.equal(175);
   });
 
-  // it('should get average number of minutes active by week', () => {
-  //   expect(user1.getAvgMinutesActiveByWeek('2019/06/16')).to.equal(157.5);
-  // });
+  it('should get average number of minutes active by week', () => {
+    expect(user1.getAvgMinutesActiveByWeek('2019/06/22')).to.equal('171');
+  });
 
   it('should calculate if a user has met their step goal', () => {
     expect(user1.getStepGoalAchievement('2019/06/16')).to.equal(false)
   });
 
   it('should get all days where step goal was exceeded', () => {
-    expect(user1.getDaysWhereStepGoalMet()).to.deep.equal([])
+    expect(user1.getDaysWhereStepGoalMet()).to.deep.equal(["2019/06/17", "2019/06/20", "2019/06/22"])
+  });
+
+  it('should get a user\'s all-time stair record', () => {
+    expect(user1.getAllTimeStairRecord()).to.equal(36);
+  });
+
+  it('should get a user\'s activity each day over the course of a week', () => {
+    expect(user1.getActivityByWeek('2019/06/22', 'numSteps')).to.deep.equal([6637, 14329, 4419, 8429, 14478, 6760, 10289])
   });
 });
