@@ -242,12 +242,15 @@ function hide(inputs) {
 function selectForm(event) {
   if(event.target.value === 'Activity') {
     show([inputFields, newSteps, newMinutesActive, newFlightsClimbed, submitButton]);
+    hide([newOuncesDrank, newHoursSlept, newSleepQuality ]);
   } else if
     (event.target.value === 'Hydration') {
       show([inputFields, newOuncesDrank, submitButton]);
+      hide([newSteps, newMinutesActive, newFlightsClimbed, newHoursSlept, newSleepQuality]);
     } else if
     (event.target.value === 'Sleep') {
-      show([inputFields, newHoursSlept, newSleepQuality, submitButton])
+      show([inputFields, newHoursSlept, newSleepQuality, submitButton]);
+      hide([newSteps, newMinutesActive, newFlightsClimbed, newOuncesDrank]);
     }
 };
 
