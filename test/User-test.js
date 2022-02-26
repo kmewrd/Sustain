@@ -76,4 +76,24 @@ describe('User', () => {
   it('should get sleep quality by week', ()=> {
     expect(user1.getSleepQualityByWeek("2020/05/14")).to.deep.equal([2]);
   });
+
+  it('should get miles walked by a specific date', () => {
+    expect(user1.getMilesByDay('2019/06/16')).to.equal('5.4');
+  });
+
+  it('should get minutes active by a specific date', () => {
+    expect(user1.getMinutesActiveByDay('2019/06/16')).to.equal(175);
+  });
+
+  // it('should get average number of minutes active by week', () => {
+  //   expect(user1.getAvgMinutesActiveByWeek('2019/06/16')).to.equal(157.5);
+  // });
+
+  it('should calculate if a user has met their step goal', () => {
+    expect(user1.getStepGoalAchievement('2019/06/16')).to.equal(false)
+  });
+
+  it('should get all days where step goal was exceeded', () => {
+    expect(user1.getDaysWhereStepGoalMet()).to.deep.equal([])
+  });
 });
