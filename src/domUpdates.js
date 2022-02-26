@@ -133,22 +133,22 @@ let domUpdates = {
   },
 
   displayRecentStepsTaken(todaySteps) {
-   const recentSteps = document.querySelector(`.js-recent-steps-taken`)
+   const recentSteps = document.querySelector(`.js-recent-steps-taken`);
    recentSteps.innerText = todaySteps;
   },
 
   displayRecentMinutesActive(todayMin) {
-    const recentActive = document.querySelector('.js-minutes-active')
+    const recentActive = document.querySelector('.js-minutes-active');
     recentActive.innerText = todayMin;
   },
 
   displayRecentMilesWalked(todayMiles) {
-    const recentMiles = document.querySelector('.js-miles-walked')
+    const recentMiles = document.querySelector('.js-miles-walked');
     recentMiles.innerText = todayMiles;
   },
 
   displayRecentFlightsClimbed(flights) {
-    const recentFlights = document.querySelector('.js-flights-climbed')
+    const recentFlights = document.querySelector('.js-flights-climbed');
     recentFlights.innerText = flights;
   },
 }
