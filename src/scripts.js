@@ -245,6 +245,9 @@ function selectForm(event) {
   } else if
     (event.target.value === 'Hydration') {
       show([inputFields, newOuncesDrank, submitButton]);
+    } else if
+    (event.target.value === 'Sleep') {
+      show([inputFields, newHoursSlept, newSleepQuality, submitButton])
     }
 };
 
