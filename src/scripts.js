@@ -58,6 +58,7 @@ function updateDailyStats() {
   updateTodayMinutesActive();
   updateTodayMilesWalked();
   updateTodayFlightsClimbed();
+  updateAllUsersTodaySteps();
 };
 
 function updateWeeklyStats() {
@@ -256,8 +257,10 @@ function updateTodayFlightsClimbed() {
 };
 
 
-function updateAllUsersTodaySteps(date) {
-  const avgTodaySteps = userRepository.getAvgUserNumSteps(date);
+function updateAllUsersTodaySteps() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgTodaySteps = userRepository.getAvgUserNumSteps(currentDate);
+  domUpdates.displayAllUsersTodaySteps(avgTodaySteps)
 };
 
 function updateAllUsersMinutesActive(date) {

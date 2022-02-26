@@ -152,6 +152,11 @@ let domUpdates = {
     recentFlights.innerText = flights;
   },
 
+  displayAllUsersTodaySteps(steps) {
+    const avgSteps = document.querySelector('.js-avg-steps-taken')
+    avgSteps.innerText = `${steps} average`
+  },
+
   displayWeeklyActivity(flights, steps, min) {
     const weeklyActivityTables = document.querySelector('.js-weekly-activity-tables');
     weeklyActivityTables.innerHTML = `
@@ -208,6 +213,8 @@ let domUpdates = {
     <h4>Your activity this week</h4>
     `;
   }
+
+
 }
 
 export default domUpdates;
