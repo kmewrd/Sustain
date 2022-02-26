@@ -130,6 +130,11 @@ let domUpdates = {
     </table>
     <h4>Your sleep this week</h4>
     `;
+  },
+
+  displayRecentStepsTaken(todaySteps) {
+   const recentSteps = document.querySelector(`.js-recent-steps-taken`)
+   recentSteps.innerText = todaySteps;
   }
 }
 

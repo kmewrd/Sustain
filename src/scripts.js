@@ -43,7 +43,7 @@ function updateDashboard() {
   welcomeUser(currentUser);
   updateUserInfo(currentUser);
   domUpdates.displayUserStepGoal(currentUser);
-  domUpdates.displayAvgUsersStepGoal();
+  updateAvgUsersStepGoal();
   updateDailyStats();
   updateWeeklyStats();
 };
@@ -54,6 +54,7 @@ function updateDailyStats() {
   updateAvgHoursSleepPerDay();
   updateRecentSleepQuality();
   updateRecentHoursSlept();
+  updateTodaySteps();
 };
 
 function updateWeeklyStats() {
@@ -85,7 +86,7 @@ function updateUserInfo(currentUser) {
 
 function updateAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
-  displayAvgUsersStepGoal(avg);
+  domUpdates.displayAvgUsersStepGoal(avg);
 
 };
 
@@ -155,8 +156,8 @@ function updateTodaySteps() {
       return 0;
     }
   });
-
-  return sortByDate[0].numSteps;
+  const todaySteps = sortByDate[0].numSteps;
+  domUpdates.displayRecentStepsTaken(todaySteps)
 };
 
 function updateTodayMinutesActive() {
