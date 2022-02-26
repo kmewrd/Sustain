@@ -25,7 +25,7 @@ class User {
       return acc += log.numOunces;
     }, 0);
     const avg = total / this.hydrationLogs.length;
-    return avg;
+    return avg.toFixed(0);
   };
 
   getOuncesByDay(date) {
