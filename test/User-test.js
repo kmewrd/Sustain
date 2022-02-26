@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
-// import testData from './test-data'
+import testData from './test-data';
 
 
 describe('User', () => {
   let user1;
-  let testAPIData;
+  let userData;
   let userRepository;
   let testSleepData;
   let testHydrationData;
@@ -14,19 +14,7 @@ describe('User', () => {
   let testActivityData;
 
   beforeEach(() => {
-    testAPIData = [{
-    "id": 1,
-    "name": "Luisa Hane",
-    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-    "email": "Diana.Hayes1@hotmail.com",
-    "strideLength": 4.3,
-    "dailyStepGoal": 10000,
-    "friends": [
-      16,
-      4,
-      8
-    ]
-    }];
+    userData = testData.userData[0];
 
     testHydrationData = [{
       "userID": 1,
@@ -67,7 +55,7 @@ describe('User', () => {
       "flightsOfStairs": 10
     }];
 
-    user1 = new User(testAPIData[0]);
+    user1 = new User(userData);
     testUserData = [user1];
     userRepository = new UserRepository(testUserData, testHydrationData, testSleepData, testActivityData);
     userRepository.getUserById(1);
