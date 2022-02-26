@@ -55,6 +55,7 @@ function updateDailyStats() {
   updateRecentSleepQuality();
   updateRecentHoursSlept();
   updateTodaySteps();
+  updateTodayMinutesActive();
 };
 
 function updateWeeklyStats() {
@@ -185,8 +186,8 @@ function updateTodayMinutesActive() {
       return 0;
     }
   });
-
-  return sortByDate[0].minutesActive;
+  const minActive = sortByDate[0].minutesActive;
+  domUpdates.displayRecentMinutesActive(minActive);
 };
 
 function updateTodayMilesWalked() {

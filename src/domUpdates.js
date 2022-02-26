@@ -135,6 +135,15 @@ let domUpdates = {
   displayRecentStepsTaken(todaySteps) {
    const recentSteps = document.querySelector(`.js-recent-steps-taken`)
    recentSteps.innerText = todaySteps;
+  },
+
+  displayRecentMinutesActive(todayMin) {
+    const recentActive = document.querySelector('.js-minutes-active')
+    recentActive.innerText = todayMin
+  },
+
+  displayRecentMilesWalked(todayMiles) {
+
   }
 }
 
