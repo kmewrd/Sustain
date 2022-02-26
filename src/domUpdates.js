@@ -130,6 +130,102 @@ let domUpdates = {
     </table>
     <h4>Your sleep this week</h4>
     `;
+  },
+
+  displayRecentStepsTaken(todaySteps) {
+   const recentSteps = document.querySelector(`.js-recent-steps-taken`);
+   recentSteps.innerText = todaySteps;
+  },
+
+  displayRecentMinutesActive(todayMin) {
+    const recentActive = document.querySelector('.js-minutes-active');
+    recentActive.innerText = todayMin;
+  },
+
+  displayRecentMilesWalked(todayMiles) {
+    const recentMiles = document.querySelector('.js-miles-walked');
+    recentMiles.innerText = todayMiles;
+  },
+
+  displayRecentFlightsClimbed(flights) {
+    const recentFlights = document.querySelector('.js-flights-climbed');
+    recentFlights.innerText = flights;
+  },
+
+  displayAllUsersTodaySteps(steps) {
+    const avgSteps = document.querySelector('.js-avg-steps-taken')
+    avgSteps.innerText = `${steps} average`
+  },
+
+  displayAllUsersTodayMinutes(min) {
+    const avgMin = document.querySelector('.js-avg-minutes-active')
+    avgMin.innerText = `${min} average`;
+  },
+
+  displayAllUsersTodayFlights(flights) {
+    const avgFlights = document.querySelector('.js-avg-flights-climbed');
+    avgFlights.innerText = `${flights} average`
+  },
+  displayAllUsersTodayMiles(miles) {
+    const avgMiles = document.querySelector('.js-avg-miles-walked');
+    avgMiles.innerText = `${miles} average`;
+  },
+
+  displayWeeklyActivity(flights, steps, min) {
+    const weeklyActivityTables = document.querySelector('.js-weekly-activity-tables');
+    weeklyActivityTables.innerHTML = `
+    <table class="weekly-activity">
+      <tr class="activity-table-heading">
+        <th></th>
+        <th>Flights Climbed</th>
+        <th class="activity-table-heading">Step Count</th>
+        <th class="activity-table-heading">Minutes Active</th>
+      </tr>
+      <tr>
+        <td>Day 1</td>
+        <td>${flights[0]} flights</td>
+        <td>${steps[0]} steps</td>
+        <td>${min[0]} min</td>
+      </tr>
+      <tr>
+        <td>Day 2</td>
+        <td>${flights[1]} flights</td>
+        <td>${steps[1]} steps</td>
+        <td>${min[1]} min</td>
+      </tr>
+      <tr>
+        <td>Day 3</td>
+        <td>${flights[2]} flights</td>
+        <td>${steps[2]} steps</td>
+        <td>${min[2]} min</td>
+      </tr>
+      <tr>
+        <td>Day 4</td>
+        <td>${flights[3]} flights</td>
+        <td>${steps[3]} steps</td>
+        <td>${min[3]} min</td>
+      </tr>
+      <tr>
+        <td>Day 5</td>
+        <td>${flights[4]} flights</td>
+        <td>${steps[4]} steps</td>
+        <td>${min[4]} min</td>
+      </tr>
+      <tr>
+        <td>Day 6</td>
+        <td>${flights[5]} flights</td>
+        <td>${steps[5]} steps</td>
+        <td>${min[5]} min</td>
+      </tr>
+      <tr>
+        <td>Day 7</td>
+        <td>${flights[6]} flights</td>
+        <td>${steps[6]} steps</td>
+        <td>${min[6]} min</td>
+      </tr>
+    </table>
+    <h4>Your activity this week</h4>
+    `;
   }
 }
 

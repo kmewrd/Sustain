@@ -43,9 +43,10 @@ function updateDashboard() {
   welcomeUser(currentUser);
   updateUserInfo(currentUser);
   domUpdates.displayUserStepGoal(currentUser);
-  domUpdates.displayAvgUsersStepGoal();
+  updateAvgUsersStepGoal();
   updateDailyStats();
   updateWeeklyStats();
+
 };
 
 function updateDailyStats() {
@@ -54,11 +55,20 @@ function updateDailyStats() {
   updateAvgHoursSleepPerDay();
   updateRecentSleepQuality();
   updateRecentHoursSlept();
+  updateTodaySteps();
+  updateTodayMinutesActive();
+  updateTodayMilesWalked();
+  updateTodayFlightsClimbed();
+  updateAllUsersTodaySteps();
+  updateAllUsersMinutesActive();
+  updateAllUsersFlightsClimbed();
+  updateAllUsersMilesWalked();
 };
 
 function updateWeeklyStats() {
   updateWeeklyWaterIntake();
   updateWeeklySleepData();
+  updateWeeklyActivity();
 };
 
 function initializeUserData(userData, hydrationData, sleepData, activityData) {
@@ -85,7 +95,7 @@ function updateUserInfo(currentUser) {
 
 function updateAvgUsersStepGoal() {
   const avg = userRepository.getAvgUserStepGoal();
-  displayAvgUsersStepGoal(avg);
+  domUpdates.displayAvgUsersStepGoal(avg);
 
 };
 
@@ -129,6 +139,86 @@ function updateWeeklySleepData() {
   const weeklyQuality = currentUser.getSleepQualityByWeek(currentDate);
   domUpdates.displayWeeklySleepData(weeklyHours, weeklyQuality);
 };
+
+function updateTodaySteps() {
+  const sortByDate = currentUser.activityLogs.sort((a, b) => {
+    let aa = a.date.split('/').reverse().join();
+    let bb = b.date.split('/').reverse().join();
+
+    if (bb < aa) {
+      return -1
+    } else if (aa > bb) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  const sortByYear = sortByDate.sort((a, b) => {
+    let aa = a.date;
+    let bb = b.date;
+
+    if (bb < aa) {
+      return -1
+    } else if (aa > bb) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  const todaySteps = sortByDate[0].numSteps;
+  domUpdates.displayRecentStepsTaken(todaySteps)
+};
+
+function updateTodayMinutesActive() {
+  const todayLog = currentUser.activityLogs[(currentUser.activityLogs.length -1)];
+  const minActive = todayLog.minutesActive;
+  domUpdates.displayRecentMinutesActive(minActive);
+};
+
+function updateTodayMilesWalked() {
+  const todayLog = currentUser.activityLogs[(currentUser.activityLogs.length -1)];
+  const miles = ((currentUser.strideLength * todayLog.numSteps) / 5280).toFixed(1);
+  domUpdates.displayRecentMilesWalked(miles);
+};
+
+function updateTodayFlightsClimbed() {
+  const todayLog = currentUser.activityLogs[(currentUser.activityLogs.length -1)];
+  const flights = todayLog.flightsOfStairs;
+  domUpdates.displayRecentFlightsClimbed(flights);
+};
+
+
+function updateAllUsersTodaySteps() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgTodaySteps = userRepository.getAvgUserNumSteps(currentDate);
+  domUpdates.displayAllUsersTodaySteps(avgTodaySteps)
+};
+
+function updateAllUsersMinutesActive() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgMinutesActive = userRepository.getAvgUserMinutesActive(currentDate);
+  domUpdates.displayAllUsersTodayMinutes(avgMinutesActive);
+};
+
+function updateAllUsersFlightsClimbed() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgFlightsClimbed = userRepository.getAvgUserFlightsClimbed(currentDate);
+  domUpdates.displayAllUsersTodayFlights(avgFlightsClimbed);
+};
+
+function updateAllUsersMilesWalked() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgMilesWalked = userRepository.getAvgUserMilesWalked(currentDate)
+  domUpdates.displayAllUsersTodayMiles(avgMilesWalked)
+};
+
+function updateWeeklyActivity() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length - 1)].date;
+  const weeklyFlights = currentUser.getActivityByWeek(currentDate, 'flightsOfStairs');
+  const weeklySteps = currentUser.getActivityByWeek(currentDate, 'numSteps');
+  const weeklyMin = currentUser.getActivityByWeek(currentDate, 'minutesActive')
+  domUpdates.displayWeeklyActivity(weeklyFlights, weeklySteps, weeklyMin)
+}
 
 // event listeners
 window.addEventListener('load', function() {
