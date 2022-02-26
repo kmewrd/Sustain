@@ -24,7 +24,7 @@ const inputFields = document.querySelector('.js-input-fields');
 const newSteps = document.querySelector('.js-new-steps');
 const newMinutesActive = document.querySelector('.js-new-minutes-active');
 const newFlightsClimbed = document.querySelector('.js-new-flights');
-const newOuncesDrank = document.querySelector('.js-new-hyrdation');
+const newOuncesDrank = document.querySelector('.js-new-hydration');
 const newHoursSlept = document.querySelector('.js-new-hours-slept');
 const newSleepQuality = document.querySelector('.js-new-sleep-quality');
 const submitButton = document.querySelector('.js-submit');
@@ -242,7 +242,10 @@ function hide(inputs) {
 function selectForm(event) {
   if(event.target.value === 'Activity') {
     show([inputFields, newSteps, newMinutesActive, newFlightsClimbed, submitButton]);
-  }
+  } else if
+    (event.target.value === 'Hydration') {
+      show([inputFields, newOuncesDrank, submitButton]);
+    }
 };
 
 // event listeners
@@ -251,6 +254,5 @@ window.addEventListener('load', function() {
 });
 
 select.addEventListener('change', function(event) {
-  console.log(event.target.value);
   selectForm(event)
 });
