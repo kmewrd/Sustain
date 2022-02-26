@@ -40,6 +40,12 @@ const testData = {
     "date": "2020/05/14",
     "hoursSlept": 8,
     "sleepQuality": 6
+  },
+  {
+    "userID": 2,
+    "date": "2020/05/14",
+    "hoursSlept": 8,
+    "sleepQuality": 6
   }],
 
   activityData: [{
@@ -55,6 +61,13 @@ const testData = {
     "numSteps": 6637,
     "minutesActive": 175,
     "flightsOfStairs": 36
+  },
+  {
+    "userID": 2,
+    "date":"2019/06/15",
+    "numSteps": 4294,
+    "minutesActive": 138,
+    "flightsOfStairs": 10
   }]
 };
 

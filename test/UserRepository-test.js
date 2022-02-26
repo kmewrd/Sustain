@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
+import testData from './test-data';
 
 describe('User Repository', () => {
   let user1;
@@ -12,71 +13,14 @@ describe('User Repository', () => {
   let testActivityLogs;
 
   beforeEach(() => {
-   testUsers = [{
-    "id": 1,
-    "name": "Luisa Hane",
-    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-    "email": "Diana.Hayes1@hotmail.com",
-    "strideLength": 4.3,
-    "dailyStepGoal": 10000,
-    "friends": [
-      16,
-      4,
-      8
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Jarvis Considine",
-    "address": "30086 Kathryn Port, Ciceroland NE 07273",
-    "email": "Dimitri.Bechtelar11@gmail.com",
-    "strideLength": 4.5,
-    "dailyStepGoal": 5000,
-    "friends": [
-      9,
-      18,
-      24,
-      19
-    ]
-  }];
-    testHydrationLog = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 32
-    }];
-
-    testSleepLog = [{
-      "userID": 1,
-      "date": "2021/05/14",
-      "hoursSlept": 6.1,
-      "sleepQuality": 2
-    },
-    {
-      "userID": 2,
-      "date": "2020/05/14",
-      "hoursSlept": 8,
-      "sleepQuality": 6
-    }];
-
-    testActivityLogs = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numSteps": 3577,
-      "minutesActive": 140,
-      "flightsOfStairs": 16
-    },
-    {
-      "userID": 2,
-      "date":"2019/06/15",
-      "numSteps": 4294,
-      "minutesActive": 138,
-      "flightsOfStairs": 10
-    }];
-
+    testUsers = testData.userData;
+    testHydrationLog = [testData.hydrationData[0]];
+    testSleepLog = [testData.sleepData[0], testData.sleepData[2]];
+    testActivityLogs = [testData.activityData[0], testData.activityData[2]];
     user1 = new User(testUsers[0]);
     user2 = new User(testUsers[1]);
     userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog, testActivityLogs);
- })
+  });
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
