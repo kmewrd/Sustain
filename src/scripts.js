@@ -220,6 +220,10 @@ function updateWeeklyActivity() {
   domUpdates.displayWeeklyActivity(weeklyFlights, weeklySteps, weeklyMin)
 }
 
+function selectForm() {
+
+}
+
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();

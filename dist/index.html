@@ -26,19 +26,20 @@
           <legend>Add New Data</legend>
           <label for="select">
             <select name="Tracker-options">
+              <option value="" disabled selected>Select Your Tracker</option>
               <option value="Activity">Activity</option>
               <option value="Hydration">Hydration</option>
               <option value="Sleep">Sleep</option>
             </select>
-            <section>
-              <input class="new-steps hidden" type="text" placeholder="Steps" required></input>
-              <input class="new-minutes-active hidden" type="text" placeholder="Minutes Active" required></input>
-              <input class="new-flights hidden" type="text" placeholder="Flights Climbed" required></input>
-              <input class="new-hydration hidden" type="text" placeholder="Ounces Drank" required></input>
-              <input class="new-hour-slept hidden" type="text" placeholder="Hours Slept" required></input>
-              <input class="new-sleep-quality hidden" type="text" placeholder="Sleep Quality" required></input>
+            <section class="js-input-fields hidden">
+              <input class="js-new-steps hidden" type="text" placeholder="Steps" required></input>
+              <input class="js-new-minutes-active hidden" type="text" placeholder="Minutes Active" required></input>
+              <input class="js-new-flights hidden" type="text" placeholder="Flights Climbed" required></input>
+              <input class="js-new-hydration hidden" type="text" placeholder="Ounces Drank" required></input>
+              <input class="js-new-hour-slept hidden" type="text" placeholder="Hours Slept" required></input>
+              <input class="js-new-sleep-quality hidden" type="text" placeholder="Sleep Quality" required></input>
             </section>
-            <button type="submit">Submit</button>
+            <button class="submit hidden" type="submit">Submit</button>
       </form>
     </div>
     <section class="stats-container">
