@@ -59,6 +59,6 @@ describe('User Repository', () => {
   });
 
   it('should be able to get avg user sleep quality', () => {
-    expect(userRepository.getAvgUserSleepQuality()).to.equal(4)
+    expect(userRepository.getAvgUserSleepQuality()).to.equal('2.4')
   });
 });

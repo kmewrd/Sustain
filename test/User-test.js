@@ -54,27 +54,27 @@ describe('User', () => {
   });
 
   it('should get avg hours slept per day', () => {
-    expect(user1.getAvgHoursSleepPerDay()).to.equal('6.7');
+    expect(user1.getAvgHoursSleepPerDay()).to.equal('8.1');
   });
 
   it('should get avg sleep quality per day', () => {
-    expect(user1.getAvgSleepQualityPerDay()).to.equal('3.4');
+    expect(user1.getAvgSleepQualityPerDay()).to.equal('2.6');
   });
 
   it('should get sleep hours by a specific date', () => {
-    expect(user1.getSleepHoursByDay("2020/05/14")).to.equal(8);
+    expect(user1.getSleepHoursByDay("2019/06/17")).to.equal(8);
   });
 
   it('should get sleep quality by a specific date', () => {
-    expect(user1.getSleepQualityByDay("2020/05/14")).to.equal(6);
+    expect(user1.getSleepQualityByDay("2019/06/17")).to.equal(2.6);
   });
 
   it('should get hours slept by week', () => {
-    expect(user1.getHoursSleptByWeek("2020/05/14")).to.deep.equal([6]);
+    expect(user1.getHoursSleptByWeek("2019/06/21")).to.deep.equal([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
   });
 
   it('should get sleep quality by week', ()=> {
-    expect(user1.getSleepQualityByWeek("2020/05/14")).to.deep.equal([2]);
+    expect(user1.getSleepQualityByWeek("2019/06/21")).to.deep.equal([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
   });
 
   it('should get miles walked by a specific date', () => {
@@ -86,7 +86,7 @@ describe('User', () => {
   });
 
   it('should get average number of minutes active by week', () => {
-    expect(user1.getAvgMinutesActiveByWeek('2019/06/22')).to.equal('171');
+    expect(user1.getAvgMinutesActiveByWeek('2019/06/21')).to.equal('171');
   });
 
   it('should calculate if a user has met their step goal', () => {

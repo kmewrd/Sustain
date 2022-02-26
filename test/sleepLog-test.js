@@ -24,14 +24,14 @@ describe('SleepLog', () => {
   });
 
   it('should have a property of date', () => {
-    expect(sleepLog.date).to.equal("2019/06/15");
+    expect(sleepLog.date).to.equal("2019/06/18");
   });
 
   it('should have a property of hoursSlept', () => {
-    expect(sleepLog.hoursSlept).to.equal(6.1);
+    expect(sleepLog.hoursSlept).to.equal(10.4);
   });
 
   it('should have a property of sleepQuality', () => {
-    expect(sleepLog.sleepQuality).to.equal(2.2);
+    expect(sleepLog.sleepQuality).to.equal(3.1);
   });
 });

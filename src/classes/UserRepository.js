@@ -36,7 +36,7 @@ class UserRepository {
       return acc += log.sleepQuality;
     }, 0);
     const avg = total / this.users.length;
-    return avg;
+    return avg.toFixed(1);
   };
 
   getAvgUserFlightsClimbed(date) {
