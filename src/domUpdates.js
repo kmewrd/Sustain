@@ -151,6 +151,63 @@ let domUpdates = {
     const recentFlights = document.querySelector('.js-flights-climbed');
     recentFlights.innerText = flights;
   },
+
+  displayWeeklyActivity(flights, steps, min) {
+    const weeklyActivityTables = document.querySelector('.js-weekly-activity-tables');
+    weeklyActivityTables.innerHTML = `
+    <table class="weekly-activity">
+      <tr class="activity-table-heading">
+        <th></th>
+        <th>Flights Climbed</th>
+        <th class="activity-table-heading">Step Count</th>
+        <th class="activity-table-heading">Minutes Active</th>
+      </tr>
+      <tr>
+        <td>Day 1</td>
+        <td>${flights[0]} flights</td>
+        <td>${steps[0]} steps</td>
+        <td>${min[0]} min</td>
+      </tr>
+      <tr>
+        <td>Day 2</td>
+        <td>${flights[1]} flights</td>
+        <td>${steps[1]} steps</td>
+        <td>${min[1]} min</td>
+      </tr>
+      <tr>
+        <td>Day 3</td>
+        <td>${flights[2]} flights</td>
+        <td>${steps[2]} steps</td>
+        <td>${min[2]} min</td>
+      </tr>
+      <tr>
+        <td>Day 4</td>
+        <td>${flights[3]} flights</td>
+        <td>${steps[3]} steps</td>
+        <td>${min[3]} min</td>
+      </tr>
+      <tr>
+        <td>Day 5</td>
+        <td>${flights[4]} flights</td>
+        <td>${steps[4]} steps</td>
+        <td>${min[4]} min</td>
+      </tr>
+      <tr>
+        <td>Day 6</td>
+        <td>${flights[5]} flights</td>
+        <td>${steps[5]} steps</td>
+        <td>${min[5]} min</td>
+      </tr>
+      <tr>
+        <td>Day 7</td>
+        <td>${flights[6]} flights</td>
+        <td>${steps[6]} steps</td>
+        <td>${min[6]} min</td>
+      </tr>
+    </table>
+    <h4>Your activity this week</h4>
+    `;
+  }
 }
 
 export default domUpdates;

@@ -63,6 +63,7 @@ function updateDailyStats() {
 function updateWeeklyStats() {
   updateWeeklyWaterIntake();
   updateWeeklySleepData();
+  updateWeeklyActivity();
 };
 
 function initializeUserData(userData, hydrationData, sleepData, activityData) {
@@ -266,6 +267,14 @@ function updateAllUsersMinutesActive(date) {
 function updateAllUsersFlightsClimbed(date) {
   const avgFlightsClimbed = userRepository.getAvgUserFlightsClimbed(date);
 };
+
+function updateWeeklyActivity() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length - 1)].date;
+  const weeklyFlights = currentUser.getActivityByWeek(currentDate, 'flightsOfStairs');
+  const weeklySteps = currentUser.getActivityByWeek(currentDate, 'numSteps');
+  const weeklyMin = currentUser.getActivityByWeek(currentDate, 'minutesActive')
+  domUpdates.displayWeeklyActivity(weeklyFlights, weeklySteps, weeklyMin)
+}
 
 // event listeners
 window.addEventListener('load', function() {

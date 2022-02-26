@@ -145,7 +145,18 @@ class User {
   getAllTimeStairRecord() {
     const activityLogs = this.activityLogs.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
     return activityLogs[0].flightsOfStairs;
-  }
+  };
+
+  getActivityByWeek(endDate, activityType) {
+    const dateIndex = this.activityLogs.findIndex(log => {
+      return log.date === endDate;
+    });
+    const weekLogs = this.activityLogs.slice(dateIndex - 7, dateIndex);
+    const weekData = weekLogs.map(log => {
+      return log[activityType];
+    })
+    return weekData;
+  };
 };
 
 export default User;
