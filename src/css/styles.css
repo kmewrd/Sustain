@@ -127,7 +127,7 @@ main {
 
 .user-card {
   width: 80%;
-  height: 40%;
+  height: 50%;
   padding: 20px;
   display: flex;
   flex-direction: column;
