@@ -3,7 +3,6 @@ import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
 import testData from './test-data';
 
-
 describe('User', () => {
   let user1;
   let userData;
@@ -15,46 +14,9 @@ describe('User', () => {
 
   beforeEach(() => {
     userData = testData.userData[0];
-
-    testHydrationData = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 32
-    },
-    {
-      "userID": 1,
-      "date": "2019/06/14",
-      "numOunces": 12
-    }];
-
-    testSleepData = [{
-      "userID": 1,
-      "date": "2021/05/14",
-      "hoursSlept": 6,
-      "sleepQuality": 2
-    },
-    {
-      "userID": 1,
-      "date": "2020/05/14",
-      "hoursSlept": 8,
-      "sleepQuality": 6
-    }];
-
-    testActivityData = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numSteps": 3577,
-      "minutesActive": 140,
-      "flightsOfStairs": 16
-    },
-    {
-      "userID": 2,
-      "date":"2019/06/15",
-      "numSteps": 4294,
-      "minutesActive": 138,
-      "flightsOfStairs": 10
-    }];
-
+    testHydrationData = testData.hydrationData;
+    testSleepData = testData.sleepData;
+    testActivityData = testData.activityData;
     user1 = new User(userData);
     testUserData = [user1];
     userRepository = new UserRepository(testUserData, testHydrationData, testSleepData, testActivityData);
@@ -62,7 +24,7 @@ describe('User', () => {
   });
 
   it('should be a function', () => {
-        expect(User).to.be.a('function');
+    expect(User).to.be.a('function');
   });
 
   it('should be an instance of User', () => {

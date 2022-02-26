@@ -16,16 +16,46 @@ const testData = {
     "strideLength": 4.5,
     "dailyStepGoal": 5000,
     "friends": [9, 18, 24, 19]
-  }
-  ],
+  }],
 
-  hydrationData: [
+  hydrationData: [{
+    "userID": 1,
+    "date": "2019/06/15",
+    "numOunces": 32
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/14",
+    "numOunces": 12
+  }],
 
-  ],
+  sleepData: [{
+    "userID": 1,
+    "date": "2021/05/14",
+    "hoursSlept": 6,
+    "sleepQuality": 2
+  },
+  {
+    "userID": 1,
+    "date": "2020/05/14",
+    "hoursSlept": 8,
+    "sleepQuality": 6
+  }],
 
-  sleepData: [
-
-  ]
+  activityData: [{
+    "userID": 1,
+    "date": "2019/06/15",
+    "numSteps": 3577,
+    "minutesActive": 140,
+    "flightsOfStairs": 16
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/16",
+    "numSteps": 6637,
+    "minutesActive": 175,
+    "flightsOfStairs": 36
+  }]
 };
 
 export default testData;
