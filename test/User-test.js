@@ -46,11 +46,11 @@ describe('User', () => {
   });
 
   it('should have a method that returns avg ounces per day', () => {
-    expect(user1.getAvgOuncesPerDay()).to.equal(22);
+    expect(user1.getAvgOuncesPerDay()).to.equal(27);
   });
 
   it('should get ounces by week', () => {
-    expect(user1.getOuncesByWeek("2021/05/14")).to.deep.equal([32]);
+    expect(user1.getOuncesByWeek("2021/05/14")).to.deep.equal([32, 12]);
   });
 
   it('should get avg hours slept per day', () => {

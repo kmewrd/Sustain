@@ -27,6 +27,11 @@ const testData = {
     "userID": 1,
     "date": "2019/06/14",
     "numOunces": 12
+  },
+  {
+    "userID":1,
+    "date":"2019/06/15",
+    "numOunces":37
   }],
 
   sleepData: [{
