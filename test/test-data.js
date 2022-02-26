@@ -46,6 +46,12 @@ const testData = {
     "date": "2020/05/14",
     "hoursSlept": 8,
     "sleepQuality": 6
+  },
+  {
+    "userID":1,
+    "date":"2019/06/15",
+    "hoursSlept": 6.1,
+    "sleepQuality": 2.2
   }],
 
   activityData: [{

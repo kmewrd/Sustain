@@ -54,11 +54,11 @@ describe('User', () => {
   });
 
   it('should get avg hours slept per day', () => {
-    expect(user1.getAvgHoursSleepPerDay()).to.equal('7.0');
+    expect(user1.getAvgHoursSleepPerDay()).to.equal('6.7');
   });
 
   it('should get avg sleep quality per day', () => {
-    expect(user1.getAvgSleepQualityPerDay()).to.equal('4.0');
+    expect(user1.getAvgSleepQualityPerDay()).to.equal('3.4');
   });
 
   it('should get sleep hours by a specific date', () => {
