@@ -63,6 +63,19 @@ class UserRepository {
     return avg.toFixed(0);
   };
 
+  getAvgUserMilesWalked(date) {
+  const allUserLogs = this.activityLogs.filter(log => {
+      return log.date === date;
+    });
+    const total = allUserLogs.reduce((acc, log) => {
+      acc += log.numSteps;
+      return acc;
+    }, 0);
+    const miles = (total * 3) / 5280
+    const avg = (miles / allUserLogs.length).toFixed(1);
+    return avg
+  }
+
   getAvgUserMinutesActive(date) {
     const allLogsByDate = this.activityLogs.filter(log => {
       return log.date === date;

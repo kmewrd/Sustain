@@ -157,6 +157,20 @@ let domUpdates = {
     avgSteps.innerText = `${steps} average`
   },
 
+  displayAllUsersTodayMinutes(min) {
+    const avgMin = document.querySelector('.js-avg-minutes-active')
+    avgMin.innerText = `${min} average`;
+  },
+
+  displayAllUsersTodayFlights(flights) {
+    const avgFlights = document.querySelector('.js-avg-flights-climbed');
+    avgFlights.innerText = `${flights} average`
+  },
+  displayAllUsersTodayMiles(miles) {
+    const avgMiles = document.querySelector('.js-avg-miles-walked');
+    avgMiles.innerText = `${miles} average`;
+  },
+
   displayWeeklyActivity(flights, steps, min) {
     const weeklyActivityTables = document.querySelector('.js-weekly-activity-tables');
     weeklyActivityTables.innerHTML = `
@@ -213,8 +227,6 @@ let domUpdates = {
     <h4>Your activity this week</h4>
     `;
   }
-
-
 }
 
 export default domUpdates;

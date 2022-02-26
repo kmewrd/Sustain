@@ -46,6 +46,7 @@ function updateDashboard() {
   updateAvgUsersStepGoal();
   updateDailyStats();
   updateWeeklyStats();
+
 };
 
 function updateDailyStats() {
@@ -59,6 +60,9 @@ function updateDailyStats() {
   updateTodayMilesWalked();
   updateTodayFlightsClimbed();
   updateAllUsersTodaySteps();
+  updateAllUsersMinutesActive();
+  updateAllUsersFlightsClimbed();
+  updateAllUsersMilesWalked();
 };
 
 function updateWeeklyStats() {
@@ -263,12 +267,22 @@ function updateAllUsersTodaySteps() {
   domUpdates.displayAllUsersTodaySteps(avgTodaySteps)
 };
 
-function updateAllUsersMinutesActive(date) {
-  const avgMinutesActive = userRepository.getAvgUserMinutesActive(date);
+function updateAllUsersMinutesActive() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgMinutesActive = userRepository.getAvgUserMinutesActive(currentDate);
+  domUpdates.displayAllUsersTodayMinutes(avgMinutesActive);
 };
 
-function updateAllUsersFlightsClimbed(date) {
-  const avgFlightsClimbed = userRepository.getAvgUserFlightsClimbed(date);
+function updateAllUsersFlightsClimbed() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgFlightsClimbed = userRepository.getAvgUserFlightsClimbed(currentDate);
+  domUpdates.displayAllUsersTodayFlights(avgFlightsClimbed);
+};
+
+function updateAllUsersMilesWalked() {
+  const currentDate = currentUser.activityLogs[(currentUser.activityLogs.length -1)].date;
+  const avgMilesWalked = userRepository.getAvgUserMilesWalked(currentDate)
+  domUpdates.displayAllUsersTodayMiles(avgMilesWalked)
 };
 
 function updateWeeklyActivity() {
