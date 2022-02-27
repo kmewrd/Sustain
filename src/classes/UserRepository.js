@@ -60,7 +60,7 @@ class UserRepository {
       return acc;
     }, 0);
     const avg = total / allLogsByDate.length;
-    return avg.toFixed(0);
+    return avg.toFixed(1);
   };
 
   getAvgUserMilesWalked(date) {
@@ -85,7 +85,7 @@ class UserRepository {
       return acc;
     }, 0);
     const avg = total / allLogsByDate.length;
-    return avg.toFixed(1);
+    return avg.toFixed(0);
   };
 };
 
