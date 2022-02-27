@@ -29,14 +29,14 @@ const newOuncesDrank = document.querySelector('.js-new-hydration');
 const newHoursSlept = document.querySelector('.js-new-hours-slept');
 const newSleepQuality = document.querySelector('.js-new-sleep-quality');
 const submitButton = document.querySelector('.js-submit');
+const getRandomUserButton = document.querySelector('.js-get-random-user');
 
 // functions
 function fetchAllData() {
   Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep'), fetchData('activity')])
     .then(data => {
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData, data[3].activityData);
-      let randomUser = getRandomID(userRepository.users);
-      getCurrentUser(randomUser);
+      getCurrentUser(1);
       updateDashboard();
   });
 };
@@ -50,6 +50,11 @@ function getRandomID(array) {
     return randomUserID;
   };
 };
+
+function getRandomUser() {
+  let randomUser = getRandomID(userRepository.users);
+  getCurrentUser(randomUser.id)
+}
 
 function updateDashboard() {
   welcomeUser(currentUser);
@@ -252,6 +257,7 @@ function selectForm(event) {
     hide([newOuncesDrank, newHoursSlept, newSleepQuality ]);
   } else if
     (event.target.value === 'Hydration') {
+      console.log('BEFORE', userRepository.hydrationLogs.length)
       show([inputFields, newOuncesDrank, submitButton]);
       hide([newSteps, newMinutesActive, newFlightsClimbed, newHoursSlept, newSleepQuality]);
     } else if
@@ -270,7 +276,6 @@ function submitNewActivityData() {
     minutesActive: newMinutesActive.value,
     numSteps: newSteps.value
   };
-  console.log(newActivityData)
   postData(newActivityData, 'activity');
 };
 
@@ -281,7 +286,6 @@ function submitNewHydrationData() {
     date: todayDate,
     numOunces: newOuncesDrank.value
   };
-  console.log(newHydrationData)
   postData(newHydrationData, 'hydration');
 };
 
@@ -293,7 +297,6 @@ function submitNewSleepData() {
     hoursSlept: newHoursSlept.value,
     sleepQuality: newSleepQuality.value
   };
-  console.log(newSleepData)
   postData(newSleepData, 'sleep');
 };
 
@@ -302,13 +305,14 @@ function submitData() {
     submitNewActivityData()
   } else if
     (newOuncesDrank.value) {
-
     submitNewHydrationData()
     } else if
     (newHoursSlept.value) {
     submitNewSleepData()
     }
-}
+  fetchAllData(); 
+  console.log('AFTER', userRepository.hydrationLogs.length)
+};
 
 // event listeners
 window.addEventListener('load', function() {
@@ -320,3 +324,5 @@ select.addEventListener('change', function(event) {
 });
 
 submitButton.addEventListener('click', submitData);
+
+getRandomUserButton.addEventListener('click', getRandomUser);
