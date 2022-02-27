@@ -53,6 +53,15 @@ main {
   justify-content: space-evenly;
 };
 
+button {
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  border-radius: 15px;
+  height: 25px;
+  width: 200px;
+}
+
 .activity-box {
   background-color: #ff9f1c;
   color: #6d3c0b;
@@ -202,5 +211,5 @@ main {
 }
 
 .hidden {
-  display: none;  
+  display: none;
 }
