@@ -28,7 +28,7 @@ let domUpdates = {
     weeklyWaterIntake.innerHTML = `
     <table class="weekly-water">
       <tr class="water-table-heading">
-        <th></th>
+        <td></td>
         <th>Number of ounces</th>
       </tr>
       <tr>
@@ -84,7 +84,7 @@ let domUpdates = {
     weeklySleepTables.innerHTML = `
     <table class="weekly-sleep">
       <tr class="sleep-table-heading">
-        <th></th>
+        <td></td>
         <th>Hours of Sleep</th>
         <th class="sleep-table-heading">Sleep Quality</th>
       </tr>
@@ -172,7 +172,7 @@ let domUpdates = {
     weeklyActivityTables.innerHTML = `
     <table class="weekly-activity">
       <tr class="activity-table-heading">
-        <th></th>
+        <td></td>
         <th>Flights of Stairs</th>
         <th class="activity-table-heading">Step Count</th>
         <th class="activity-table-heading">Minutes Active</th>
