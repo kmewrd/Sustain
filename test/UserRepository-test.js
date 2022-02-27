@@ -67,7 +67,7 @@ describe('User Repository', () => {
   });
 
   it('should get the average steps walked on a specific day for all users', () => {
-    expect(userRepository.getAvgUserNumSteps('2019/06/15')).to.equal('3935.5')
+    expect(userRepository.getAvgUserNumSteps('2019/06/15')).to.equal('3936')
   });
 
   it('should get the average miles walked on a specific day for all users', () => {
