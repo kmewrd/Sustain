@@ -116,6 +116,13 @@ main {
   margin-bottom: 15px;
 };
 
+.weekly-activity {
+  color: #6d3c0b;
+  width: 800px;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
 .sleep-table-heading {
   background-color: #9f5edd;
 };
@@ -124,9 +131,13 @@ main {
   background-color: #0fd3b2;
 };
 
+.activity-table-heading {
+  background-color: #ff9f1c;
+};
+
 .stats-container {
   width: 70%;
-  height: 700px;
+  height: 100%;
   padding: 20px;
 };
 
@@ -154,6 +165,7 @@ main {
 
 .weekly-stats {
   display: flex;
+  flex-wrap: wrap;
 };
 
 .address-line1 {
