@@ -89,6 +89,19 @@ main {
   margin-left: 40px;
 };
 
+.daily-activity {
+  background-color: #ff9f1c;
+  color: #6d3c0b;
+  border-radius: 15px;
+  width: 800px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 40px;
+};
+
 .weekly-water {
   color: #096d5c;
   width: 300px;
@@ -156,7 +169,8 @@ main {
   margin: 5px;
 };
 
-.daily-sleep-stats {
+.daily-sleep-stats,
+.daily-activity-stats {
   display: flex;
 };
 
@@ -169,7 +183,8 @@ main {
   font-size: 18px;
 }
 
-.daily-sleep-column {
+.daily-sleep-column,
+.daily-activity-column {
   display: flex;
   flex-direction: column;
   align-items: center;
