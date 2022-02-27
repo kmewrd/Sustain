@@ -2,7 +2,7 @@ import './css/styles.css';
 import './images/activity-icon.png';
 import './images/hydration-icon.png';
 import './images/sleep-icon.png';
-import {fetchData} from './apiCalls';
+import {fetchData, postData} from './apiCalls';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
@@ -233,11 +233,17 @@ function updateWeeklyActivity() {
 }
 
 function show(inputs) {
-  inputs.forEach(input => input.classList.remove('hidden'))
+  inputs.forEach(input => {
+    input.classList.remove('hidden');
+    input.setAttribute('required', '');
+  });
 };
 
 function hide(inputs) {
-  inputs.forEach(input => input.classList.add('hidden'))
+  inputs.forEach(input => {
+    input.classList.add('hidden');
+    input.removeAttribute('required', '')
+  });
 };
 
 function selectForm(event) {
@@ -264,16 +270,18 @@ function submitNewActivityData() {
     minutesActive: newMinutesActive.value,
     numSteps: newSteps.value
   };
+  console.log(newActivityData)
   postData(newActivityData, 'activity');
 };
 
-function submitNewHydractionData() {
+function submitNewHydrationData() {
   const todayDate = helperFunctions.reformatDate();
   const newHydrationData = {
     userID: currentUser.id,
     date: todayDate,
     numOunces: newOuncesDrank.value
   };
+  console.log(newHydrationData)
   postData(newHydrationData, 'hydration');
 };
 
@@ -285,6 +293,7 @@ function submitNewSleepData() {
     hoursSlept: newHoursSlept.value,
     sleepQuality: newSleepQuality.value
   };
+  console.log(newSleepData)
   postData(newSleepData, 'sleep');
 };
 
@@ -293,7 +302,8 @@ function submitData() {
     submitNewActivityData()
   } else if
     (newOuncesDrank.value) {
-    submitNewHydractionData()
+
+    submitNewHydrationData()
     } else if
     (newHoursSlept.value) {
     submitNewSleepData()

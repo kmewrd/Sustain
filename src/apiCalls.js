@@ -8,10 +8,10 @@ const fetchData = (extension) => {
 const postData = (data, url) => {
   return fetch(`http://localhost:3001/api/v1/${url}`, {
     method: 'POST',
-    body: json.stringify(data),
+    body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
-    } 
+    }
   })
   .then(response => response.json())
   .catch(err => console.log(err));
