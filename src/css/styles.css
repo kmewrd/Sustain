@@ -26,11 +26,6 @@ h3 {
   margin: 5px;
 };
 
-h4 {
-  font-size: 20px;
-  margin: 5px;
-};
-
 p {
   font-size: 18px;
 };
@@ -132,6 +127,11 @@ main {
 
 .activity-table-heading {
   background-color: #ff9f1c;
+};
+
+.text-under-table {
+  font-size: 20px;
+  margin: 5px;
 };
 
 .stats-container {

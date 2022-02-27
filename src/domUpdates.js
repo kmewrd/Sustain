@@ -60,7 +60,7 @@ let domUpdates = {
         <td>${weeklyWater[6]} oz</td>
       </tr>
     </table>
-    <h4>Water consumed this week</h4>
+    <h3 class="text-under-table">Water consumed this week</h3>
     `;
   },
   displayRecentHoursSlept(lastNightHoursSlept) {
@@ -124,7 +124,7 @@ let domUpdates = {
         <td>${weeklyQuality[6]}</td>
       </tr>
     </table>
-    <h4>Your sleep this week</h4>
+    <h3 class="text-under-table">Your sleep this week</h3>
     `;
   },
 
@@ -220,7 +220,7 @@ let domUpdates = {
         <td>${min[6]} min</td>
       </tr>
     </table>
-    <h4>Your activity this week</h4>
+    <h3 class="text-under-table">Your activity this week</h3>
     `;
   }
 }
