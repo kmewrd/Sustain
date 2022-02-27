@@ -54,7 +54,7 @@ main {
 
 .activity-box {
   background-color: #ff9f1c;
-  color: #6d3c0b;
+  color: #5e3006;
   height: 50%;
   width: 90%;
   display: flex;
@@ -65,7 +65,7 @@ main {
 
 .daily-water {
   background-color: #0fd3b2;
-  color: #096d5c;
+  color: #054c3e;
   border-radius: 15px;
   width: 250px;
   height: 250px;
@@ -76,7 +76,7 @@ main {
 };
 
 .daily-sleep {
-  background-color: #9f5edd;
+  background-color: #ab7bef;
   color: #3c096c;
   border-radius: 15px;
   width: 400px;
@@ -90,7 +90,7 @@ main {
 
 .daily-activity {
   background-color: #ff9f1c;
-  color: #6d3c0b;
+  color: #5e3006;
   border-radius: 15px;
   width: 850px;
   height: 250px;
@@ -102,7 +102,7 @@ main {
 };
 
 .weekly-water {
-  color: #096d5c;
+  color: #054c3e;
   width: 300px;
   height: 280px;
   margin-bottom: 15px;
@@ -116,14 +116,14 @@ main {
 };
 
 .weekly-activity {
-  color: #6d3c0b;
+  color: #5e3006;
   width: 800px;
   height: 280px;
   margin-bottom: 15px;
 }
 
 .sleep-table-heading {
-  background-color: #9f5edd;
+  background-color: #ab7bef;
 };
 
 .water-table-heading {
@@ -136,7 +136,7 @@ main {
 
 .stats-container {
   width: 70%;
-  height: 1340px;
+  height: 1350px;
   padding: 20px;
 };
 
