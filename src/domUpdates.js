@@ -173,7 +173,7 @@ let domUpdates = {
     <table class="weekly-activity">
       <tr class="activity-table-heading">
         <th></th>
-        <th>Flights Climbed</th>
+        <th>Flights of Stairs</th>
         <th class="activity-table-heading">Step Count</th>
         <th class="activity-table-heading">Minutes Active</th>
       </tr>
