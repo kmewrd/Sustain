@@ -52,8 +52,8 @@ function getRandomID(array) {
 };
 
 function getRandomUser() {
-  let randomUser = getRandomID(userRepository.users);
-  getCurrentUser(randomUser.id)
+  let randomUserID = getRandomID(userRepository.users);
+  getCurrentUser(randomUserID);
 }
 
 function updateDashboard() {
@@ -326,4 +326,7 @@ select.addEventListener('change', function(event) {
 
 submitButton.addEventListener('click', submitData);
 
-getRandomUserButton.addEventListener('click', getRandomUser);
+getRandomUserButton.addEventListener('click', function() {
+  getRandomUser();
+  updateDashboard();
+});
