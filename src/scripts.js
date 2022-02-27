@@ -94,6 +94,7 @@ function initializeUserData(userData, hydrationData, sleepData, activityData) {
   sleepLogs = sleepData.map(log => new SleepLog(log));
   activityLogs = activityData.map(log => new ActivityLog(log));
   userRepository = new UserRepository(users, hydrationLogs, sleepLogs, activityLogs);
+  userRepository.matchLogsToUsers();
 };
 
 function getCurrentUser(id) {
@@ -310,7 +311,7 @@ function submitData() {
     (newHoursSlept.value) {
     submitNewSleepData()
     }
-  fetchAllData(); 
+  fetchAllData();
   console.log('AFTER', userRepository.hydrationLogs.length)
 };
 
