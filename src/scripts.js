@@ -267,6 +267,16 @@ function submitNewActivityData() {
   postData(newActivityData, 'activity');
 };
 
+function submitNewHydractionData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newHydrationData = {
+    userID: currentUser.id,
+    date: todayDate,
+    numOunces: newOuncesDrank.value
+  };
+  postData(newHydrationData, 'hydration');
+};
+
 
 // event listeners
 window.addEventListener('load', function() {
