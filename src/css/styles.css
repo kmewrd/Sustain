@@ -49,7 +49,6 @@ td {
 main {
   display: flex;
   padding: 20px;
-  max-height: 100%;
   justify-content: space-evenly;
 };
 
@@ -137,7 +136,7 @@ main {
 
 .stats-container {
   width: 70%;
-  height: 100%;
+  height: 1340px;
   padding: 20px;
 };
 
@@ -151,7 +150,7 @@ main {
 
 .user-card {
   width: 80%;
-  height: 50%;
+  height: 25%;
   padding: 20px;
   display: flex;
   flex-direction: column;
