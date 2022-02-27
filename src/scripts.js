@@ -9,7 +9,7 @@ import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
 import ActivityLog from './classes/ActivityLog';
 import domUpdates from './domUpdates';
-import helperFunctions from './utilities'
+import helperFunctions from './utilities';
 
 // global variables
 let userRepository;
@@ -288,6 +288,18 @@ function submitNewSleepData() {
   postData(newSleepData, 'sleep');
 };
 
+function submitData() {
+  if(newFlightsClimbed.value) {
+    submitNewActivityData()
+  } else if
+    (newOuncesDrank.value) {
+    submitNewHydractionData()
+    } else if
+    (newHoursSlept.value) {
+    submitNewSleepData()
+    }
+}
+
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();
@@ -296,3 +308,5 @@ window.addEventListener('load', function() {
 select.addEventListener('change', function(event) {
   selectForm(event)
 });
+
+submitButton.addEventListener('click', submitData);
