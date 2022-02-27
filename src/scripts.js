@@ -277,6 +277,16 @@ function submitNewHydractionData() {
   postData(newHydrationData, 'hydration');
 };
 
+function submitNewSleepData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newSleepData = {
+    userID: currentUser.id,
+    date: todayDate,
+    hoursSlept: newHoursSlept.value,
+    sleepQuality: newSleepQuality.value
+  };
+  postData(newSleepData, 'sleep');
+};
 
 // event listeners
 window.addEventListener('load', function() {
