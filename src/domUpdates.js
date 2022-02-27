@@ -15,10 +15,6 @@ let domUpdates = {
       <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
     `;
   },
-  displayUserStepGoal(currentUser) {
-    const userStepGoal = document.querySelector('.js-user-step-goal');
-    userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-  },
   displayAvgUsersStepGoal(avg) {
     const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
     avgUsersStepGoal.innerText = `Community Avg Goal: ${avg} steps`;
