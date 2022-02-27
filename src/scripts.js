@@ -8,7 +8,8 @@ import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
 import ActivityLog from './classes/ActivityLog';
-import domUpdates from './domUpdates.js';
+import domUpdates from './domUpdates';
+import helperFunctions from './utilities'
 
 // global variables
 let userRepository;
@@ -253,6 +254,19 @@ function selectForm(event) {
       hide([newSteps, newMinutesActive, newFlightsClimbed, newOuncesDrank]);
     }
 };
+
+function submitNewActivityData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newActivityData = {
+    userID: currentUser.id,
+    date: todayDate,
+    flightsOfStairs: newFlightsClimbed.value,
+    minutesActive: newMinutesActive.value,
+    numSteps: newSteps.value
+  };
+  postData(newActivityData, 'activity');
+};
+
 
 // event listeners
 window.addEventListener('load', function() {
