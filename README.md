@@ -11,9 +11,9 @@ Sustain is a front-end project from the Mod 2 curriculum at Turing School of Sof
 
 The Sustain wellness app is a useful dashboard for users to view their latest activity, sleep, and hydration data, track their fitness goals, and celebrate milestones.
 
-<img width="1440" alt="Sustain Wellness App, dashboard view with daily stats" src="https://user-images.githubusercontent.com/79027364/156061931-e64eb3f2-f9c6-470d-afdc-d5a2e548bab5.png">
+<img width="1440" alt="Sustain Wellness App, dashboard view with daily stats" src="https://user-images.githubusercontent.com/79027364/156067351-fd1b37e9-1f38-4e9d-81a4-2ccb686899d9.png">
 
-<img width="1440" alt="Sustain Wellness App, dashboard view with weekly stats" src="https://user-images.githubusercontent.com/79027364/156062057-cb71cc80-c88f-4933-8b5f-4b1fe12ccdfe.png">
+<img width="1440" alt="Sustain Wellness App, dashboard view with weekly stats" src="https://user-images.githubusercontent.com/79027364/156067360-f973d8cc-3546-4a72-ab66-2babfe2f220a.png">
 
 ## How to Run
 
@@ -32,9 +32,12 @@ The Sustain wellness app is a useful dashboard for users to view their latest ac
 - Mocha & Chai
 - VS Code & Atom
 
-### Future Additions
+### Future Goals
 - Allow users to select a specific user to view through a dropdown menu
 - Allow users to interact with the dashboard to view data for a specific day or period of time
+- Make layout responsive to different screen sizes
+- Add helper functions to `utilities`, including an averaging function
+- Make sad path testing more robust
 
 ### Design Inspiration
 For this project we sourced design inspiration from Dribble creators:
