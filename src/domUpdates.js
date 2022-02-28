@@ -15,10 +15,6 @@ let domUpdates = {
       <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>
     `;
   },
-  displayUserStepGoal(currentUser) {
-    const userStepGoal = document.querySelector('.js-user-step-goal');
-    userStepGoal.innerText = `${currentUser.dailyStepGoal}`;
-  },
   displayAvgUsersStepGoal(avg) {
     const avgUsersStepGoal = document.querySelector('.js-avg-users-step-goal');
     avgUsersStepGoal.innerText = `Community Avg Goal: ${avg} steps`;
@@ -32,7 +28,7 @@ let domUpdates = {
     weeklyWaterIntake.innerHTML = `
     <table class="weekly-water">
       <tr class="water-table-heading">
-        <th></th>
+        <td></td>
         <th>Number of ounces</th>
       </tr>
       <tr>
@@ -64,7 +60,7 @@ let domUpdates = {
         <td>${weeklyWater[6]} oz</td>
       </tr>
     </table>
-    <h4>Water consumed this week</h4>
+    <h3 class="text-under-table">Water consumed this week</h3>
     `;
   },
   displayRecentHoursSlept(lastNightHoursSlept) {
@@ -88,7 +84,7 @@ let domUpdates = {
     weeklySleepTables.innerHTML = `
     <table class="weekly-sleep">
       <tr class="sleep-table-heading">
-        <th></th>
+        <td></td>
         <th>Hours of Sleep</th>
         <th class="sleep-table-heading">Sleep Quality</th>
       </tr>
@@ -128,7 +124,7 @@ let domUpdates = {
         <td>${weeklyQuality[6]}</td>
       </tr>
     </table>
-    <h4>Your sleep this week</h4>
+    <h3 class="text-under-table">Your sleep this week</h3>
     `;
   },
 
@@ -176,8 +172,8 @@ let domUpdates = {
     weeklyActivityTables.innerHTML = `
     <table class="weekly-activity">
       <tr class="activity-table-heading">
-        <th></th>
-        <th>Flights Climbed</th>
+        <td></td>
+        <th>Flights of Stairs</th>
         <th class="activity-table-heading">Step Count</th>
         <th class="activity-table-heading">Minutes Active</th>
       </tr>
@@ -224,7 +220,7 @@ let domUpdates = {
         <td>${min[6]} min</td>
       </tr>
     </table>
-    <h4>Your activity this week</h4>
+    <h3 class="text-under-table">Your activity this week</h3>
     `;
   }
 }

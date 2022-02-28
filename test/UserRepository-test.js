@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import User from '../src/classes/User';
 import UserRepository from '../src/classes/UserRepository';
+import testData from './test-data';
 
 describe('User Repository', () => {
   let user1;
@@ -9,58 +10,17 @@ describe('User Repository', () => {
   let userRepository;
   let testHydrationLog;
   let testSleepLog;
+  let testActivityLogs;
 
   beforeEach(() => {
-   testUsers = [{
-    "id": 1,
-    "name": "Luisa Hane",
-    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-    "email": "Diana.Hayes1@hotmail.com",
-    "strideLength": 4.3,
-    "dailyStepGoal": 10000,
-    "friends": [
-      16,
-      4,
-      8
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Jarvis Considine",
-    "address": "30086 Kathryn Port, Ciceroland NE 07273",
-    "email": "Dimitri.Bechtelar11@gmail.com",
-    "strideLength": 4.5,
-    "dailyStepGoal": 5000,
-    "friends": [
-      9,
-      18,
-      24,
-      19
-    ]
-  }];
-    testHydrationLog = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 32
-    }];
-
-    testSleepLog = [{
-      "userID": 1,
-      "date": "2021/05/14",
-      "hoursSlept": 6.1,
-      "sleepQuality": 2
-    },
-    {
-      "userID": 2,
-      "date": "2020/05/14",
-      "hoursSlept": 8,
-      "sleepQuality": 6
-    }];
-
+    testUsers = testData.userData;
+    testHydrationLog = testData.hydrationData;
+    testSleepLog = testData.sleepData;
+    testActivityLogs = testData.activityData;
     user1 = new User(testUsers[0]);
     user2 = new User(testUsers[1]);
-    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog);
- })
+    userRepository = new UserRepository(testUsers, testHydrationLog, testSleepLog, testActivityLogs);
+  });
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
@@ -98,7 +58,23 @@ describe('User Repository', () => {
     expect(userRepository.hydrationLogs).to.equal(testHydrationLog)
   });
 
-  it('should be able to get avg user sleep quality', () => {
-    expect(userRepository.getAvgUserSleepQuality()).to.equal(4)
+  it('should get avg sleep quality for all users', () => {
+    expect(userRepository.getAvgUserSleepQuality()).to.equal('9.1')
+  });
+
+  it('should get the average flights of stairs climbed on a specific day for all users', () => {
+    expect(userRepository.getAvgUserFlightsClimbed('2019/06/15')).to.equal('13.0')
+  });
+
+  it('should get the average steps walked on a specific day for all users', () => {
+    expect(userRepository.getAvgUserNumSteps('2019/06/15')).to.equal('3936')
+  });
+
+  it('should get the average miles walked on a specific day for all users', () => {
+    expect(userRepository.getAvgUserMilesWalked('2019/06/15')).to.equal('2.2')
+  });
+
+  it('should get the average minutes active on a specific day for all users', () => {
+    expect(userRepository.getAvgUserMinutesActive('2019/06/15')).to.equal('139')
   });
 });

@@ -26,7 +26,7 @@ class User {
       return acc += log.numOunces;
     }, 0);
     const avg = total / this.hydrationLogs.length;
-    return avg;
+    return avg.toFixed(0);
   };
 
   getOuncesByDay(date) {
@@ -41,7 +41,7 @@ class User {
     const dateIndex = this.hydrationLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.hydrationLogs.slice(dateIndex - 7, dateIndex);
+    const weekLogs = this.hydrationLogs.slice(dateIndex - 6, dateIndex + 1);
     const weekOunces = weekLogs.map(log => {
       return log.numOunces;
     });
@@ -84,7 +84,7 @@ class User {
     const dateIndex = this.sleepLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
+    const weekLogs = this.sleepLogs.slice(dateIndex - 6, dateIndex + 1);
     const weekHours = weekLogs.map(log => {
       return log.hoursSlept;
     });
@@ -95,7 +95,7 @@ class User {
     const dateIndex = this.sleepLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.sleepLogs.slice(dateIndex - 7, dateIndex);
+    const weekLogs = this.sleepLogs.slice(dateIndex - 6, dateIndex + 1);
     const weekQuality = weekLogs.map(log => {
       return log.sleepQuality;
     });
@@ -121,13 +121,13 @@ class User {
     const dateIndex = this.activityLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.activityLogs.slice(dateIndex - 7, dateIndex);
+    const weekLogs = this.activityLogs.slice(dateIndex - 6, dateIndex + 1);
     const weekMinutes = weekLogs.reduce((acc, log) => {
       acc += log.minutesActive;
       return acc;
     }, 0);
     const avg = weekMinutes / weekLogs.length;
-    return avg;
+    return avg.toFixed(0);
   };
 
   getStepGoalAchievement(date) {
@@ -152,7 +152,7 @@ class User {
     const dateIndex = this.activityLogs.findIndex(log => {
       return log.date === endDate;
     });
-    const weekLogs = this.activityLogs.slice(dateIndex - 7, dateIndex);
+    const weekLogs = this.activityLogs.slice(dateIndex - 6, dateIndex + 1);
     const weekData = weekLogs.map(log => {
       return log[activityType];
     })

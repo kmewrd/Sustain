@@ -59,7 +59,6 @@ function getRandomUser() {
 function updateDashboard() {
   welcomeUser(currentUser);
   updateUserInfo(currentUser);
-  domUpdates.displayUserStepGoal(currentUser);
   updateAvgUsersStepGoal();
   updateDailyStats();
   updateWeeklyStats();
