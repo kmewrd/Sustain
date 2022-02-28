@@ -6,7 +6,6 @@ const helperFunctions = {
     let yyyy = today.getFullYear();
 
     let newToday = `${mm}/${dd}/${yyyy}`;
-    console.log(newToday)
     return newToday;
   }
 }
