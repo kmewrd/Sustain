@@ -10,10 +10,15 @@ class UserRepository {
     const user = this.users.find(person => {
       return person.id === id;
     });
-    user.hydrationLogs = this.getUserLogs(this.hydrationLogs, id);
-    user.sleepLogs = this.getUserLogs(this.sleepLogs, id);
-    user.activityLogs = this.getUserLogs(this.activityLogs, id);
     return user;
+  };
+
+  matchLogsToUsers() {
+    this.users.map(user => {
+      user.hydrationLogs = this.getUserLogs(this.hydrationLogs, user.id);
+      user.sleepLogs = this.getUserLogs(this.sleepLogs, user.id);
+      user.activityLogs = this.getUserLogs(this.activityLogs, user.id);
+    });
   };
 
   getAvgUserStepGoal() {

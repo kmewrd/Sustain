@@ -2,13 +2,14 @@ import './css/styles.css';
 import './images/activity-icon.png';
 import './images/hydration-icon.png';
 import './images/sleep-icon.png';
-import {fetchData} from './apiCalls';
+import {fetchData, postData} from './apiCalls';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import HydrationLog from './classes/HydrationLog';
 import SleepLog from './classes/SleepLog';
 import ActivityLog from './classes/ActivityLog';
-import domUpdates from './domUpdates.js';
+import domUpdates from './domUpdates';
+import helperFunctions from './utilities';
 
 // global variables
 let userRepository;
@@ -18,13 +19,24 @@ let sleepLogs;
 let activityLogs;
 let currentUser;
 
+//query selectors
+const select = document.querySelector('.js-tracker-options');
+const inputFields = document.querySelector('.js-input-fields');
+const newSteps = document.querySelector('.js-new-steps');
+const newMinutesActive = document.querySelector('.js-new-minutes-active');
+const newFlightsClimbed = document.querySelector('.js-new-flights');
+const newOuncesDrank = document.querySelector('.js-new-hydration');
+const newHoursSlept = document.querySelector('.js-new-hours-slept');
+const newSleepQuality = document.querySelector('.js-new-sleep-quality');
+const submitButton = document.querySelector('.js-submit');
+const getRandomUserButton = document.querySelector('.js-get-random-user');
+
 // functions
 function fetchAllData() {
   Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep'), fetchData('activity')])
     .then(data => {
       initializeUserData(data[0].userData, data[1].hydrationData, data[2].sleepData, data[3].activityData);
-      let randomUser = getRandomID(userRepository.users);
-      getCurrentUser(randomUser);
+      getCurrentUser(1);
       updateDashboard();
   });
 };
@@ -38,6 +50,11 @@ function getRandomID(array) {
     return randomUserID;
   };
 };
+
+function getRandomUser() {
+  let randomUserID = getRandomID(userRepository.users);
+  getCurrentUser(randomUserID);
+}
 
 function updateDashboard() {
   welcomeUser(currentUser);
@@ -76,6 +93,7 @@ function initializeUserData(userData, hydrationData, sleepData, activityData) {
   sleepLogs = sleepData.map(log => new SleepLog(log));
   activityLogs = activityData.map(log => new ActivityLog(log));
   userRepository = new UserRepository(users, hydrationLogs, sleepLogs, activityLogs);
+  userRepository.matchLogsToUsers();
 };
 
 function getCurrentUser(id) {
@@ -219,7 +237,95 @@ function updateWeeklyActivity() {
   domUpdates.displayWeeklyActivity(weeklyFlights, weeklySteps, weeklyMin)
 }
 
+function show(inputs) {
+  inputs.forEach(input => {
+    input.classList.remove('hidden');
+    input.setAttribute('required', '');
+  });
+};
+
+function hide(inputs) {
+  inputs.forEach(input => {
+    input.classList.add('hidden');
+    input.removeAttribute('required', '')
+  });
+};
+
+function selectForm(event) {
+  if(event.target.value === 'Activity') {
+    show([inputFields, newSteps, newMinutesActive, newFlightsClimbed, submitButton]);
+    hide([newOuncesDrank, newHoursSlept, newSleepQuality ]);
+  } else if
+    (event.target.value === 'Hydration') {
+      console.log('BEFORE', userRepository.hydrationLogs.length)
+      show([inputFields, newOuncesDrank, submitButton]);
+      hide([newSteps, newMinutesActive, newFlightsClimbed, newHoursSlept, newSleepQuality]);
+    } else if
+    (event.target.value === 'Sleep') {
+      show([inputFields, newHoursSlept, newSleepQuality, submitButton]);
+      hide([newSteps, newMinutesActive, newFlightsClimbed, newOuncesDrank]);
+    }
+};
+
+function submitNewActivityData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newActivityData = {
+    userID: currentUser.id,
+    date: todayDate,
+    numSteps: newSteps.value,
+    minutesActive: newMinutesActive.value,
+    flightsOfStairs: newFlightsClimbed.value
+  };
+  postData(newActivityData, 'activity');
+};
+
+function submitNewHydrationData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newHydrationData = {
+    userID: currentUser.id,
+    date: todayDate,
+    numOunces: newOuncesDrank.value
+  };
+  postData(newHydrationData, 'hydration');
+};
+
+function submitNewSleepData() {
+  const todayDate = helperFunctions.reformatDate();
+  const newSleepData = {
+    userID: currentUser.id,
+    date: todayDate,
+    hoursSlept: newHoursSlept.value,
+    sleepQuality: newSleepQuality.value
+  };
+  postData(newSleepData, 'sleep');
+};
+
+function submitData() {
+  if(newFlightsClimbed.value) {
+    submitNewActivityData()
+  } else if
+    (newOuncesDrank.value) {
+    submitNewHydrationData()
+    } else if
+    (newHoursSlept.value) {
+    submitNewSleepData()
+    }
+  fetchAllData();
+  console.log('AFTER', userRepository.hydrationLogs.length)
+};
+
 // event listeners
 window.addEventListener('load', function() {
   fetchAllData();
+});
+
+select.addEventListener('change', function(event) {
+  selectForm(event)
+});
+
+submitButton.addEventListener('click', submitData);
+
+getRandomUserButton.addEventListener('click', function() {
+  getRandomUser();
+  updateDashboard();
 });

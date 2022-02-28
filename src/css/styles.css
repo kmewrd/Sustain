@@ -2,7 +2,6 @@ body, html {
   background-color: #d7e0e0;
   height: 100%;
   font-family: sans-serif;
-  /* overflow: hidden; */
 };
 
 section {
@@ -46,6 +45,15 @@ main {
   padding: 20px;
   justify-content: space-evenly;
 };
+
+button {
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  border-radius: 7px;
+  height: 25px;
+  width: 200px;
+}
 
 .activity-box {
   background-color: #ff9f1c;
@@ -225,4 +233,8 @@ main {
 
 .small-txt {
   font-size: 16px;
+}
+
+.hidden {
+  display: none;
 }

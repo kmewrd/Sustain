@@ -17,7 +17,8 @@ class User {
   };
 
   splitAddress() {
-    return this.address = this.address.split(", ");
+    this.addressLineOne = this.address.split(", ")[0];
+    this.addressLineTwo = this.address.split(", ")[1];
   };
 
   getAvgOuncesPerDay() {

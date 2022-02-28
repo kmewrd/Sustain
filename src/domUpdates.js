@@ -8,8 +8,8 @@ let domUpdates = {
   displayUserInfo(currentUser) {
     const userInfo = document.querySelector('.js-user-info');
     userInfo.innerHTML = `
-      <p class="address-line1">${currentUser.address[0]}</p>
-      <p class="address-line2">${currentUser.address[1]}</p>
+      <p class="address-line1">${currentUser.addressLineOne}</p>
+      <p class="address-line2">${currentUser.addressLineTwo}</p>
       <p>${currentUser.email}</p>
       <p>Stride Length: ${currentUser.strideLength}</p>
       <p>Daily Step Goal: ${currentUser.dailyStepGoal}</p>

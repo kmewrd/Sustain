@@ -1,6 +1,13 @@
-helperFunctions = {
-//pass in a current userLog and date, 
-//return an array of 7 logs for that wee
+const helperFunctions = {
+  reformatDate() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    let newToday = `${mm}/${dd}/${yyyy}`;
+    return newToday;
+  }
 }
 
 
