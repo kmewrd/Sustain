@@ -38,6 +38,7 @@ The Sustain wellness app is a useful dashboard for users to view their latest ac
 - Make layout responsive to different screen sizes
 - Add helper functions to `utilities`, including an averaging function
 - Make sad path testing more robust
+- Add error handling that displays helpful messages for the user if form fields are entered incorrectly
 
 ### Design Inspiration
 For this project we sourced design inspiration from Dribble creators:
