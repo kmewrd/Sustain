@@ -273,9 +273,9 @@ function submitNewActivityData() {
   const newActivityData = {
     userID: currentUser.id,
     date: todayDate,
-    flightsOfStairs: newFlightsClimbed.value,
+    numSteps: newSteps.value,
     minutesActive: newMinutesActive.value,
-    numSteps: newSteps.value
+    flightsOfStairs: newFlightsClimbed.value
   };
   postData(newActivityData, 'activity');
 };
