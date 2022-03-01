@@ -18,7 +18,7 @@ The Sustain wellness app is a useful dashboard for users to view their latest ac
 ## How to Run
 
 1. Clone the repo down to your machine
-2. Clone the server repo [here](https://github.com/kammon10/sustain-api)
+2. Clone the server repo [here](https://github.com/kmewrd/sustain-api)
 3. Open the root directory for each repo and run `npm install` to install dependencies
 4. Run `npm start` in each repo to initialize the webpage and web server
 5. Open the site by copying and pasting the server location in your URL bar
